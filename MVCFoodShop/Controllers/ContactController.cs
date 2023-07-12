@@ -1,16 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVCFoodShop.Models;
-using System.Diagnostics;
 
 namespace MVCFoodShop.Controllers
 {
-    public class HomeController : Controller
+    public class ContactController : Controller
     {
-        
         public IActionResult Index()
         {
             return View();
         }
-
     }
 }
