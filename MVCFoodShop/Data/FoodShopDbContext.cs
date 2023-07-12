@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MVCFoodShop.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class FoodShopDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public FoodShopDbContext(DbContextOptions<FoodShopDbContext> options)
             : base(options)
         {
         }
