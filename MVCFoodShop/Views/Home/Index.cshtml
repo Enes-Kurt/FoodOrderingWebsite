@@ -2,7 +2,133 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+<link href="img/favicon.ico" rel="icon">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item">
+            <div class="carousel-container ">
+                <img src="https://i.hizliresim.com/m20yfy8.png" />
+                <div>
+                    <h2 class="animate__animated animate__fadeInDown"><span>%25 Discount</span></h2>
+                    <p class="animate__animated animate__fadeInUp mb-0">Whopper Menu</p>
+                    <h3 class="animate__animated animate__fadeInDown">YOUR FIRST ONLINE ORDER</h3>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="carousel-container">
+                <img src="https://i.hizliresim.com/m20yfy8.png" />
+                <div>
+                    <h2 class="animate__animated animate__fadeInDown">BUY 1 TAKE 1 </h2><h1 class="animate__animated animate__fadeInDown text-white">BURGER</h1>
+                    <p class="animate__animated animate__fadeInDown">Big King Menu</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item active">
+            <div class="carousel-container">
+                <img src="https://i.hizliresim.com/m20yfy8.png" />
+                <div>
+                    <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
+                    <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <a class="carousel-control-prev btn btn-light " href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left " aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next " href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right bg-white" aria-hidden="true"></span>
+        </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+        <defs>
+            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+            </path>
+        </defs>
+        <g class="wave1">
+            <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+            </use>
+        </g>
+        <g class="wave2">
+            <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+            </use>
+        </g>
+        <g class="wave3">
+            <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+            </use>
+        </g>
+    </svg>
+
+</section>
+
+
+<div class="container-xxl bg-light my-6 py-6 pt-0">
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                <div class="text-center p-4">
+                    <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">$11 - $99</div>
+                    <h3 class="mb-3">Big King</h3>
+                    <span>Chef's recommendation</span>
+                </div>
+                <div class="position-relative mt-auto">
+                    <img class="img-fluid" src="https://i.hizliresim.com/m20yfy8.png" alt="">
+                    <div class="product-overlay">
+                        <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                <div class="text-center p-4">
+                    <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
+                    <h3 class="mb-3">Whopper</h3>
+                    <span>Favorite Menu</span>
+                </div>
+                <div class="position-relative mt-auto">
+                    <img class="img-fluid" src="https://i.hizliresim.com/m20yfy8.png" alt="">
+                    <div class="product-overlay">
+                        <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                <div class="text-center p-4">
+                    <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
+                    <h4 class="mb-3">King Chicken</h4>
+                    <span>The tastiest version of chicken</span>
+                </div>
+                <div class="position-relative mt-auto">
+                    <img class="img-fluid" src="https://i.hizliresim.com/m20yfy8.png" alt="">
+                    <div class="product-overlay">
+                        <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
+<script src="~/js/home.js" asp-append-version="true"></script>
