@@ -1,4 +1,6 @@
-﻿<div id="myProfile">
+﻿@using MVCFoodShop.Entities;
+@model AppUser
+<div id="myProfile">
 
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -12,7 +14,7 @@
                             <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
                         </div>
                         <div class="author-card-details">
-                            <h5 class="author-card-name text-lg">Daniel Adams</h5><span class="author-card-position">Joined February 06, 2017</span>
+                            <h5 class="author-card-name text-lg">@Model.FirstName @Model.LastName</h5><span class="author-card-position">@Model.CreationDate</span>
                         </div>
                     </div>
                 </div>
