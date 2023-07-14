@@ -25,7 +25,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AboutUs" asp-action="Privacy">AboutUs</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Privacy">Product</a>
@@ -44,6 +44,16 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+       @* For login offcanvas*@
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">LOGIN</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="dynamicContent"></div>
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
