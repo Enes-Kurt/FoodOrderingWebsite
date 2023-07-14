@@ -36,6 +36,7 @@ namespace MVCFoodShop
             builder.Services.AddTransient<IMenuRepository, MenuRepository>();
             builder.Services.AddTransient<IShoppingCartElementRepository, ShoppingCartElementRepository>();
             builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+            builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
