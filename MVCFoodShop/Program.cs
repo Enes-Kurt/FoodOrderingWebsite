@@ -19,6 +19,9 @@ namespace MVCFoodShop
             builder.Services.AddDbContext<FoodShopDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
+                //        builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //.AddEntityFrameworkStores<FoodShopDbContext>();
+
             //            builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<FoodShopDbContext>();
             //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
