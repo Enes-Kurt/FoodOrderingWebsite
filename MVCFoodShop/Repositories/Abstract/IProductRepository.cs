@@ -1,9 +1,9 @@
 ﻿using MVCFoodShop.Entities;
 
-namespace GenericRepo.Repositories.Abstract
+namespace MVCFoodShop.Repositories.Abstract
 {
     public interface IProductRepository:IRepository<Product>
     {
-
+        public IEnumerable<Product> GetProductsSelectedCategory(Category category);
     }
 }
