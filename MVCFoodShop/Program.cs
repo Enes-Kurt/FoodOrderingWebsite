@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
+using MVCFoodShop.Repositories.Abstract;
+using MVCFoodShop.Repositories.Concrete;
 
 namespace MVCFoodShop
 {
@@ -26,7 +28,15 @@ namespace MVCFoodShop
                 .AddEntityFrameworkStores<FoodShopDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
-            
+            //Repositories
+            builder.Services.AddTransient<IProductRepository, ProductRepository>();
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddTransient<IMenuCartElementRepository, MenuCartElementRepository>();
+            builder.Services.AddTransient<IMenuCartRepository, MenuCartRepository>();
+            builder.Services.AddTransient<IMenuRepository, MenuRepository>();
+            builder.Services.AddTransient<IShoppingCartElementRepository, ShoppingCartElementRepository>();
+            builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+            builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

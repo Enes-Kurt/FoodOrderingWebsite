@@ -1,10 +1,11 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
 using MVCFoodShop.Entities;
 using System.Linq.Expressions;
 
-namespace GenericRepo.Repositories.Abstract
+namespace MVCFoodShop.Repositories.Abstract
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : class
     {
         bool Add(T entity);
         bool Delete(T entity);

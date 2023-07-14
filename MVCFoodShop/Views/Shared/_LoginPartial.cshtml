@@ -1,9 +1,10 @@
 ﻿@using MVCFoodShop.Entities;
-@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="~/css/shoppingCart.css" asp-append-version="true" />
+
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -12,7 +13,7 @@
                 <div class="inner-header">
                     <ul class="nav-right">
                         <li class="cart-icon">
-                            <a class="nav-link text-dark">
+                            <a class="nav-link text-dark" asp-controller="ShoppingCart" asp-action="ShoppingCartDetails">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <span>3</span>
                             </a>
@@ -67,7 +68,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="https://i.hizliresim.com/m20yfy8.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex text-dark">John Doe</span>
+                            <span class="d-none d-lg-inline-flex text-dark">@User.Identity.Name</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a class="dropdown-item text-dark" asp-action="MyProfile" asp-controller="Profile">My Profile</a>
@@ -102,4 +103,3 @@
         
     }
 </ul>
-<script src="~/js/shoppingCart.js" asp-append-version="true"></script>

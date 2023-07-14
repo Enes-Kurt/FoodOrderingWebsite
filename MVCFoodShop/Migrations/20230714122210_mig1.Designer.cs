@@ -4,6 +4,7 @@ using MVCFoodShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCFoodShop.Migrations
 {
     [DbContext(typeof(FoodShopDbContext))]
-    partial class FoodShopDbContextModelSnapshot : ModelSnapshot
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+    [Migration("20230714083956_mig1")]
+========
+    [Migration("20230714122210_mig1")]
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,14 +179,22 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            ConcurrencyStamp = "f98ff55f-1791-46b8-b95a-9427f84865a9",
+========
                             ConcurrencyStamp = "3bd3b4f5-c7b9-4201-bedc-33a51bae3bc7",
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            ConcurrencyStamp = "6aa2c9a3-a7b2-4b4d-91e5-01ee36461832",
+========
                             ConcurrencyStamp = "d8da3293-7b71-4405-aeae-f91d8e962491",
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -296,21 +310,33 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryName = "Food",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 195, DateTimeKind.Local).AddTicks(9884),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4730),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true
                         },
                         new
                         {
                             ID = 2,
                             CategoryName = "Beverage",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 195, DateTimeKind.Local).AddTicks(9904),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4743),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true
                         },
                         new
                         {
                             ID = 3,
                             CategoryName = "Sauce",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 195, DateTimeKind.Local).AddTicks(9905),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4744),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true
                         });
                 });
@@ -344,7 +370,11 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 196, DateTimeKind.Local),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4834),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true,
                             MenuName = "Whopper",
                             Price = 180m
@@ -352,7 +382,11 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 196, DateTimeKind.Local).AddTicks(4),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4839),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true,
                             MenuName = "Big King",
                             Price = 170m
@@ -360,7 +394,11 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 3,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 196, DateTimeKind.Local).AddTicks(5),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4840),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true,
                             MenuName = "King Chicken",
                             Price = 160m
@@ -368,7 +406,11 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 4,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 196, DateTimeKind.Local).AddTicks(6),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4841),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true,
                             MenuName = "Kids Menu",
                             Price = 140m
@@ -458,7 +500,11 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 196, DateTimeKind.Local).AddTicks(100),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4911),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true,
                             Price = 30m,
                             ProductName = "Kola"
@@ -467,7 +513,11 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 196, DateTimeKind.Local).AddTicks(105),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4914),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true,
                             Price = 30m,
                             ProductName = "Fanta"
@@ -476,7 +526,11 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230714083956_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 14, 11, 39, 56, 196, DateTimeKind.Local).AddTicks(106),
+========
                             CreationDate = new DateTime(2023, 7, 14, 15, 22, 10, 584, DateTimeKind.Local).AddTicks(4916),
+>>>>>>>> ProjectV1:MVCFoodShop/Migrations/20230714122210_mig1.Designer.cs
                             IsActive = true,
                             Price = 20m,
                             ProductName = "Ayran"

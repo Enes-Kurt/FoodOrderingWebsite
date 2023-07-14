@@ -1,7 +1,6 @@
-﻿
-using MVCFoodShop.Entities;
+﻿using MVCFoodShop.Entities;
 
-namespace GenericRepo.Repositories.Abstract
+namespace MVCFoodShop.Repositories.Abstract
 {
     public interface ICategoryRepository : IRepository<Category>
     {

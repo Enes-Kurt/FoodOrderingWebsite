@@ -8,5 +8,10 @@ namespace MVCFoodShop.Controllers
         {
             return View();
         }
+
+        public IActionResult ShoppingCartDetails()
+        {
+            return View();
+        }
     }
 }
