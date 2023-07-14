@@ -1,10 +1,9 @@
 ﻿
-using GenericRepo.Repositories.Abstract;
-using Microsoft.EntityFrameworkCore;
 using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
+using MVCFoodShop.Repositories.Abstract;
 
-namespace GenericRepo.Repositories.Concrete
+namespace MVCFoodShop.Repositories.Concrete
 {
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {

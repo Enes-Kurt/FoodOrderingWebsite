@@ -1,5 +1,4 @@
-﻿using GenericRepo.Repositories.Abstract;
-using MVCFoodShop.Entities;
+﻿using MVCFoodShop.Entities;
 
 namespace MVCFoodShop.Repositories.Abstract
 {

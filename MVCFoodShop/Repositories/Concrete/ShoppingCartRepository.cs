@@ -1,5 +1,4 @@
-﻿using GenericRepo.Repositories.Concrete;
-using MVCFoodShop.Data;
+﻿using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
 

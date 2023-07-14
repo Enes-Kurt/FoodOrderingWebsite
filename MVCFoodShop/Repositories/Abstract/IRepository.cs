@@ -2,7 +2,7 @@
 using MVCFoodShop.Entities;
 using System.Linq.Expressions;
 
-namespace GenericRepo.Repositories.Abstract
+namespace MVCFoodShop.Repositories.Abstract
 {
     public interface IRepository<T> where T : BaseEntity
     {
