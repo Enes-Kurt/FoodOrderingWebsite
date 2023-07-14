@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace MVCFoodShop.Repositories.Concrete
 {
-    public class GenericRepository<T> : IRepository<T> where T : BaseEntity
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly FoodShopDbContext dbContext;
         public GenericRepository(FoodShopDbContext dbContext)
