@@ -1,23 +1,6 @@
-﻿.inner-header .nav-right li.heart-icon a {
-    color: #252525;
-    position: relative;
-    display: inline-block;
+﻿ul ul {
+    list-style-type : none;
 }
-
-    .inner-header .nav-right li.heart-icon a span {
-        position: absolute;
-        right: -8px;
-        top: -1px;
-        height: 15px;
-        width: 15px;
-        background: #e7ab3c;
-        color: #ffffff;
-        border-radius: 50%;
-        font-size: 11px;
-        font-weight: 700;
-        text-align: center;
-        line-height: 15px;
-    }
 
 .inner-header .nav-right li.cart-icon {
     position: relative;

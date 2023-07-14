@@ -8,7 +8,7 @@ namespace MVCFoodShop.Entities
         {
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
-        public string Adres { get; set; }
+        public string Address { get; set; }
         public ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }
 }
