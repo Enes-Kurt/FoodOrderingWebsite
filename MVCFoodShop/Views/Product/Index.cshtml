@@ -1,0 +1,27 @@
+﻿@model List<Category>
+<link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
+<script src="~/js/Products.js" asp-append-version="true"></script>
+
+<section class="food_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Our Menu
+            </h2>
+        </div>
+
+        <ul class="filters_menu">
+            <li id="all" class="active" onclick="GetProductList(this)">All</li>
+            @foreach (var category in Model)
+            {
+                <li onclick="GetProductList(this,'@category.CategoryName')">@category.CategoryName</li>
+            }                    
+        </ul>
+        <div id="productList"></div>
+        <div class="btn-box">
+            <a href="">
+                View More
+            </a>
+        </div>
+    </div>
+</section>

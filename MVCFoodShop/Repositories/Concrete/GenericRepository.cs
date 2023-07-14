@@ -1,10 +1,10 @@
 ﻿
-using GenericRepo.Repositories.Abstract;
 using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
+using MVCFoodShop.Repositories.Abstract;
 using System.Linq.Expressions;
 
-namespace GenericRepo.Repositories.Concrete
+namespace MVCFoodShop.Repositories.Concrete
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
