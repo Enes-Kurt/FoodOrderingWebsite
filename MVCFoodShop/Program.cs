@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVCFoodShop.AutoMappers;
@@ -5,6 +6,7 @@ using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
 using MVCFoodShop.Repositories.Concrete;
+using MVCFoodShop.Utilities;
 
 namespace MVCFoodShop
 {
@@ -77,6 +79,12 @@ namespace MVCFoodShop
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
+
+            //var scope = app.Services.CreateScope();
+            //var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+            //ForLogin.AddSuperUserAsync(userManager);
+
+
 
             app.Run();
         }

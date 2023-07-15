@@ -30,6 +30,7 @@ namespace MVCFoodShop.Controllers
 
             int userId = int.Parse(userManager.GetUserId(User));
             AppUser user = appUserRepository.GetById(userId);
+            bool control=User.IsInRole("User");
             return View(user);
         }
 
