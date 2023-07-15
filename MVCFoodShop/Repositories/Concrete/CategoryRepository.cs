@@ -13,6 +13,9 @@ namespace MVCFoodShop.Repositories.Concrete
             this.dbContext = dbContext;
         }
 
-       
+        public IEnumerable<Category> GetAllActiveCategories()
+        {
+            return dbContext.Categories.Where(c => c.CategoryIsActive == true).ToList();
+        }
     }
 }

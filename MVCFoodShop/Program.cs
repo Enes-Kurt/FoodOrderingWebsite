@@ -30,6 +30,7 @@ namespace MVCFoodShop
                 .AddEntityFrameworkStores<FoodShopDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+            builder.Services.AddSession(x=>x.IdleTimeout = TimeSpan.FromSeconds(300));
             //Repositories
             builder.Services.AddTransient<IProductRepository, ProductRepository>();
             builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -64,6 +65,7 @@ namespace MVCFoodShop
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

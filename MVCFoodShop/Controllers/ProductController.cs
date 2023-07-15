@@ -1,9 +1,15 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Models;
 using MVCFoodShop.Repositories.Abstract;
+using MVCFoodShop.Repositories.Concrete;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace MVCFoodShop.Controllers
@@ -14,16 +20,24 @@ namespace MVCFoodShop.Controllers
         private readonly ICategoryRepository categoryRepository;
         private readonly IMapper mapper;
         private readonly IMenuRepository menuRepository;
+        private readonly IShoppingCartRepository shoppingCartRepository;
+        private readonly IShoppingCartElementRepository shoppingCartElementRepository;
+        private readonly UserManager<AppUser> userManager;
+        private readonly IAppUserRepository appUserRepository;
 
-        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper, IMenuRepository menuRepository)
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper, IMenuRepository menuRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager,IAppUserRepository appUserRepository)
         {
             this.productRepository = productRepository;
             this.categoryRepository = categoryRepository;
             this.mapper = mapper;
             this.menuRepository = menuRepository;
+            this.shoppingCartRepository = shoppingCartRepository;
+            this.shoppingCartElementRepository = shoppingCartElementRepository;
+            this.userManager = userManager;
+            this.appUserRepository = appUserRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int shopCartId)
         {
             if (User.IsInRole("Admin"))
             {
@@ -35,9 +49,9 @@ namespace MVCFoodShop.Controllers
             }
             ProductList_VM productList_VM = new ProductList_VM()
             {
-                Products = productRepository.GetAll().ToList(),
-                Categories = categoryRepository.GetAll().ToList(),
-                CategoriesComboBox = new SelectList(categoryRepository.GetAll().ToList(), "ID", "CategoryName")
+                Products = productRepository.GetAllActiveProducts().ToList(),
+                Categories = categoryRepository.GetAllActiveCategories().ToList(),
+                CategoriesComboBox = new SelectList(categoryRepository.GetAllActiveCategories().ToList(), "ID", "CategoryName")
             };
             return View(productList_VM);
         }
@@ -55,25 +69,25 @@ namespace MVCFoodShop.Controllers
             Category category = categoryRepository.GetFirstOrDefault(c => c.CategoryName == categoryName);
             ProductCards_VM pcVM = new ProductCards_VM();
             List<Product> products = new List<Product>();
-            if (categoryName =="Menu")
+            if (categoryName == "Menu")
             {
                 pcVM.Menus = menuRepository.GetAllWithProducts().ToList();
             }
             else if (category == null)
             {
                 pcVM.Menus = menuRepository.GetAllWithProducts().ToList();
-                pcVM.Products = productRepository.GetAll().ToList();
+                pcVM.Products = productRepository.GetAllActiveProducts().ToList();
             }
             else
             {
-                pcVM.Products = productRepository.GetProductsSelectedCategory(category).ToList();
+                pcVM.Products = productRepository.GetProductsSelectedActiveCategory(category).ToList();
             }
             return PartialView("_ProductListPartial", pcVM);
         }
         [HttpPost]
         public IActionResult List(ProductList_VM pVM, List<int> selectedProducts)
         {
-            if (selectedProducts == null)
+            if (selectedProducts.Count == 0)
             {
                 Product product = mapper.Map<Product>(pVM);
                 product.ProductIsActive = true;
@@ -87,12 +101,45 @@ namespace MVCFoodShop.Controllers
                     Product product = productRepository.GetById(productId);
                     menu.Products.Add(product);
                 }
+                menu.MenuIsActive = true;
                 menuRepository.Add(menu);
             }
             return RedirectToAction("Index");
         }
 
 
+        public IActionResult FillShoppingCart(ProductCards_VM pcVM)
+        {
+            string shoppingCartIDSTR = HttpContext.Session.GetString("ShoppingCartID");
+            int shoppingCartID = Convert.ToInt32(shoppingCartIDSTR);
+            ShoppingCart shoppingCart = shoppingCartRepository.GetById(shoppingCartID);
+            int userıd = int.Parse(userManager.GetUserId(User));
+            AppUser user = appUserRepository.GetById(userıd);
+            shoppingCart.AppUserID = user.Id;
+            shoppingCart.ShoppingCartIsActive = true;
+            ShoppingCartElement shoppingCartElement = new ShoppingCartElement();
+            shoppingCartElement.ShoppingCartElementAmount = pcVM.ShoppingCartElementAmount;
+            if (pcVM.TypeName == "Menu")
+            {
+
+                shoppingCartElement.MenuCartID = pcVM.ProductOrMenuID;
+            }
+            else
+            {
+                shoppingCartElement.ProductID = pcVM.ProductOrMenuID;
+            }
+            shoppingCartElementRepository.Add(shoppingCartElement);
+            shoppingCart.ShoppingCartElements.Add(shoppingCartElement);
+            shoppingCartRepository.Update(shoppingCart);
+            ShoppingCart updatedShoppingCart = shoppingCartRepository.GetShoppingCartIncludeElements(shoppingCart.ID);
+            foreach (var scElement in updatedShoppingCart.ShoppingCartElements)
+            {
+                updatedShoppingCart.ShoppingCartPrice += scElement.ShoppingCartElementPrice;
+            }
+            shoppingCartRepository.Update(updatedShoppingCart);
+            pcVM.ShoppingCart = updatedShoppingCart;
+            return PartialView("_ShoppingCartPartial", pcVM);
+        }
 
     }
 }

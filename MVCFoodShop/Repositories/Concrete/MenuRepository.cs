@@ -16,7 +16,7 @@ namespace MVCFoodShop.Repositories.Concrete
 
         public IEnumerable<Menu> GetAllWithProducts()
         {
-            return dbContext.Menus.Include(m => m.Products);
+            return dbContext.Menus.Include(m => m.Products).Where(m=>m.MenuIsActive == true);
         }
     }
 }

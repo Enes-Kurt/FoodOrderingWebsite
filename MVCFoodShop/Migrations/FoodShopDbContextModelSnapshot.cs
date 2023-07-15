@@ -173,14 +173,14 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "e228a05f-16e1-4509-8092-f3bbd527423c",
+                            ConcurrencyStamp = "d3e46489-3758-479c-80d6-73ddb241bbc2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "0a8a189a-2934-43d9-b2d0-9a2a5be2d7ed",
+                            ConcurrencyStamp = "d2663f23-ebcd-477a-9aaf-dfc3821f1417",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -297,21 +297,21 @@ namespace MVCFoodShop.Migrations
                             ID = 1,
                             CategoryIsActive = true,
                             CategoryName = "Food",
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6404)
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2961)
                         },
                         new
                         {
                             ID = 2,
                             CategoryIsActive = true,
                             CategoryName = "Beverage",
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6414)
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2975)
                         },
                         new
                         {
                             ID = 3,
                             CategoryIsActive = true,
                             CategoryName = "Sauce",
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6415)
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2977)
                         });
                 });
 
@@ -354,7 +354,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6513),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3101),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Whopper",
@@ -365,7 +365,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6517),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3104),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Big King",
@@ -376,7 +376,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6519),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3105),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "King Chicken",
@@ -387,7 +387,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6520),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3106),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Kids Menu",
@@ -479,7 +479,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6642),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3186),
                             ProductIsActive = true,
                             ProductName = "Kola",
                             ProductPrice = 30m
@@ -488,7 +488,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6649),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3189),
                             ProductIsActive = true,
                             ProductName = "Fanta",
                             ProductPrice = 30m
@@ -497,7 +497,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6650),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3190),
                             ProductIsActive = true,
                             ProductName = "Ayran",
                             ProductPrice = 20m
@@ -506,7 +506,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6652),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3191),
                             ProductIsActive = true,
                             ProductName = "Köfte Burger",
                             ProductPrice = 20m
@@ -515,7 +515,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 5,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6653),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3192),
                             ProductIsActive = true,
                             ProductName = "Tavuk Burger",
                             ProductPrice = 20m
@@ -524,7 +524,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 6,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6654),
+                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3193),
                             ProductIsActive = true,
                             ProductName = "Mayonez",
                             ProductPrice = 20m
@@ -544,6 +544,9 @@ namespace MVCFoodShop.Migrations
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("ShoppingCartIsActive")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("ShoppingCartPrice")
                         .HasColumnType("decimal(18,2)");

@@ -113,7 +113,7 @@
             </div>
         </div>
         }
-
+       @* Products Select Bar*@
         <ul class="filters_menu">
             <li id="all" class="active" onclick="GetProductList(this)">All</li>
             <li id="all" class="active" onclick="GetProductList(this,'Menu')">Menu</li>
@@ -122,11 +122,15 @@
                 <li onclick="GetProductList(this,'@category.CategoryName')">@category.CategoryName</li>
             }
         </ul>
+        @*Product List*@
         <div id="productList"></div>
-@*        <div class="btn-box">
+
+        @*        
+        <div class="btn-box">
             <a href="">
                 View More
             </a>
-        </div>*@
+        </div>
+        *@
     </div>
 </section>

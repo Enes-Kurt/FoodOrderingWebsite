@@ -17,6 +17,17 @@ function GetProductList(element, category) {
     });
 }
 
+//function AddShoppingCart(id) {     
+//    $.ajax({
+//        url: "/Product/FillShoppingCart/" + id,
+//        type: "get",
+//        success: function (response) {
+//            $("#shoppingcart").html(response);
+//        }
+
+//    });
+//}
+
 //$(window).on('load', function () {
 //    $('.filters_menu li').click(function () {
         
