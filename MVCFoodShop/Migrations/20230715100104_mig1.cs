@@ -341,8 +341,8 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "16ce0335-a4ab-4fae-9f41-290a8bdb17ad", "Admin", "ADMIN" },
-                    { 2, "8eb50258-263a-4039-88a6-d366f78eb421", "User", "USER" }
+                    { 1, "8353ac6e-5c6e-445b-a3dd-c02205d18f19", "Admin", "ADMIN" },
+                    { 2, "b1aa3ef8-4661-4fa3-ae81-14c6e1c431ab", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -350,9 +350,9 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryName", "CreationDate", "IsActive" },
                 values: new object[,]
                 {
-                    { 1, "Food", new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1415), true },
-                    { 2, "Beverage", new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1425), true },
-                    { 3, "Sauce", new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1426), true }
+                    { 1, "Food", new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(2962), true },
+                    { 2, "Beverage", new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(2974), true },
+                    { 3, "Sauce", new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(2975), true }
                 });
 
             migrationBuilder.InsertData(
@@ -360,10 +360,10 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CreationDate", "IsActive", "MenuName", "Price" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1526), true, "Whopper", 180m },
-                    { 2, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1530), true, "Big King", 170m },
-                    { 3, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1531), true, "King Chicken", 160m },
-                    { 4, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1532), true, "Kids Menu", 140m }
+                    { 1, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3062), true, "Whopper", 180m },
+                    { 2, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3065), true, "Big King", 170m },
+                    { 3, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3066), true, "King Chicken", 160m },
+                    { 4, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3067), true, "Kids Menu", 140m }
                 });
 
             migrationBuilder.InsertData(
@@ -371,12 +371,12 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryID", "CreationDate", "IsActive", "Price", "ProductName" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1632), true, 30m, "Kola" },
-                    { 2, 2, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1636), true, 30m, "Fanta" },
-                    { 3, 2, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1637), true, 20m, "Ayran" },
-                    { 4, 1, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1638), true, 20m, "Köfte Burger" },
-                    { 5, 1, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1639), true, 20m, "Tavuk Burger" },
-                    { 6, 3, new DateTime(2023, 7, 14, 22, 16, 57, 59, DateTimeKind.Local).AddTicks(1640), true, 20m, "Mayonez" }
+                    { 1, 2, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3156), true, 30m, "Kola" },
+                    { 2, 2, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3159), true, 30m, "Fanta" },
+                    { 3, 2, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3161), true, 20m, "Ayran" },
+                    { 4, 1, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3162), true, 20m, "Köfte Burger" },
+                    { 5, 1, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3163), true, 20m, "Tavuk Burger" },
+                    { 6, 3, new DateTime(2023, 7, 15, 13, 1, 4, 578, DateTimeKind.Local).AddTicks(3164), true, 20m, "Mayonez" }
                 });
 
             migrationBuilder.CreateIndex(

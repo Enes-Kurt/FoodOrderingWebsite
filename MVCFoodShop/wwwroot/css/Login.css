@@ -1,4 +1,6 @@
-﻿body,
+﻿
+
+body,
 html {
     background-color: #EBECF0;
 }
@@ -27,8 +29,9 @@ form {
 }
 
 .segment {
-    padding: 32px 0;
+    padding: 10px 0;
     text-align: center;
+
 }
 
     .segment h1 {
@@ -53,7 +56,7 @@ label {
 }
 
 input {
-    margin-right: 8px;
+    margin-right: 10px;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 100%;
     box-sizing: border-box;
@@ -130,5 +133,11 @@ button {
     background-color: orange;
     border-color: orange;
     box-shadow: 0 0 0 1px orange, 0 0 0 0.2rem rgba(255, 165, 0, 0.25);
+}
+
+.rowr{
+    display:flex;
+    align-content:center;
+    justify-content:flex-end;
 }
 
