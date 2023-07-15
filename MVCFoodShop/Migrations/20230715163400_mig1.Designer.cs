@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCFoodShop.Migrations
 {
     [DbContext(typeof(FoodShopDbContext))]
-    [Migration("20230715113722_mig1")]
+    [Migration("20230715163400_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,14 +175,14 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "9a38146c-f415-405d-92d9-70bfd7f3a83c",
+                            ConcurrencyStamp = "e228a05f-16e1-4509-8092-f3bbd527423c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "79df87cc-6d41-470f-a075-b9ff2c7e887b",
+                            ConcurrencyStamp = "0a8a189a-2934-43d9-b2d0-9a2a5be2d7ed",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -299,21 +299,21 @@ namespace MVCFoodShop.Migrations
                             ID = 1,
                             CategoryIsActive = true,
                             CategoryName = "Food",
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4454)
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6404)
                         },
                         new
                         {
                             ID = 2,
                             CategoryIsActive = true,
                             CategoryName = "Beverage",
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4463)
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6414)
                         },
                         new
                         {
                             ID = 3,
                             CategoryIsActive = true,
                             CategoryName = "Sauce",
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4463)
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6415)
                         });
                 });
 
@@ -356,7 +356,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4561),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6513),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Whopper",
@@ -367,7 +367,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4564),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6517),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Big King",
@@ -378,7 +378,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4565),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6519),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "King Chicken",
@@ -389,7 +389,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4565),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6520),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Kids Menu",
@@ -481,7 +481,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4655),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6642),
                             ProductIsActive = true,
                             ProductName = "Kola",
                             ProductPrice = 30m
@@ -490,7 +490,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4658),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6649),
                             ProductIsActive = true,
                             ProductName = "Fanta",
                             ProductPrice = 30m
@@ -499,7 +499,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4660),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6650),
                             ProductIsActive = true,
                             ProductName = "Ayran",
                             ProductPrice = 20m
@@ -508,7 +508,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4661),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6652),
                             ProductIsActive = true,
                             ProductName = "Köfte Burger",
                             ProductPrice = 20m
@@ -517,7 +517,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 5,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4662),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6653),
                             ProductIsActive = true,
                             ProductName = "Tavuk Burger",
                             ProductPrice = 20m
@@ -526,7 +526,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 6,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 15, 14, 37, 22, 578, DateTimeKind.Local).AddTicks(4663),
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6654),
                             ProductIsActive = true,
                             ProductName = "Mayonez",
                             ProductPrice = 20m
