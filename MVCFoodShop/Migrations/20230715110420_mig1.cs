@@ -61,7 +61,7 @@ namespace MVCFoodShop.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CategoryIsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -75,7 +75,7 @@ namespace MVCFoodShop.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<int>(type: "int", nullable: false),
+                    MenuCartAmount = table.Column<int>(type: "int", nullable: false),
                     MenuType = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -91,8 +91,8 @@ namespace MVCFoodShop.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MenuName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    MenuPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MenuIsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -212,7 +212,7 @@ namespace MVCFoodShop.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ShoppingCartPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AppUserID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -234,8 +234,8 @@ namespace MVCFoodShop.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ProductIsActive = table.Column<bool>(type: "bit", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -307,8 +307,8 @@ namespace MVCFoodShop.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ShoppingCartElementAmount = table.Column<int>(type: "int", nullable: false),
+                    ShoppingCartElementPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductID = table.Column<int>(type: "int", nullable: true),
                     MenuCartID = table.Column<int>(type: "int", nullable: true),
                     ShoppingCartID = table.Column<int>(type: "int", nullable: false),
@@ -340,42 +340,42 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "bade334a-393b-45b2-a842-6dcbb6746d7e", "Admin", "ADMIN" },
-                    { 2, "0db7d38c-dbf0-4748-af45-a01753902287", "User", "USER" }
+                    { 1, "ffa1db61-4bec-4ada-9870-f1817eb0eaed", "Admin", "ADMIN" },
+                    { 2, "335e923e-c301-406e-8c36-2e74d72a8479", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "ID", "CategoryName", "CreationDate", "IsActive" },
+                columns: new[] { "ID", "CategoryIsActive", "CategoryName", "CreationDate" },
                 values: new object[,]
                 {
-                    { 1, "Food", new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2792), true },
-                    { 2, "Beverage", new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2803), true },
-                    { 3, "Sauce", new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2804), true }
+                    { 1, true, "Food", new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(265) },
+                    { 2, true, "Beverage", new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(278) },
+                    { 3, true, "Sauce", new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(279) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Menus",
-                columns: new[] { "ID", "CreationDate", "IsActive", "MenuName", "Price" },
+                columns: new[] { "ID", "CreationDate", "MenuIsActive", "MenuName", "MenuPrice" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2923), true, "Whopper", 180m },
-                    { 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2926), true, "Big King", 170m },
-                    { 3, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2927), true, "King Chicken", 160m },
-                    { 4, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2928), true, "Kids Menu", 140m }
+                    { 1, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(386), true, "Whopper", 180m },
+                    { 2, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(389), true, "Big King", 170m },
+                    { 3, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(391), true, "King Chicken", 160m },
+                    { 4, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(391), true, "Kids Menu", 140m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ID", "CategoryID", "CreationDate", "IsActive", "Price", "ProductName" },
+                columns: new[] { "ID", "CategoryID", "CreationDate", "ProductIsActive", "ProductName", "ProductPrice" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3027), true, 30m, "Kola" },
-                    { 2, 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3030), true, 30m, "Fanta" },
-                    { 3, 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3032), true, 20m, "Ayran" },
-                    { 4, 1, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3033), true, 20m, "Köfte Burger" },
-                    { 5, 1, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3073), true, 20m, "Tavuk Burger" },
-                    { 6, 3, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3074), true, 20m, "Mayonez" }
+                    { 1, 2, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(485), true, "Kola", 30m },
+                    { 2, 2, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(489), true, "Fanta", 30m },
+                    { 3, 2, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(491), true, "Ayran", 20m },
+                    { 4, 1, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(557), true, "Köfte Burger", 20m },
+                    { 5, 1, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(559), true, "Tavuk Burger", 20m },
+                    { 6, 3, new DateTime(2023, 7, 15, 14, 4, 19, 907, DateTimeKind.Local).AddTicks(560), true, "Mayonez", 20m }
                 });
 
             migrationBuilder.CreateIndex(

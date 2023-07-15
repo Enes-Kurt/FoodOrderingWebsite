@@ -1,4 +1,4 @@
-﻿@model List<Category>
+﻿@model ProductList_VM
 <link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
 <script src="~/js/Products.js" asp-append-version="true"></script>
 
@@ -17,16 +17,32 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalCenterTitle">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 class="modal-title fs-5" id="exampleModalCenterTitle"><strong>Add New Product</strong></h1>
+                        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <p>1234123412341234</p>
+                    <div class="px-5">                       
+                        <form asp-action="List" method="post">
+                            <div class="modal-body">
+
+                                <label for="ProductName">Product Name</label>
+                                <input type="text" placeholder="Product Name" asp-for="ProductName"/>
+                                <label for="ProductPrice">Price</label>
+                                <input type="number" placeholder="Price" asp-for="ProductPrice" />
+                                <label for="ProductCategory">Product Category</label>
+                                <select asp-for="CategoryID" asp-items="Model.CategoriesComboBox" class="my-3">
+                                    <option value="0">Select Category...</option>
+                                </select>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button class=" border-0 bg-white">
+                                    <input type="submit" class="btn btn-success text-white" value="Confirm" />
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -55,10 +71,10 @@
 
         <ul class="filters_menu">
             <li id="all" class="active" onclick="GetProductList(this)">All</li>
-            @foreach (var category in Model)
+            @foreach (var category in Model.Categories)
             {
                 <li onclick="GetProductList(this,'@category.CategoryName')">@category.CategoryName</li>
-            }                    
+            }
         </ul>
         <div id="productList"></div>
         <div class="btn-box">

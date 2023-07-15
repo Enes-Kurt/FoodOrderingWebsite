@@ -7,9 +7,9 @@
             Products = new HashSet<Product>();
         }
         public string MenuName { get; set; }
-        public decimal Price { get; set; }
+        public decimal MenuPrice { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool MenuIsActive { get; set; }
 
         public ICollection<Product> Products { get; set; }  
     }
