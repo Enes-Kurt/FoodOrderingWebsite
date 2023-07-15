@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MVCFoodShop.AutoMappers;
 using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
@@ -40,6 +41,8 @@ namespace MVCFoodShop
             builder.Services.AddTransient<IShoppingCartElementRepository, ShoppingCartElementRepository>();
             builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
+            //AutoMapper
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

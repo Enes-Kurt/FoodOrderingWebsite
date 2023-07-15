@@ -134,3 +134,47 @@
         .food_section .btn-box a:hover {
             background-color: #e69c00;
         }
+
+
+/*Modal Forms*/
+select {
+    width: 100%;
+    background-color: #FFC107;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: auto 50%;
+    border-radius: 5px;
+    border: 2px solid black;
+    color: #ffffff;
+    padding: 10px 30px 10px 10px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-weight: bold;
+}
+form label {
+    font-weight: bold;
+}
+
+form input {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #FFC107;
+    border-radius: 5px;
+    background-color: white;
+}
+
+    form input:focus {
+        border: 2px solid #FFC107;
+        border-radius: 5px;
+    }
+    
+option {
+    background-color: #ffffff;
+    color: black;
+    font-weight: bold;
+}
+
+    option:hover {
+        background-color: #FFC107;
+    }

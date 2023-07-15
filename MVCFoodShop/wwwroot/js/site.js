@@ -3,6 +3,8 @@
 
 // Write your JavaScript code.
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const loadLoginButton = document.querySelector('[data-bs-target="#offcanvasRight"]');
     loadLoginButton.addEventListener('click', function () {

@@ -4,8 +4,8 @@ namespace MVCFoodShop.Entities
 {
     public class ShoppingCartElement:BaseEntity
     {
-        public int Amount { get; set; }
-        public decimal Price { get; set; }
+        public int ShoppingCartElementAmount { get; set; }
+        public decimal ShoppingCartElementPrice { get; set; }
 
 
 

@@ -9,7 +9,7 @@ namespace MVCFoodShop.Entities
         {
             MenuCartElements = new HashSet<MenuCartElement>();
         }
-        public int Amount { get; set; }
+        public int MenuCartAmount { get; set; }
         public MenuType MenuType { get; set; }
 
         public ICollection<MenuCartElement> MenuCartElements { get; set; }
