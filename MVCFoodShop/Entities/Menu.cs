@@ -11,6 +11,11 @@
 
         public bool IsActive { get; set; }
 
+        public int FoodCount { get; set; }
+        public int beverageCount { get; set; }
+        public int SauceCount { get; set; }
+        public string? CoverImage { get; set; }
+
         public ICollection<Product> Products { get; set; }  
     }
 }

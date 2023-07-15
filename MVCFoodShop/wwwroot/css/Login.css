@@ -3,24 +3,13 @@ html {
     background-color: #EBECF0;
 }
 
-body,
-p,
-input,
-select,
-textarea,
-button {
-    /*font-family: 'Montserrat', sans-serif;
-    letter-spacing: -0.2px;
-    font-size: 16px;*/
-}
-
 .login-section div,
 .login-section p {
     color: #BABECC;
     text-shadow: 1px 1px 1px #FFF;
 }
 
-form {
+.login-section form {
     padding: 16px;
     width: 320px;
     margin: 0 auto;
@@ -35,8 +24,8 @@ form {
         color: orange;
     }
 
-button,
-input {
+.login-section button,
+.login-section input {
     border: 0;
     outline: 0;
     font-size: 16px;
@@ -46,13 +35,13 @@ input {
     text-shadow: 1px 1px 0 #FFF;
 }
 
-label {
+.login-section label {
     display: block;
     margin-bottom: 24px;
     width: 100%;
 }
 
-input {
+.login-section input {
     margin-right: 8px;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 100%;
@@ -66,7 +55,7 @@ input {
         box-shadow: inset 1px 1px 2px orange, inset -1px -1px 2px #FFF;
     }
 
-button {
+.login-section button {
     color: #61677C;
     font-weight: bold;
     box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
@@ -103,17 +92,23 @@ button {
             margin-right: 0;
         }
 
-    button.red {
-        display: block;
-        width: 100%;
-        color: orange;
+button.red {
+    display: block;
+    width: 100%;
+    background-color: orange;
+    color: #FFF;
+    text-shadow: none;
+    /*color: orange;*/
+}
+
+    button.red:hover {
+        /*background-color: orange;
+            color: #FFF;
+            text-shadow: none;*/
+        background: #ffd54f
     }
 
-        button.red:hover {
-            background-color: orange;
-            color: #FFF;
-            text-shadow: none;
-        }
+
 
 .input-group {
     display: flex;
@@ -132,3 +127,16 @@ button {
     box-shadow: 0 0 0 1px orange, 0 0 0 0.2rem rgba(255, 165, 0, 0.25);
 }
 
+
+
+
+/*body,
+p,
+input,
+select,
+textarea,
+button {*/
+    /*font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.2px;
+    font-size: 16px;*/
+/*}*/

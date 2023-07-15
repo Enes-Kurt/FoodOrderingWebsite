@@ -11,6 +11,7 @@ namespace MVCFoodShop.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
+        public string? CoverImage { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
         public ICollection<ShoppingCart> ShoppingCarts { get; set; }
