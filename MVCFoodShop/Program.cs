@@ -84,8 +84,6 @@ namespace MVCFoodShop
             //var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
             //ForLogin.AddSuperUserAsync(userManager);
 
-
-
             app.Run();
         }
     }

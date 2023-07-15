@@ -22,7 +22,7 @@ button {
     text-shadow: 1px 1px 1px #FFF;
 }
 
-form {
+div div section form {
     padding: 16px;
     width: 320px;
     margin: 0 auto;
@@ -38,7 +38,7 @@ form {
         color: orange;
     }
 
-button,
+div div section form button,
 input {
     border: 0;
     outline: 0;
@@ -49,13 +49,13 @@ input {
     text-shadow: 1px 1px 0 #FFF;
 }
 
-label {
+div div section form label {
     display: block;
     margin-bottom: 24px;
     width: 100%;
 }
 
-input {
+section input {
     margin-right: 10px;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 100%;
@@ -69,7 +69,7 @@ input {
         box-shadow: inset 1px 1px 2px orange, inset -1px -1px 2px #FFF;
     }
 
-button {
+div div section form button {
     color: #61677C;
     font-weight: bold;
     box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
