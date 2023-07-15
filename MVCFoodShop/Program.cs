@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MVCFoodShop.AutoMappers;
 using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
 using MVCFoodShop.Repositories.Concrete;
+using MVCFoodShop.Utilities;
 
 namespace MVCFoodShop
 {
@@ -37,6 +39,8 @@ namespace MVCFoodShop
             builder.Services.AddTransient<IShoppingCartElementRepository, ShoppingCartElementRepository>();
             builder.Services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
+            //AutoMapper
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -71,7 +75,9 @@ namespace MVCFoodShop
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
-
+            //var scope = app.Services.CreateScope();
+            //var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+            //ForLogin.AddSuperUserAsync(userManager);
             app.Run();
         }
     }

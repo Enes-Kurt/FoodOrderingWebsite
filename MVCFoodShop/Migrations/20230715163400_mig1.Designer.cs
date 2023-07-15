@@ -12,7 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCFoodShop.Migrations
 {
     [DbContext(typeof(FoodShopDbContext))]
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
     [Migration("20230715104646_mig1")]
+========
+    [Migration("20230715163400_mig1")]
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,14 +179,22 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             ConcurrencyStamp = "1d4376c1-fd9a-47e1-9c0f-4b009974689f",
+========
+                            ConcurrencyStamp = "e228a05f-16e1-4509-8092-f3bbd527423c",
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             ConcurrencyStamp = "7301f6e7-e4fb-4862-a021-c81ff62589e3",
+========
+                            ConcurrencyStamp = "0a8a189a-2934-43d9-b2d0-9a2a5be2d7ed",
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -282,15 +294,15 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<bool>("CategoryIsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.HasKey("ID");
 
@@ -300,23 +312,38 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 1,
+                            CategoryIsActive = true,
                             CategoryName = "Food",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3665),
                             IsActive = true
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6404)
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 2,
+                            CategoryIsActive = true,
                             CategoryName = "Beverage",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3679),
                             IsActive = true
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6414)
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 3,
+                            CategoryIsActive = true,
                             CategoryName = "Sauce",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3680),
                             IsActive = true
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6415)
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         });
                 });
 
@@ -328,8 +355,13 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                     b.Property<string>("CoverImage")
                         .HasColumnType("nvarchar(max)");
+========
+                    b.Property<int>("BeverageCount")
+                        .HasColumnType("int");
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -337,22 +369,29 @@ namespace MVCFoodShop.Migrations
                     b.Property<int>("FoodCount")
                         .HasColumnType("int");
 
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                     b.Property<bool>("IsActive")
+========
+                    b.Property<bool>("MenuIsActive")
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         .HasColumnType("bit");
 
                     b.Property<string>("MenuName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("MenuPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("SauceCount")
                         .HasColumnType("int");
 
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                     b.Property<int>("beverageCount")
                         .HasColumnType("int");
 
+========
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                     b.HasKey("ID");
 
                     b.ToTable("Menus");
@@ -361,6 +400,7 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3772),
                             FoodCount = 0,
                             IsActive = true,
@@ -368,10 +408,20 @@ namespace MVCFoodShop.Migrations
                             Price = 180m,
                             SauceCount = 0,
                             beverageCount = 0
+========
+                            BeverageCount = 0,
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6513),
+                            FoodCount = 0,
+                            MenuIsActive = true,
+                            MenuName = "Whopper",
+                            MenuPrice = 180m,
+                            SauceCount = 0
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3775),
                             FoodCount = 0,
                             IsActive = true,
@@ -379,10 +429,20 @@ namespace MVCFoodShop.Migrations
                             Price = 170m,
                             SauceCount = 0,
                             beverageCount = 0
+========
+                            BeverageCount = 0,
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6517),
+                            FoodCount = 0,
+                            MenuIsActive = true,
+                            MenuName = "Big King",
+                            MenuPrice = 170m,
+                            SauceCount = 0
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 3,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3776),
                             FoodCount = 0,
                             IsActive = true,
@@ -390,10 +450,20 @@ namespace MVCFoodShop.Migrations
                             Price = 160m,
                             SauceCount = 0,
                             beverageCount = 0
+========
+                            BeverageCount = 0,
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6519),
+                            FoodCount = 0,
+                            MenuIsActive = true,
+                            MenuName = "King Chicken",
+                            MenuPrice = 160m,
+                            SauceCount = 0
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 4,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3777),
                             FoodCount = 0,
                             IsActive = true,
@@ -401,6 +471,15 @@ namespace MVCFoodShop.Migrations
                             Price = 140m,
                             SauceCount = 0,
                             beverageCount = 0
+========
+                            BeverageCount = 0,
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6520),
+                            FoodCount = 0,
+                            MenuIsActive = true,
+                            MenuName = "Kids Menu",
+                            MenuPrice = 140m,
+                            SauceCount = 0
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         });
                 });
 
@@ -412,11 +491,11 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("MenuCartAmount")
+                        .HasColumnType("int");
 
                     b.Property<int>("MenuType")
                         .HasColumnType("int");
@@ -469,15 +548,15 @@ namespace MVCFoodShop.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool>("ProductIsActive")
                         .HasColumnType("bit");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
 
@@ -490,55 +569,97 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3852),
                             IsActive = true,
                             Price = 30m,
                             ProductName = "Kola"
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6642),
+                            ProductIsActive = true,
+                            ProductName = "Kola",
+                            ProductPrice = 30m
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 2,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3856),
                             IsActive = true,
                             Price = 30m,
                             ProductName = "Fanta"
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6649),
+                            ProductIsActive = true,
+                            ProductName = "Fanta",
+                            ProductPrice = 30m
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 3,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3857),
                             IsActive = true,
                             Price = 20m,
                             ProductName = "Ayran"
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6650),
+                            ProductIsActive = true,
+                            ProductName = "Ayran",
+                            ProductPrice = 20m
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 4,
                             CategoryID = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3858),
                             IsActive = true,
                             Price = 20m,
                             ProductName = "Köfte Burger"
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6652),
+                            ProductIsActive = true,
+                            ProductName = "Köfte Burger",
+                            ProductPrice = 20m
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 5,
                             CategoryID = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3859),
                             IsActive = true,
                             Price = 20m,
                             ProductName = "Tavuk Burger"
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6653),
+                            ProductIsActive = true,
+                            ProductName = "Tavuk Burger",
+                            ProductPrice = 20m
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 6,
                             CategoryID = 3,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.Designer.cs
                             CreationDate = new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3860),
                             IsActive = true,
                             Price = 20m,
                             ProductName = "Mayonez"
+========
+                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6654),
+                            ProductIsActive = true,
+                            ProductName = "Mayonez",
+                            ProductPrice = 20m
+>>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.Designer.cs
                         });
                 });
 
@@ -556,7 +677,7 @@ namespace MVCFoodShop.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("ShoppingCartPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
@@ -574,20 +695,20 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("MenuCartID")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int?>("ProductID")
                         .HasColumnType("int");
+
+                    b.Property<int>("ShoppingCartElementAmount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ShoppingCartElementPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ShoppingCartID")
                         .HasColumnType("int");

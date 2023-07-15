@@ -4,6 +4,7 @@ using MVCFoodShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCFoodShop.Migrations
 {
     [DbContext(typeof(FoodShopDbContext))]
-    partial class FoodShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230714155039_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,14 +175,14 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "e228a05f-16e1-4509-8092-f3bbd527423c",
+                            ConcurrencyStamp = "bade334a-393b-45b2-a842-6dcbb6746d7e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "0a8a189a-2934-43d9-b2d0-9a2a5be2d7ed",
+                            ConcurrencyStamp = "0db7d38c-dbf0-4748-af45-a01753902287",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -277,15 +279,15 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<bool>("CategoryIsActive")
-                        .HasColumnType("bit");
-
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.HasKey("ID");
 
@@ -295,23 +297,23 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 1,
-                            CategoryIsActive = true,
                             CategoryName = "Food",
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6404)
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2792),
+                            IsActive = true
                         },
                         new
                         {
                             ID = 2,
-                            CategoryIsActive = true,
                             CategoryName = "Beverage",
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6414)
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2803),
+                            IsActive = true
                         },
                         new
                         {
                             ID = 3,
-                            CategoryIsActive = true,
                             CategoryName = "Sauce",
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6415)
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2804),
+                            IsActive = true
                         });
                 });
 
@@ -323,27 +325,18 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("BeverageCount")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FoodCount")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("MenuIsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("MenuName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("MenuPrice")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("SauceCount")
-                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -353,46 +346,34 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             ID = 1,
-                            BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6513),
-                            FoodCount = 0,
-                            MenuIsActive = true,
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2923),
+                            IsActive = true,
                             MenuName = "Whopper",
-                            MenuPrice = 180m,
-                            SauceCount = 0
+                            Price = 180m
                         },
                         new
                         {
                             ID = 2,
-                            BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6517),
-                            FoodCount = 0,
-                            MenuIsActive = true,
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2926),
+                            IsActive = true,
                             MenuName = "Big King",
-                            MenuPrice = 170m,
-                            SauceCount = 0
+                            Price = 170m
                         },
                         new
                         {
                             ID = 3,
-                            BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6519),
-                            FoodCount = 0,
-                            MenuIsActive = true,
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2927),
+                            IsActive = true,
                             MenuName = "King Chicken",
-                            MenuPrice = 160m,
-                            SauceCount = 0
+                            Price = 160m
                         },
                         new
                         {
                             ID = 4,
-                            BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6520),
-                            FoodCount = 0,
-                            MenuIsActive = true,
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2928),
+                            IsActive = true,
                             MenuName = "Kids Menu",
-                            MenuPrice = 140m,
-                            SauceCount = 0
+                            Price = 140m
                         });
                 });
 
@@ -404,11 +385,11 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("MenuCartAmount")
-                        .HasColumnType("int");
 
                     b.Property<int>("MenuType")
                         .HasColumnType("int");
@@ -458,15 +439,15 @@ namespace MVCFoodShop.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("ProductIsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
 
@@ -479,55 +460,55 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6642),
-                            ProductIsActive = true,
-                            ProductName = "Kola",
-                            ProductPrice = 30m
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3027),
+                            IsActive = true,
+                            Price = 30m,
+                            ProductName = "Kola"
                         },
                         new
                         {
                             ID = 2,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6649),
-                            ProductIsActive = true,
-                            ProductName = "Fanta",
-                            ProductPrice = 30m
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3030),
+                            IsActive = true,
+                            Price = 30m,
+                            ProductName = "Fanta"
                         },
                         new
                         {
                             ID = 3,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6650),
-                            ProductIsActive = true,
-                            ProductName = "Ayran",
-                            ProductPrice = 20m
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3032),
+                            IsActive = true,
+                            Price = 20m,
+                            ProductName = "Ayran"
                         },
                         new
                         {
                             ID = 4,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6652),
-                            ProductIsActive = true,
-                            ProductName = "Köfte Burger",
-                            ProductPrice = 20m
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3033),
+                            IsActive = true,
+                            Price = 20m,
+                            ProductName = "Köfte Burger"
                         },
                         new
                         {
                             ID = 5,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6653),
-                            ProductIsActive = true,
-                            ProductName = "Tavuk Burger",
-                            ProductPrice = 20m
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3073),
+                            IsActive = true,
+                            Price = 20m,
+                            ProductName = "Tavuk Burger"
                         },
                         new
                         {
                             ID = 6,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6654),
-                            ProductIsActive = true,
-                            ProductName = "Mayonez",
-                            ProductPrice = 20m
+                            CreationDate = new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3074),
+                            IsActive = true,
+                            Price = 20m,
+                            ProductName = "Mayonez"
                         });
                 });
 
@@ -545,7 +526,7 @@ namespace MVCFoodShop.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("ShoppingCartPrice")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
@@ -563,20 +544,20 @@ namespace MVCFoodShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("MenuCartID")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int?>("ProductID")
                         .HasColumnType("int");
-
-                    b.Property<int>("ShoppingCartElementAmount")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("ShoppingCartElementPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ShoppingCartID")
                         .HasColumnType("int");

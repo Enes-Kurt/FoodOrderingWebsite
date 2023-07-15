@@ -7,9 +7,12 @@
             Products = new HashSet<Product>();
         }
         public string MenuName { get; set; }
-        public decimal Price { get; set; }
+        public int FoodCount { get; set; }
+        public int BeverageCount { get; set; }
+        public int SauceCount { get; set; }
+        public decimal MenuPrice { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool MenuIsActive { get; set; }
 
         public int FoodCount { get; set; }
         public int beverageCount { get; set; }
