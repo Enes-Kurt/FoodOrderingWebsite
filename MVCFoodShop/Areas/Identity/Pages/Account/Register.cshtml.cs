@@ -104,7 +104,6 @@ namespace MVCFoodShop.Areas.Identity.Pages.Account
 
             public string FirstName { get; set; }
             public string LastName { get; set; }
-            public string CoverImage { get; set; }
         }
 
 
@@ -124,7 +123,6 @@ namespace MVCFoodShop.Areas.Identity.Pages.Account
                 user.Address = Input.Address;
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
-                user.CoverImage = Input.CoverImage;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -134,6 +132,7 @@ namespace MVCFoodShop.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     await _userManager.AddToRoleAsync(user, "User");
+
                     var userId = await _userManager.GetUserIdAsync(user);
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

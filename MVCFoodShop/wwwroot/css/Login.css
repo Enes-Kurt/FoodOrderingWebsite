@@ -1,4 +1,6 @@
-﻿body,
+﻿
+
+body,
 html {
     background-color: #EBECF0;
 }
@@ -9,23 +11,24 @@ html {
     text-shadow: 1px 1px 1px #FFF;
 }
 
-.login-section form {
+div div section form {
     padding: 16px;
     width: 320px;
     margin: 0 auto;
 }
 
 .segment {
-    padding: 32px 0;
+    padding: 10px 0;
     text-align: center;
+
 }
 
     .segment h1 {
         color: orange;
     }
 
-.login-section button,
-.login-section input {
+div div section form button,
+input {
     border: 0;
     outline: 0;
     font-size: 16px;
@@ -35,14 +38,14 @@ html {
     text-shadow: 1px 1px 0 #FFF;
 }
 
-.login-section label {
+div div section form label {
     display: block;
     margin-bottom: 24px;
     width: 100%;
 }
 
-.login-section input {
-    margin-right: 8px;
+section input {
+    margin-right: 10px;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 100%;
     box-sizing: border-box;
@@ -55,7 +58,7 @@ html {
         box-shadow: inset 1px 1px 2px orange, inset -1px -1px 2px #FFF;
     }
 
-.login-section button {
+div div section form button {
     color: #61677C;
     font-weight: bold;
     box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
@@ -127,16 +130,9 @@ button.red {
     box-shadow: 0 0 0 1px orange, 0 0 0 0.2rem rgba(255, 165, 0, 0.25);
 }
 
+.rowr{
+    display:flex;
+    align-content:center;
+    justify-content:flex-end;
+}
 
-
-
-/*body,
-p,
-input,
-select,
-textarea,
-button {*/
-    /*font-family: 'Montserrat', sans-serif;
-    letter-spacing: -0.2px;
-    font-size: 16px;*/
-/*}*/

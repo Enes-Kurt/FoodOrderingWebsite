@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MVCFoodShop.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class mig2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,11 @@ namespace MVCFoodShop.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715163400_mig1.cs
                     CoverImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+========
+                    NewPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
+>>>>>>>> Busra:MVCFoodShop/Migrations/20230715153402_mig2.cs
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -359,6 +363,7 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715163400_mig1.cs
 <<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.cs
                     { 1, "1d4376c1-fd9a-47e1-9c0f-4b009974689f", "Admin", "ADMIN" },
                     { 2, "7301f6e7-e4fb-4862-a021-c81ff62589e3", "User", "USER" }
@@ -366,6 +371,10 @@ namespace MVCFoodShop.Migrations
                     { 1, "e228a05f-16e1-4509-8092-f3bbd527423c", "Admin", "ADMIN" },
                     { 2, "0a8a189a-2934-43d9-b2d0-9a2a5be2d7ed", "User", "USER" }
 >>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.cs
+========
+                    { 1, "a6bcbc9b-a3a3-4c55-a685-27159cf4a1c0", "Admin", "ADMIN" },
+                    { 2, "c16d92cd-e13f-450a-9336-180fe0aac188", "User", "USER" }
+>>>>>>>> Busra:MVCFoodShop/Migrations/20230715153402_mig2.cs
                 });
 
             migrationBuilder.InsertData(
@@ -373,6 +382,7 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryIsActive", "CategoryName", "CreationDate" },
                 values: new object[,]
                 {
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715163400_mig1.cs
 <<<<<<<< HEAD:MVCFoodShop/Migrations/20230715104646_mig1.cs
                     { 1, "Food", new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3665), true },
                     { 2, "Beverage", new DateTime(2023, 7, 15, 13, 46, 46, 178, DateTimeKind.Local).AddTicks(3679), true },
@@ -382,6 +392,11 @@ namespace MVCFoodShop.Migrations
                     { 2, true, "Beverage", new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6414) },
                     { 3, true, "Sauce", new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6415) }
 >>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.cs
+========
+                    { 1, true, "Food", new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2583) },
+                    { 2, true, "Beverage", new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2592) },
+                    { 3, true, "Sauce", new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2594) }
+>>>>>>>> Busra:MVCFoodShop/Migrations/20230715153402_mig2.cs
                 });
 
             migrationBuilder.InsertData(
@@ -398,11 +413,18 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "BeverageCount", "CreationDate", "FoodCount", "MenuIsActive", "MenuName", "MenuPrice", "SauceCount" },
                 values: new object[,]
                 {
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715163400_mig1.cs
                     { 1, 0, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6513), 0, true, "Whopper", 180m, 0 },
                     { 2, 0, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6517), 0, true, "Big King", 170m, 0 },
                     { 3, 0, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6519), 0, true, "King Chicken", 160m, 0 },
                     { 4, 0, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6520), 0, true, "Kids Menu", 140m, 0 }
 >>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.cs
+========
+                    { 1, 0, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2698), 0, true, "Whopper", 180m, 0 },
+                    { 2, 0, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2701), 0, true, "Big King", 170m, 0 },
+                    { 3, 0, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2703), 0, true, "King Chicken", 160m, 0 },
+                    { 4, 0, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2703), 0, true, "Kids Menu", 140m, 0 }
+>>>>>>>> Busra:MVCFoodShop/Migrations/20230715153402_mig2.cs
                 });
 
             migrationBuilder.InsertData(
@@ -421,6 +443,7 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryID", "CreationDate", "ProductIsActive", "ProductName", "ProductPrice" },
                 values: new object[,]
                 {
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230715163400_mig1.cs
                     { 1, 2, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6642), true, "Kola", 30m },
                     { 2, 2, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6649), true, "Fanta", 30m },
                     { 3, 2, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6650), true, "Ayran", 20m },
@@ -428,6 +451,14 @@ namespace MVCFoodShop.Migrations
                     { 5, 1, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6653), true, "Tavuk Burger", 20m },
                     { 6, 3, new DateTime(2023, 7, 15, 19, 34, 0, 220, DateTimeKind.Local).AddTicks(6654), true, "Mayonez", 20m }
 >>>>>>>> Enes:MVCFoodShop/Migrations/20230715163400_mig1.cs
+========
+                    { 1, 2, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2773), true, "Kola", 30m },
+                    { 2, 2, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2776), true, "Fanta", 30m },
+                    { 3, 2, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2778), true, "Ayran", 20m },
+                    { 4, 1, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2779), true, "Köfte Burger", 20m },
+                    { 5, 1, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2780), true, "Tavuk Burger", 20m },
+                    { 6, 3, new DateTime(2023, 7, 15, 18, 34, 2, 661, DateTimeKind.Local).AddTicks(2781), true, "Mayonez", 20m }
+>>>>>>>> Busra:MVCFoodShop/Migrations/20230715153402_mig2.cs
                 });
 
             migrationBuilder.CreateIndex(
