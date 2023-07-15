@@ -1,4 +1,5 @@
-﻿@model ProductList_VM
+﻿@using Newtonsoft.Json;
+@model ProductList_VM
 <link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
 <script src="~/js/Products.js" asp-append-version="true"></script>
 
@@ -9,6 +10,7 @@
                 <strong>Our Products</strong>
             </h2>
         </div>
+        @* New product*@
         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
             Add New Product
         </button>
@@ -20,12 +22,12 @@
                         <h1 class="modal-title fs-5" id="exampleModalCenterTitle"><strong>Add New Product</strong></h1>
                         <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="px-5">                       
+                    <div class="px-5">
                         <form asp-action="List" method="post">
                             <div class="modal-body">
 
                                 <label for="ProductName">Product Name</label>
-                                <input type="text" placeholder="Product Name" asp-for="ProductName"/>
+                                <input type="text" placeholder="Product Name" asp-for="ProductName" />
                                 <label for="ProductPrice">Price</label>
                                 <input type="number" placeholder="Price" asp-for="ProductPrice" />
                                 <label for="ProductCategory">Product Category</label>
@@ -46,7 +48,7 @@
                 </div>
             </div>
         </div>
-
+        @* New Menu*@
         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2">
             Add New Menu
         </button>
@@ -55,15 +57,39 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalCenterTitle2">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 class="modal-title fs-5" id="exampleModalCenterTitle2">Add New Menu</h1>
+                        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <p>asdfasdfasdfasdfasdf</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                    <div class="px-5">
+                        <form asp-action="List" method="post">
+                            <div class="modal-body">
+                                <h1>Menu Products</h1>
+                                <div class="bg-secondary">
+                                    <div id="menuProducts">
+                                    </div>
+                                </div>
+                                <h1>All Products</h1>
+                                <div class="bg-primary">
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        <a class="btn btn-warning m-2" onclick="GetMenuProducts(@product.ID)">@product.ProductName</a>
+                                    }
+                                </div>
+
+                                <label for="FoodCount">Food Count</label>
+                                <input type="number" placeholder="Product Name" asp-for="FoodCount" />
+                                <label for="BeverageCount">Beverage Count</label>
+                                <input type="number" placeholder="Price" asp-for="BeverageCount" />
+                                <label for="SauceCount">Sauce Count</label>
+                                <input type="number" placeholder="Price" asp-for="SauceCount" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button class=" border-0 bg-white">
+                                    <input type="submit" class="btn btn-success text-white" value="Confirm" />
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -84,3 +110,21 @@
         </div>
     </div>
 </section>
+@*
+<script>
+    function GetMenuProducts(productId) {
+        var data = {
+            ProductID: productId,
+            MenuProducts: @Html.Raw(JsonConvert.SerializeObject(Model.MenuProducts))
+        };
+
+        $.ajax({
+            url: "/Product/MenuProducts",
+            type: "get",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function (response) {
+            }
+        });
+    }
+</script>*@

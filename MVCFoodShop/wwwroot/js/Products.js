@@ -16,6 +16,17 @@ function GetProductList(element, category) {
 
     });
 }
+function GetMenuProducts(id) {
+    $.ajax({
+        url: "/Product/MenuProducts" + id,
+        type: "get",
+        success: function (response) {
+            $("#menuProducts").html(response);
+        }
+
+    });
+}
+
 
 //$(window).on('load', function () {
 //    $('.filters_menu li').click(function () {

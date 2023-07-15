@@ -1,0 +1,8 @@
+﻿@model ProductList_VM
+
+<div>
+    @foreach (var product in Model.MenuProducts)
+    {
+    <div class="btn btn-dark m-2">@product.ProductName</div>      
+    }
+</div>

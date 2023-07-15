@@ -13,7 +13,7 @@ namespace MVCFoodShop.Controllers
         private readonly IProductRepository productRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly IMapper mapper;
-
+        static List<Product> MenuProducts1 = new List<Product>();
         public ProductController(IProductRepository productRepository,ICategoryRepository categoryRepository, IMapper mapper)
         {
             this.productRepository = productRepository;
@@ -25,6 +25,7 @@ namespace MVCFoodShop.Controllers
         {
             ProductList_VM productList_VM = new ProductList_VM()
             {
+                Products = productRepository.GetAll().ToList(),
                 Categories = categoryRepository.GetAll().ToList(),
                 CategoriesComboBox = new SelectList(categoryRepository.GetAll().ToList(), "ID", "CategoryName")
             };
@@ -49,9 +50,17 @@ namespace MVCFoodShop.Controllers
         public IActionResult List(ProductList_VM pVM)
         {
             Product product = mapper.Map<Product>(pVM);
-            productRepository.Add(product);
+            product.ProductIsActive = true;
+            productRepository.Add(product); 
             return RedirectToAction("Index");
         }
+        public IActionResult MenuProducts(int id)
+        {
+            Product product = productRepository.GetById(id);
+            
+            return PartialView("_MenuProductList", MenuProducts1);
+        }
+
 
 
     }
