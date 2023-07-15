@@ -10,6 +10,9 @@
                 <strong>Our Products</strong>
             </h2>
         </div>
+        @if (ViewBag.Role == "Admin")
+        {
+            
         @* New product*@
         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
             Add New Product
@@ -109,19 +112,21 @@
                 </div>
             </div>
         </div>
+        }
 
         <ul class="filters_menu">
             <li id="all" class="active" onclick="GetProductList(this)">All</li>
+            <li id="all" class="active" onclick="GetProductList(this,'Menu')">Menu</li>
             @foreach (var category in Model.Categories)
             {
                 <li onclick="GetProductList(this,'@category.CategoryName')">@category.CategoryName</li>
             }
         </ul>
         <div id="productList"></div>
-        <div class="btn-box">
+@*        <div class="btn-box">
             <a href="">
                 View More
             </a>
-        </div>
+        </div>*@
     </div>
 </section>

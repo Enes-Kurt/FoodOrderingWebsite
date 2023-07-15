@@ -1,4 +1,5 @@
-﻿using MVCFoodShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
 
@@ -11,6 +12,11 @@ namespace MVCFoodShop.Repositories.Concrete
         public MenuRepository(FoodShopDbContext dbContext) : base(dbContext)
         {
             this.dbContext = dbContext;
+        }
+
+        public IEnumerable<Menu> GetAllWithProducts()
+        {
+            return dbContext.Menus.Include(m => m.Products);
         }
     }
 }

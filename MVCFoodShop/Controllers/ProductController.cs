@@ -25,6 +25,14 @@ namespace MVCFoodShop.Controllers
 
         public IActionResult Index()
         {
+            if (User.IsInRole("Admin"))
+            {
+                ViewBag.Role = "Admin";
+            }
+            else
+            {
+                ViewBag.Role = "User";
+            }
             ProductList_VM productList_VM = new ProductList_VM()
             {
                 Products = productRepository.GetAll().ToList(),
@@ -36,17 +44,31 @@ namespace MVCFoodShop.Controllers
 
         public IActionResult List(string categoryName)
         {
-            Category category = categoryRepository.GetFirstOrDefault(c => c.CategoryName == categoryName);
-            List<Product> products = new List<Product>();
-            if (category == null)
+            if (User.IsInRole("Admin"))
             {
-                products = productRepository.GetAll().ToList();
+                ViewBag.Role = "Admin";
             }
             else
             {
-                products = productRepository.GetProductsSelectedCategory(category).ToList();
+                ViewBag.Role = "User";
             }
-            return PartialView("_ProductListPartial", products);
+            Category category = categoryRepository.GetFirstOrDefault(c => c.CategoryName == categoryName);
+            ProductCards_VM pcVM = new ProductCards_VM();
+            List<Product> products = new List<Product>();
+            if (categoryName =="Menu")
+            {
+                pcVM.Menus = menuRepository.GetAllWithProducts().ToList();
+            }
+            else if (category == null)
+            {
+                pcVM.Menus = menuRepository.GetAllWithProducts().ToList();
+                pcVM.Products = productRepository.GetAll().ToList();
+            }
+            else
+            {
+                pcVM.Products = productRepository.GetProductsSelectedCategory(category).ToList();
+            }
+            return PartialView("_ProductListPartial", pcVM);
         }
         [HttpPost]
         public IActionResult List(ProductList_VM pVM, List<int> selectedProducts)
