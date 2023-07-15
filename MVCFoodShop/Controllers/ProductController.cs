@@ -13,12 +13,14 @@ namespace MVCFoodShop.Controllers
         private readonly IProductRepository productRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly IMapper mapper;
-        static List<Product> MenuProducts1 = new List<Product>();
-        public ProductController(IProductRepository productRepository,ICategoryRepository categoryRepository, IMapper mapper)
+        private readonly IMenuRepository menuRepository;
+
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper, IMenuRepository menuRepository)
         {
             this.productRepository = productRepository;
             this.categoryRepository = categoryRepository;
             this.mapper = mapper;
+            this.menuRepository = menuRepository;
         }
 
         public IActionResult Index()
@@ -47,18 +49,25 @@ namespace MVCFoodShop.Controllers
             return PartialView("_ProductListPartial", products);
         }
         [HttpPost]
-        public IActionResult List(ProductList_VM pVM)
+        public IActionResult List(ProductList_VM pVM, List<int> selectedProducts)
         {
-            Product product = mapper.Map<Product>(pVM);
-            product.ProductIsActive = true;
-            productRepository.Add(product); 
+            if (selectedProducts == null)
+            {
+                Product product = mapper.Map<Product>(pVM);
+                product.ProductIsActive = true;
+                productRepository.Add(product);
+            }
+            else
+            {
+                Menu menu = mapper.Map<Menu>(pVM);
+                foreach (var productId in selectedProducts)
+                {
+                    Product product = productRepository.GetById(productId);
+                    menu.Products.Add(product);
+                }
+                menuRepository.Add(menu);
+            }
             return RedirectToAction("Index");
-        }
-        public IActionResult MenuProducts(int id)
-        {
-            Product product = productRepository.GetById(id);
-            
-            return PartialView("_MenuProductList", MenuProducts1);
         }
 
 

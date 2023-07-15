@@ -63,25 +63,40 @@
                     <div class="px-5">
                         <form asp-action="List" method="post">
                             <div class="modal-body">
+                                <div>
+                                    <label for="MenuName">Menu Name </label>
+                                    <input type="text" placeholder="Menu Name" asp-for="MenuName" />
+                                    <label for="MenuPrice">Menu Price</label>
+                                    <input type="number" asp-for="MenuPrice" />
                                 <h1>Menu Products</h1>
-                                <div class="bg-secondary">
-                                    <div id="menuProducts">
-                                    </div>
-                                </div>
-                                <h1>All Products</h1>
-                                <div class="bg-primary">
+
+@*                                    <select multiple name="menuProductList">
+
                                     @foreach (var product in Model.Products)
                                     {
-                                        <a class="btn btn-warning m-2" onclick="GetMenuProducts(@product.ID)">@product.ProductName</a>
+                                        <option value="@product.ID" >@product.ProductName</option>
                                     }
+                                    </select>*@
+                                    <div class="btn-group w-75 h-25 bg-black"  role="group" aria-label="Basic checkbox toggle button group">
+                                        @{
+                                            int count = 0;
+                                        }
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            count++;
+                                            string btnid = "btncheck" + count;
+                                            <input type="checkbox" class="btn-check" id="@btnid" name="selectedProducts" value="@product.ID" autocomplete="off">
+                                            <label class="btn btn-outline-warning m-2" for="@btnid">@product.ProductName</label>
+                                        }
+                                    </div>
                                 </div>
 
                                 <label for="FoodCount">Food Count</label>
-                                <input type="number" placeholder="Product Name" asp-for="FoodCount" />
+                                <input type="number"  asp-for="FoodCount" />
                                 <label for="BeverageCount">Beverage Count</label>
-                                <input type="number" placeholder="Price" asp-for="BeverageCount" />
+                                <input type="number" asp-for="BeverageCount" />
                                 <label for="SauceCount">Sauce Count</label>
-                                <input type="number" placeholder="Price" asp-for="SauceCount" />
+                                <input type="number"  asp-for="SauceCount" />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
@@ -110,21 +125,3 @@
         </div>
     </div>
 </section>
-@*
-<script>
-    function GetMenuProducts(productId) {
-        var data = {
-            ProductID: productId,
-            MenuProducts: @Html.Raw(JsonConvert.SerializeObject(Model.MenuProducts))
-        };
-
-        $.ajax({
-            url: "/Product/MenuProducts",
-            type: "get",
-            data: JSON.stringify(data),
-            contentType: "application/json",
-            success: function (response) {
-            }
-        });
-    }
-</script>*@

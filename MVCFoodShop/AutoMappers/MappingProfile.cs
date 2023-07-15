@@ -10,6 +10,7 @@ namespace MVCFoodShop.AutoMappers
         public MappingProfile()
         {
             CreateMap<ProductList_VM, Product>();
+            CreateMap<ProductList_VM, Menu>();
         }
     }
 }
