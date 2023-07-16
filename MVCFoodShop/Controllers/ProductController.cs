@@ -24,8 +24,10 @@ namespace MVCFoodShop.Controllers
         private readonly IShoppingCartElementRepository shoppingCartElementRepository;
         private readonly UserManager<AppUser> userManager;
         private readonly IAppUserRepository appUserRepository;
+        private readonly IMenuCartRepository menuCartRepository;
+        private readonly IMenuCartElementRepository menuCartElementRepository;
 
-        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper, IMenuRepository menuRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager,IAppUserRepository appUserRepository)
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper, IMenuRepository menuRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager, IAppUserRepository appUserRepository, IMenuCartRepository menuCartRepository, IMenuCartElementRepository menuCartElementRepository)
         {
             this.productRepository = productRepository;
             this.categoryRepository = categoryRepository;
@@ -35,6 +37,8 @@ namespace MVCFoodShop.Controllers
             this.shoppingCartElementRepository = shoppingCartElementRepository;
             this.userManager = userManager;
             this.appUserRepository = appUserRepository;
+            this.menuCartRepository = menuCartRepository;
+            this.menuCartElementRepository = menuCartElementRepository;
         }
 
         public IActionResult Index(int shopCartId)
@@ -43,9 +47,13 @@ namespace MVCFoodShop.Controllers
             {
                 ViewBag.Role = "Admin";
             }
-            else
+            else if (User.IsInRole("User"))
             {
                 ViewBag.Role = "User";
+            }
+            else
+            {
+                ViewBag.Role = "";
             }
             ProductList_VM productList_VM = new ProductList_VM()
             {
@@ -62,12 +70,16 @@ namespace MVCFoodShop.Controllers
             {
                 ViewBag.Role = "Admin";
             }
-            else
+            else if (User.IsInRole("User"))
             {
                 ViewBag.Role = "User";
             }
+            else
+            {
+                ViewBag.Role = "";
+            }
             Category category = categoryRepository.GetFirstOrDefault(c => c.CategoryName == categoryName);
-            ProductCards_VM pcVM = new ProductCards_VM();
+            ProductCards_VM pcVM = new ProductCards_VM(productRepository);
             List<Product> products = new List<Product>();
             if (categoryName == "Menu")
             {
@@ -108,8 +120,11 @@ namespace MVCFoodShop.Controllers
         }
 
 
-        public IActionResult FillShoppingCart(ProductCards_VM pcVM)
+
+        [HttpPost]
+        public IActionResult FillShoppingCart(ShoppingCart_VM scVM)
         {
+
             string shoppingCartIDSTR = HttpContext.Session.GetString("ShoppingCartID");
             int shoppingCartID = Convert.ToInt32(shoppingCartIDSTR);
             ShoppingCart shoppingCart = shoppingCartRepository.GetById(shoppingCartID);
@@ -118,27 +133,69 @@ namespace MVCFoodShop.Controllers
             shoppingCart.AppUserID = user.Id;
             shoppingCart.ShoppingCartIsActive = true;
             ShoppingCartElement shoppingCartElement = new ShoppingCartElement();
-            shoppingCartElement.ShoppingCartElementAmount = pcVM.ShoppingCartElementAmount;
-            if (pcVM.TypeName == "Menu")
+            shoppingCartElement.ShoppingCartElementAmount = scVM.ElementAmount;
+            if (scVM.TypeName == "Menu")
             {
+                Menu menu = menuRepository.GetById(scVM.MenuID);
+                MenuCart menuCart = new MenuCart()
+                {
+                    MenuCartAmount = scVM.ElementAmount,
+                    MenuType = scVM.MenuType,
+                    MenuID = scVM.MenuID,
+                    Menu = menu
+                };
+                menuCartRepository.Add(menuCart);
+                for (int i = 0; i < scVM.MenuCartsProductIDs.Length; i++)
+                {
+                    MenuCartElement menuCartElement = new MenuCartElement()
+                    {
+                        MenuCartID = menuCart.ID,
+                        ProductID = scVM.MenuCartsProductIDs[i],
 
-                shoppingCartElement.MenuCartID = pcVM.ProductOrMenuID;
+                    };
+                    menuCartElementRepository.Add(menuCartElement);
+                    menuCart.MenuCartElements.Add(menuCartElement);
+                }
+                menuCartRepository.Update(menuCart);
+                MenuCart updatedMenuCart = menuCartRepository.GetById(menuCart.ID);
+
+                //shoppingCartElement.menu
+                shoppingCartElement.ShoppingCartElementPrice = menu.MenuPrice * scVM.ElementAmount;
+                shoppingCartElement.MenuCartID = updatedMenuCart.ID;
+                shoppingCartElement.MenuCart = updatedMenuCart;
             }
             else
             {
-                shoppingCartElement.ProductID = pcVM.ProductOrMenuID;
+
+                shoppingCartElement.ProductID = scVM.ProductOrMenuID;
+                Product product = productRepository.GetById(scVM.ProductOrMenuID);
+                shoppingCartElement.Product = product;
+                shoppingCartElement.ShoppingCartElementPrice = shoppingCartElement.Product.ProductPrice * scVM.ElementAmount;
             }
+            shoppingCartElement.ShoppingCart = shoppingCart;
+            shoppingCartElement.ShoppingCartID = shoppingCart.ID;
             shoppingCartElementRepository.Add(shoppingCartElement);
             shoppingCart.ShoppingCartElements.Add(shoppingCartElement);
+            shoppingCart.ShoppingCartPrice += shoppingCartElement.ShoppingCartElementPrice;
             shoppingCartRepository.Update(shoppingCart);
-            ShoppingCart updatedShoppingCart = shoppingCartRepository.GetShoppingCartIncludeElements(shoppingCart.ID);
-            foreach (var scElement in updatedShoppingCart.ShoppingCartElements)
+            ShoppingCart updatedShoppingCart = new ShoppingCart();
+            if (scVM.TypeName == "Menu")
             {
-                updatedShoppingCart.ShoppingCartPrice += scElement.ShoppingCartElementPrice;
+                updatedShoppingCart = shoppingCartRepository.GetShoppingCartIncludeElementsWithAllData(shoppingCart.ID);
             }
-            shoppingCartRepository.Update(updatedShoppingCart);
-            pcVM.ShoppingCart = updatedShoppingCart;
-            return PartialView("_ShoppingCartPartial", pcVM);
+            else
+            {
+                updatedShoppingCart = shoppingCartRepository.GetShoppingCartIncludeElementsWithProducts(shoppingCart.ID);
+            }
+            //updatedShoppingCart.ShoppingCartPrice = Convert.ToDecimal(0.0);
+            //foreach (var scElement in updatedShoppingCart.ShoppingCartElements)
+            //{
+            //    updatedShoppingCart.ShoppingCartPrice += scElement.ShoppingCartElementPrice;
+            //}
+            //shoppingCartRepository.Update(updatedShoppingCart);
+            scVM.ShoppingCart = updatedShoppingCart;
+            return PartialView("_ShoppingCartPartial", scVM);
+
         }
 
     }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCFoodShop.Migrations
 {
     [DbContext(typeof(FoodShopDbContext))]
-    [Migration("20230715212944_mig1")]
+    [Migration("20230716180218_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,14 +175,14 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "d3e46489-3758-479c-80d6-73ddb241bbc2",
+                            ConcurrencyStamp = "d09b8a37-ef19-4366-8696-2f84473b885d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "d2663f23-ebcd-477a-9aaf-dfc3821f1417",
+                            ConcurrencyStamp = "086877a5-613b-48c1-bf59-9f7fbaf2e039",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -299,21 +299,21 @@ namespace MVCFoodShop.Migrations
                             ID = 1,
                             CategoryIsActive = true,
                             CategoryName = "Food",
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2961)
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5873)
                         },
                         new
                         {
                             ID = 2,
                             CategoryIsActive = true,
                             CategoryName = "Beverage",
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2975)
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5882)
                         },
                         new
                         {
                             ID = 3,
                             CategoryIsActive = true,
                             CategoryName = "Sauce",
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2977)
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5883)
                         });
                 });
 
@@ -356,7 +356,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3101),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6014),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Whopper",
@@ -367,7 +367,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3104),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6017),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Big King",
@@ -378,7 +378,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3105),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6018),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "King Chicken",
@@ -389,7 +389,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             BeverageCount = 0,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3106),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6020),
                             FoodCount = 0,
                             MenuIsActive = true,
                             MenuName = "Kids Menu",
@@ -412,10 +412,15 @@ namespace MVCFoodShop.Migrations
                     b.Property<int>("MenuCartAmount")
                         .HasColumnType("int");
 
+                    b.Property<int>("MenuID")
+                        .HasColumnType("int");
+
                     b.Property<int>("MenuType")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("MenuID");
 
                     b.ToTable("MenuCarts");
                 });
@@ -481,7 +486,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3186),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6107),
                             ProductIsActive = true,
                             ProductName = "Kola",
                             ProductPrice = 30m
@@ -490,7 +495,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3189),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6110),
                             ProductIsActive = true,
                             ProductName = "Fanta",
                             ProductPrice = 30m
@@ -499,7 +504,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3190),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6112),
                             ProductIsActive = true,
                             ProductName = "Ayran",
                             ProductPrice = 20m
@@ -508,7 +513,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3191),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6113),
                             ProductIsActive = true,
                             ProductName = "Köfte Burger",
                             ProductPrice = 20m
@@ -517,7 +522,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 5,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3192),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6114),
                             ProductIsActive = true,
                             ProductName = "Tavuk Burger",
                             ProductPrice = 20m
@@ -526,7 +531,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 6,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3193),
+                            CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6115),
                             ProductIsActive = true,
                             ProductName = "Mayonez",
                             ProductPrice = 20m
@@ -663,6 +668,17 @@ namespace MVCFoodShop.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MVCFoodShop.Entities.MenuCart", b =>
+                {
+                    b.HasOne("MVCFoodShop.Entities.Menu", "Menu")
+                        .WithMany()
+                        .HasForeignKey("MenuID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
                 });
 
             modelBuilder.Entity("MVCFoodShop.Entities.MenuCartElement", b =>
