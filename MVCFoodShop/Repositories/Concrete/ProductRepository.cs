@@ -13,9 +13,19 @@ namespace MVCFoodShop.Repositories.Concrete
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Product> GetProductsSelectedCategory(Category category)
+        public IEnumerable<Product> GetAllActiveProducts()
         {
-            return dbContext.Products.Where(p => p.Category == category);
+            return dbContext.Products.Where(p=>p.ProductIsActive == true);
+        }
+
+        public IEnumerable<Product> GetProductsSelectedActiveCategory(Category category)
+        {
+            return dbContext.Products.Where(p => p.Category == category && p.ProductIsActive == true);
+        }
+
+        public IEnumerable<Product> GetSelectedProtuctsByCategoryAndMenuID(Menu menu, string category)
+        {
+            return dbContext.Products.Where(p => p.Category.CategoryName == category && p.Menus.Contains(menu));
         }
     }
 }

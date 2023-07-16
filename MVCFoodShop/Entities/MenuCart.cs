@@ -15,5 +15,8 @@ namespace MVCFoodShop.Entities
         public ICollection<MenuCartElement> MenuCartElements { get; set; }
 
         public ShoppingCartElement ShoppingCartElement { get; set; }
+
+        public int MenuID { get; set; }
+        public Menu Menu { get; set; }
     }
 }

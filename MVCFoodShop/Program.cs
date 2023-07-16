@@ -5,6 +5,7 @@ using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
 using MVCFoodShop.Repositories.Concrete;
+using MVCFoodShop.Utilities;
 
 namespace MVCFoodShop
 {
@@ -29,6 +30,7 @@ namespace MVCFoodShop
                 .AddEntityFrameworkStores<FoodShopDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+            builder.Services.AddSession(x=>x.IdleTimeout = TimeSpan.FromSeconds(300));
             //Repositories
             builder.Services.AddTransient<IProductRepository, ProductRepository>();
             builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -63,6 +65,7 @@ namespace MVCFoodShop
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -74,7 +77,9 @@ namespace MVCFoodShop
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
-
+            //var scope = app.Services.CreateScope();
+            //var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+            //ForLogin.AddSuperUserAsync(userManager);
             app.Run();
         }
     }

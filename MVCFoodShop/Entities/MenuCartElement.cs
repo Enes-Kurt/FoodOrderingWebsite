@@ -8,6 +8,5 @@
         public int MenuCartID { get; set; }
         public MenuCart MenuCart { get; set; }
 
-
     }
 }

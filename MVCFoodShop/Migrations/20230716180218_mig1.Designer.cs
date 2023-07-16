@@ -4,6 +4,7 @@ using MVCFoodShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,13 +12,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCFoodShop.Migrations
 {
     [DbContext(typeof(FoodShopDbContext))]
-    partial class FoodShopDbContextModelSnapshot : ModelSnapshot
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+    [Migration("20230716145316_mig1")]
+========
+    [Migration("20230716180218_mig1")]
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.18")
+                .HasAnnotation("ProductVersion", "6.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -173,14 +179,22 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            ConcurrencyStamp = "2c4e50ba-81af-4b7d-98fd-0677255df69b",
+========
                             ConcurrencyStamp = "d09b8a37-ef19-4366-8696-2f84473b885d",
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            ConcurrencyStamp = "45c98984-5c15-4955-acd9-44b163f187c8",
+========
                             ConcurrencyStamp = "086877a5-613b-48c1-bf59-9f7fbaf2e039",
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -203,6 +217,9 @@ namespace MVCFoodShop.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
@@ -228,6 +245,9 @@ namespace MVCFoodShop.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NewPassword")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -297,21 +317,33 @@ namespace MVCFoodShop.Migrations
                             ID = 1,
                             CategoryIsActive = true,
                             CategoryName = "Food",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5734)
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5873)
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 2,
                             CategoryIsActive = true,
                             CategoryName = "Beverage",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5748)
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5882)
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                         },
                         new
                         {
                             ID = 3,
                             CategoryIsActive = true,
                             CategoryName = "Sauce",
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5749)
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5883)
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                         });
                 });
 
@@ -331,6 +363,12 @@ namespace MVCFoodShop.Migrations
 
                     b.Property<int>("FoodCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("MenuCoverImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MenuDeclaration")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("MenuIsActive")
                         .HasColumnType("bit");
@@ -354,8 +392,14 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             BeverageCount = 0,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5898),
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6014),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             FoodCount = 0,
+                            MenuCoverImage = "double-whopper-menu.png",
+                            MenuDeclaration = "Wooper Menu offers the king of flavors! A juicy and delicious beef patty, fresh vegetables, and mouthwatering sauces combined in one burger experience.",
                             MenuIsActive = true,
                             MenuName = "Whopper",
                             MenuPrice = 180m,
@@ -365,8 +409,14 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             BeverageCount = 0,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5902),
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6017),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             FoodCount = 0,
+                            MenuCoverImage = "big-king-menu.png",
+                            MenuDeclaration = "Big Kink, a burger that's larger than life! Juicy beef patty, melted cheese, crispy bacon, and tangy special sauce come together in this epic burger indulgence.",
                             MenuIsActive = true,
                             MenuName = "Big King",
                             MenuPrice = 170m,
@@ -376,8 +426,14 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             BeverageCount = 0,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5903),
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6018),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             FoodCount = 0,
+                            MenuCoverImage = "bk-crispy-chicken-menu.png",
+                            MenuDeclaration = "King Chicken, a royal treat for chicken lovers! Crispy, golden-brown chicken patty, fresh lettuce, and creamy mayo unite in a sandwich fit for a king.",
                             MenuIsActive = true,
                             MenuName = "King Chicken",
                             MenuPrice = 160m,
@@ -387,8 +443,14 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             BeverageCount = 0,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5904),
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6020),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             FoodCount = 0,
+                            MenuCoverImage = "kids-hamburger (1).png",
+                            MenuDeclaration = "Kids Menu, a delightful feast for our little foodies! Mini burger, crispy fries, and a refreshing drink, specially crafted to satisfy their appetites and bring smiles to their faces.",
                             MenuIsActive = true,
                             MenuName = "Kids Menu",
                             MenuPrice = 140m,
@@ -463,6 +525,12 @@ namespace MVCFoodShop.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ProductCoverImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductDeclaration")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("ProductIsActive")
                         .HasColumnType("bit");
 
@@ -484,16 +552,28 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5993),
+                            ProductCoverImage = "coca-cola.png",
+                            ProductDeclaration = "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.",
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6107),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             ProductIsActive = true,
-                            ProductName = "Kola",
+                            ProductName = "Cola",
                             ProductPrice = 30m
                         },
                         new
                         {
                             ID = 2,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5996),
+                            ProductCoverImage = "fdb65e80-0777-443f-ad15-6045ef4f1a0c-fanta.png",
+                            ProductDeclaration = "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.",
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6110),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             ProductIsActive = true,
                             ProductName = "Fanta",
                             ProductPrice = 30m
@@ -502,7 +582,13 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             CategoryID = 2,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5998),
+                            ProductCoverImage = "ayran-195-ml.png",
+                            ProductDeclaration = "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.",
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6112),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             ProductIsActive = true,
                             ProductName = "Ayran",
                             ProductPrice = 20m
@@ -511,28 +597,79 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             CategoryID = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(5999),
+                            ProductCoverImage = "double-kofteburger-1.png",
+                            ProductDeclaration = "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!",
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6113),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             ProductIsActive = true,
                             ProductName = "Köfte Burger",
-                            ProductPrice = 20m
+                            ProductPrice = 80m
                         },
                         new
                         {
                             ID = 5,
                             CategoryID = 1,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(6000),
+                            ProductCoverImage = "tavukburger.png",
+                            ProductDeclaration = "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!",
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6114),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             ProductIsActive = true,
-                            ProductName = "Tavuk Burger",
-                            ProductPrice = 20m
+                            ProductName = "Chicken Burger",
+                            ProductPrice = 70m
                         },
                         new
                         {
                             ID = 6,
                             CategoryID = 3,
+<<<<<<<< HEAD:MVCFoodShop/Migrations/20230716145316_mig1.Designer.cs
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(6001),
+                            ProductCoverImage = "mini-mayonez.png",
+                            ProductDeclaration = "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.",
+========
                             CreationDate = new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6115),
+>>>>>>>> 1d45584f9831f7d803c3cf35165816bfb6602492:MVCFoodShop/Migrations/20230716180218_mig1.Designer.cs
                             ProductIsActive = true,
-                            ProductName = "Mayonez",
-                            ProductPrice = 20m
+                            ProductName = "Mayonnaise",
+                            ProductPrice = 8m
+                        },
+                        new
+                        {
+                            ID = 7,
+                            CategoryID = 3,
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(6004),
+                            ProductCoverImage = "mini-ketcap.png",
+                            ProductDeclaration = "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.",
+                            ProductIsActive = true,
+                            ProductName = "Ketchup",
+                            ProductPrice = 8m
+                        },
+                        new
+                        {
+                            ID = 8,
+                            CategoryID = 3,
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(6005),
+                            ProductCoverImage = "mini-ranch.png",
+                            ProductDeclaration = "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.",
+                            ProductIsActive = true,
+                            ProductName = "Ranch Sauce",
+                            ProductPrice = 10m
+                        },
+                        new
+                        {
+                            ID = 9,
+                            CategoryID = 3,
+                            CreationDate = new DateTime(2023, 7, 16, 17, 53, 16, 593, DateTimeKind.Local).AddTicks(6006),
+                            ProductCoverImage = "mini-buffalo-1.png",
+                            ProductDeclaration = "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.",
+                            ProductIsActive = true,
+                            ProductName = "Bufala Sauce",
+                            ProductPrice = 10m
                         });
                 });
 
