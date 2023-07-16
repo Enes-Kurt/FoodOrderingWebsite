@@ -97,17 +97,33 @@ namespace MVCFoodShop.Controllers
             return PartialView("_ProductListPartial", pcVM);
         }
         [HttpPost]
-        public IActionResult List(ProductList_VM pVM, List<int> selectedProducts)
+        public async Task<IActionResult> List(ProductList_VM pVM, List<int> selectedProducts , IFormFile ImageName)
         {
             if (selectedProducts.Count == 0)
             {
                 Product product = mapper.Map<Product>(pVM);
+
+                Guid guid = Guid.NewGuid();
+                string newFileName = guid.ToString() + "_" + ImageName.FileName;
+                product.ProductCoverImage = newFileName;
+
+                FileStream fs = new FileStream("wwwroot/ProductImages/" + newFileName, FileMode.Create);
+
+                await ImageName.CopyToAsync(fs);
                 product.ProductIsActive = true;
                 productRepository.Add(product);
+
             }
             else
             {
                 Menu menu = mapper.Map<Menu>(pVM);
+
+                Guid guid = Guid.NewGuid();
+                string newFileName = guid.ToString() + "_" + ImageName.FileName;
+                menu.MenuCoverImage = newFileName;
+
+                FileStream fs = new FileStream("wwwroot/MenuImages/" + newFileName, FileMode.Create);
+                await ImageName.CopyToAsync(fs);
                 foreach (var productId in selectedProducts)
                 {
                     Product product = productRepository.GetById(productId);

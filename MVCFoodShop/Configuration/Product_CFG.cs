@@ -90,6 +90,87 @@ namespace MVCFoodShop.Configuration
                     ProductDeclaration = "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.",
                     ProductCoverImage = "mini-buffalo-1.png"
                 }
+                new Product { 
+                    ID = 1, 
+                    ProductName = "Cola", 
+                    CategoryID = 2, 
+                    ProductPrice = 30, 
+                    ProductIsActive = true, 
+                    ProductDeclaration= "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.", 
+                    ProductCoverImage= "coca-cola-g023109b49_1920.jpg"
+                },
+                new Product { 
+                    ID = 2, 
+                    ProductName = "Fanta", 
+                    CategoryID = 2, 
+                    ProductPrice = 30, 
+                    ProductIsActive = true, 
+                    ProductDeclaration = "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.",
+                    ProductCoverImage = "fanta.jpg"
+                },
+                new Product { 
+                    ID = 3, 
+                    ProductName = "Ayran", 
+                    CategoryID = 2, 
+                    ProductPrice = 20, 
+                    ProductIsActive = true , 
+                    ProductDeclaration= "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.",
+                    ProductCoverImage = "ayran.jpg"
+                },
+                new Product { 
+                    ID = 4, 
+                    ProductName = "Köfte Burger", 
+                    CategoryID = 1, 
+                    ProductPrice = 80, 
+                    ProductIsActive = true, 
+                    ProductDeclaration = "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!",
+                    ProductCoverImage = "köfte burger.png"
+                },
+                new Product { 
+                    ID = 5, 
+                    ProductName = "Chicken Burger", 
+                    CategoryID = 1, 
+                    ProductPrice = 70, 
+                    ProductIsActive = true, 
+                    ProductDeclaration = "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!",
+                    ProductCoverImage = "tavukburger.png"
+                },
+                new Product { 
+                    ID = 6, 
+                    ProductName = "Mayonnaise", 
+                    CategoryID = 3, 
+                    ProductPrice = 8, 
+                    ProductIsActive = true, 
+                    ProductDeclaration = "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.",
+                    ProductCoverImage = "mayonez.jpeg"
+                },
+                new Product { 
+                    ID = 7, 
+                    ProductName = "Ketchup", 
+                    CategoryID = 3, 
+                    ProductPrice = 8, 
+                    ProductIsActive = true, 
+                    ProductDeclaration = "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.",
+                    ProductCoverImage = "ketcap.jpg"
+                },
+                new Product { 
+                    ID = 8, 
+                    ProductName = "Ranch Sauce", 
+                    CategoryID = 3, 
+                    ProductPrice = 10, 
+                    ProductIsActive = true, 
+                    ProductDeclaration = "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.",
+                    ProductCoverImage = "ranch-sos.jpg"
+                },
+                new Product { 
+                    ID = 9, 
+                    ProductName = "Bufala Sauce", 
+                    CategoryID = 3, 
+                    ProductPrice = 10, 
+                    ProductIsActive = true, 
+                    ProductDeclaration = "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.",
+                    ProductCoverImage = "buffalosos1.jpeg"
+                }
                 );
         }
     }

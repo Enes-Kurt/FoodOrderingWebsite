@@ -135,6 +135,10 @@
             background-color: #e69c00;
         }
 
+div.img-box {
+    color: black;
+}
+
 
 /*Modal Forms*/
 select {
@@ -152,7 +156,7 @@ select {
     appearance: none;
     font-weight: bold;
 }
-form label {
+/*form label {
     font-weight: bold;
 }
 
@@ -167,7 +171,43 @@ form input {
     form input:focus {
         border: 2px solid #FFC107;
         border-radius: 5px;
+    }*/
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+form input,
+form select {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #FFC107;
+    border-radius: 5px;
+    background-color: white;
+}
+
+    form input:focus,
+    form select:focus {
+        outline: none;
+        border: 2px solid #FFC107;
+        border-radius: 5px;
     }
+
+/*.modal-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .modal-footer button {
+        width: 100%;
+        margin-top: 10px;
+    }*/
+
     
 option {
     background-color: #ffffff;
@@ -177,4 +217,50 @@ option {
 
     option:hover {
         background-color: #FFC107;
+    }
+
+#SelectedImageContainer {
+    margin-top: 10px; /* İstenilen boşluk ayarını yapabilirsiniz */
+    text-align: center; /* Resmi yatay olarak ortalar */
+    width: 100%; /* Yapının genişliği */
+    height: 150px; /* Yapının yüksekliği */
+    overflow: hidden; /* Taşan içeriği gizler */
+}
+
+    #SelectedImageContainer img {
+        max-width: 100%; /* Resmin maksimum genişliği */
+        max-height: 100%; /* Resmin maksimum yüksekliği */
+        object-fit: contain; /* Resmi sıkıştırır ve oranlarını korur */
+    }
+
+#SelectedMenuImageContainer {
+    margin-top: 10px; /* İstenilen boşluk ayarını yapabilirsiniz */
+    text-align: center; /* Resmi yatay olarak ortalar */
+    width: 100%; /* Yapının genişliği */
+    height: 150px; /* Yapının yüksekliği */
+    overflow: hidden; /* Taşan içeriği gizler */
+}
+
+    #SelectedMenuImageContainer img {
+        max-width: 100%; /* Resmin maksimum genişliği */
+        max-height: 100%; /* Resmin maksimum yüksekliği */
+        object-fit: contain; /* Resmi sıkıştırır ve oranlarını korur */
+    }
+
+.btn-group {
+    max-height: 110px; /* İstediğiniz maksimum yükseklik */
+    overflow-y: auto; /* Yatay scrollbar'ı görüntüler */
+}
+
+
+.box {
+    /* Öğelerin genişliği */
+    height: 510px; /* Öğelerin yüksekliği */
+    position: relative;
+}
+
+    .box .options {
+        position: absolute;
+        bottom: 20px;
+        /* Diğer stillendirme özelliklerini burada belirleyebilirsiniz */
     }

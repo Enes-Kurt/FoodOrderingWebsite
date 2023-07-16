@@ -18,16 +18,17 @@
                 Add New Product
             </button>
 
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalCenterTitle"><strong>Add New Product</strong></h1>
-                        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="px-5">
-                        <form asp-action="List" method="post">
-                            <div class="modal-body">
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalCenterTitle"><strong>Add New Product</strong></h1>
+                            <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="px-5">
+                            <form asp-action="List" method="post" enctype="multipart/form-data">
+                                <div class="modal-body">
 
                                     <label for="ProductCoverImage">Product Image</label>
                                     <div id="SelectedImageContainer"></div>
@@ -81,7 +82,7 @@
                                         <input type="number" asp-for="MenuPrice" />
                                         <h1>Menu Products</h1>
 
-@*                                    <select multiple name="menuProductList">
+                                        @*                                    <select multiple name="menuProductList">
 
                                     @foreach (var product in Model.Products)
                                     {

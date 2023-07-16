@@ -16,6 +16,10 @@ namespace MVCFoodShop.Models
         public SelectList CategoriesComboBox { get; set; }
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
+        public string? ProductCoverImage { get; set; }
+        public string? ProductDeclaration { get; set; }
+        public string? MenuCoverImage { get; set; }
+        public string? MenuDeclaration { get; set; }
         public int CategoryID { get; set; }
         public string MenuName { get; set; }
         public decimal MenuPrice { get; set; }
