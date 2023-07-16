@@ -8,7 +8,7 @@
                 <div class="box">
                     <div>
                         <div class="img-box">
-                            <img src="https://i.hizliresim.com/m20yfy8.png" alt="">
+                            <img src="MenuImages/@menu.MenuCoverImage" alt="@menu.MenuName">
                         </div>
                         <div class="detail-box">
                             <h5>
@@ -16,7 +16,7 @@
                             </h5>
 
                             <p>
-                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                                @menu.MenuDeclaration
                             </p>
                             <div class="options">
                                 <h6>
@@ -77,7 +77,7 @@
             <div class="box">
                 <div>
                     <div class="img-box">
-                        <img src="https://i.hizliresim.com/m20yfy8.png" alt="">
+                            <img src="ProductImages/@product.ProductCoverImage" alt="@product.ProductName">
                     </div>
                     <div class="detail-box">
                         <h5>
@@ -85,7 +85,7 @@
                         </h5>
                             
                         <p>
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                            @product.ProductDeclaration
                         </p>
                         <div class="options">
                             <h6>
@@ -93,7 +93,7 @@
                             </h6>
                             @if (ViewBag.Role == "Admin")
                                 {
-                                    <a vlass="btn btn-warning">Edit</a>
+                                    <a class="btn btn-warning">Edit</a>
                                 }
                                 else if (ViewBag.Role == "User")
                                 {

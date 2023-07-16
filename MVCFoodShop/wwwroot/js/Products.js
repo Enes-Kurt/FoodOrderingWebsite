@@ -17,6 +17,9 @@ function GetProductList(element, category) {
     });
 }
 
+
+
+
 //$(window).on('load', function () {
 //    $('.filters_menu li').click(function () {
         

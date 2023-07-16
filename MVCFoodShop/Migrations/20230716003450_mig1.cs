@@ -33,6 +33,8 @@ namespace MVCFoodShop.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NewPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CoverImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -61,7 +63,7 @@ namespace MVCFoodShop.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CategoryIsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -75,7 +77,7 @@ namespace MVCFoodShop.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<int>(type: "int", nullable: false),
+                    MenuCartAmount = table.Column<int>(type: "int", nullable: false),
                     MenuType = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -91,8 +93,13 @@ namespace MVCFoodShop.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MenuName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    FoodCount = table.Column<int>(type: "int", nullable: false),
+                    BeverageCount = table.Column<int>(type: "int", nullable: false),
+                    SauceCount = table.Column<int>(type: "int", nullable: false),
+                    MenuPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MenuIsActive = table.Column<bool>(type: "bit", nullable: false),
+                    MenuCoverImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MenuDeclaration = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -212,7 +219,7 @@ namespace MVCFoodShop.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ShoppingCartPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AppUserID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -234,8 +241,10 @@ namespace MVCFoodShop.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ProductIsActive = table.Column<bool>(type: "bit", nullable: false),
+                    ProductCoverImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductDeclaration = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -307,8 +316,8 @@ namespace MVCFoodShop.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ShoppingCartElementAmount = table.Column<int>(type: "int", nullable: false),
+                    ShoppingCartElementPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductID = table.Column<int>(type: "int", nullable: true),
                     MenuCartID = table.Column<int>(type: "int", nullable: true),
                     ShoppingCartID = table.Column<int>(type: "int", nullable: false),
@@ -340,42 +349,45 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "bade334a-393b-45b2-a842-6dcbb6746d7e", "Admin", "ADMIN" },
-                    { 2, "0db7d38c-dbf0-4748-af45-a01753902287", "User", "USER" }
+                    { 1, "f9fe4bf3-cb5b-43d2-a91a-f2454443ab7a", "Admin", "ADMIN" },
+                    { 2, "1af284da-eb6f-4be1-9655-cd6b137dcf3b", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "ID", "CategoryName", "CreationDate", "IsActive" },
+                columns: new[] { "ID", "CategoryIsActive", "CategoryName", "CreationDate" },
                 values: new object[,]
                 {
-                    { 1, "Food", new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2792), true },
-                    { 2, "Beverage", new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2803), true },
-                    { 3, "Sauce", new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2804), true }
+                    { 1, true, "Food", new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9383) },
+                    { 2, true, "Beverage", new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9398) },
+                    { 3, true, "Sauce", new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9399) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Menus",
-                columns: new[] { "ID", "CreationDate", "IsActive", "MenuName", "Price" },
+                columns: new[] { "ID", "BeverageCount", "CreationDate", "FoodCount", "MenuCoverImage", "MenuDeclaration", "MenuIsActive", "MenuName", "MenuPrice", "SauceCount" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2923), true, "Whopper", 180m },
-                    { 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2926), true, "Big King", 170m },
-                    { 3, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2927), true, "King Chicken", 160m },
-                    { 4, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(2928), true, "Kids Menu", 140m }
+                    { 1, 0, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9487), 0, null, null, true, "Whopper", 180m, 0 },
+                    { 2, 0, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9491), 0, null, null, true, "Big King", 170m, 0 },
+                    { 3, 0, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9492), 0, null, null, true, "King Chicken", 160m, 0 },
+                    { 4, 0, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9493), 0, null, null, true, "Kids Menu", 140m, 0 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ID", "CategoryID", "CreationDate", "IsActive", "Price", "ProductName" },
+                columns: new[] { "ID", "CategoryID", "CreationDate", "ProductCoverImage", "ProductDeclaration", "ProductIsActive", "ProductName", "ProductPrice" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3027), true, 30m, "Kola" },
-                    { 2, 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3030), true, 30m, "Fanta" },
-                    { 3, 2, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3032), true, 20m, "Ayran" },
-                    { 4, 1, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3033), true, 20m, "Köfte Burger" },
-                    { 5, 1, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3073), true, 20m, "Tavuk Burger" },
-                    { 6, 3, new DateTime(2023, 7, 14, 18, 50, 39, 557, DateTimeKind.Local).AddTicks(3074), true, 20m, "Mayonez" }
+                    { 1, 2, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9575), "coca-cola-g023109b49_1920.jpg", "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.", true, "Cola", 30m },
+                    { 2, 2, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9578), "fanta.jpg", "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.", true, "Fanta", 30m },
+                    { 3, 2, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9579), "ayran.jpg", "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.", true, "Ayran", 20m },
+                    { 4, 1, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9580), "köfte burger.png", "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!", true, "Köfte Burger", 80m },
+                    { 5, 1, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9581), "tavukburger.png", "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!", true, "Chicken Burger", 70m },
+                    { 6, 3, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9583), "mayonez.jpeg", "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.", true, "Mayonnaise", 8m },
+                    { 7, 3, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9606), "ketcap.jpg", "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.", true, "Ketchup", 8m },
+                    { 8, 3, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9607), "ranch-sos.jpg", "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.", true, "Ranch Sauce", 10m },
+                    { 9, 3, new DateTime(2023, 7, 16, 3, 34, 50, 16, DateTimeKind.Local).AddTicks(9608), "buffalosos1.jpeg", "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.", true, "Bufala Sauce", 10m }
                 });
 
             migrationBuilder.CreateIndex(
