@@ -27,10 +27,6 @@ namespace MVCFoodShop.Models
         public int BeverageCount { get; set; }
         public int SauceCount { get; set; }
         public int ProductID { get; set; }
-        public string ProductCoverImage { get; set; }
-        public string ProductDeclaration { get; set; }
-        public string MenuCoverImage { get; set; }
-        public string MenuDeclaration { get; set; }
 
     }
 }

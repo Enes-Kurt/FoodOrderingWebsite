@@ -11,8 +11,6 @@
         public int BeverageCount { get; set; }
         public int SauceCount { get; set; }
         public decimal MenuPrice { get; set; }
-        public string MenuCoverImage { get; set; }
-        public string MenuDeclaration { get; set; }
         public bool MenuIsActive { get; set; }
         public string? MenuCoverImage { get; set; }
         public string? MenuDeclaration { get; set; }
