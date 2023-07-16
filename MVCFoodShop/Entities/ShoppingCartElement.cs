@@ -11,10 +11,10 @@ namespace MVCFoodShop.Entities
 
         public int? ProductID { get;set; }
 
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
 
         public int? MenuCartID { get; set; }
-        public MenuCart MenuCart { get; set; }
+        public MenuCart? MenuCart { get; set; }
         
         public int ShoppingCartID { get; set; }
         public ShoppingCart ShoppingCart { get; set; }

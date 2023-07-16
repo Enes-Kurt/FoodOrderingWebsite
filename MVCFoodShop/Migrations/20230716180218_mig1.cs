@@ -70,21 +70,6 @@ namespace MVCFoodShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuCarts",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MenuCartAmount = table.Column<int>(type: "int", nullable: false),
-                    MenuType = table.Column<int>(type: "int", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MenuCarts", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Menus",
                 columns: table => new
                 {
@@ -255,28 +240,23 @@ namespace MVCFoodShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuCartElements",
+                name: "MenuCarts",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductID = table.Column<int>(type: "int", nullable: false),
-                    MenuCartID = table.Column<int>(type: "int", nullable: false),
+                    MenuCartAmount = table.Column<int>(type: "int", nullable: false),
+                    MenuType = table.Column<int>(type: "int", nullable: false),
+                    MenuID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuCartElements", x => x.ID);
+                    table.PrimaryKey("PK_MenuCarts", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_MenuCartElements_MenuCarts_MenuCartID",
-                        column: x => x.MenuCartID,
-                        principalTable: "MenuCarts",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MenuCartElements_Products_ProductID",
-                        column: x => x.ProductID,
-                        principalTable: "Products",
+                        name: "FK_MenuCarts_Menus_MenuID",
+                        column: x => x.MenuID,
+                        principalTable: "Menus",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -300,6 +280,33 @@ namespace MVCFoodShop.Migrations
                     table.ForeignKey(
                         name: "FK_MenuProduct_Products_ProductsID",
                         column: x => x.ProductsID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MenuCartElements",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    MenuCartID = table.Column<int>(type: "int", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenuCartElements", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_MenuCartElements_MenuCarts_MenuCartID",
+                        column: x => x.MenuCartID,
+                        principalTable: "MenuCarts",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MenuCartElements_Products_ProductID",
+                        column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -344,8 +351,8 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "d3e46489-3758-479c-80d6-73ddb241bbc2", "Admin", "ADMIN" },
-                    { 2, "d2663f23-ebcd-477a-9aaf-dfc3821f1417", "User", "USER" }
+                    { 1, "d09b8a37-ef19-4366-8696-2f84473b885d", "Admin", "ADMIN" },
+                    { 2, "086877a5-613b-48c1-bf59-9f7fbaf2e039", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -353,9 +360,9 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryIsActive", "CategoryName", "CreationDate" },
                 values: new object[,]
                 {
-                    { 1, true, "Food", new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2961) },
-                    { 2, true, "Beverage", new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2975) },
-                    { 3, true, "Sauce", new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(2977) }
+                    { 1, true, "Food", new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5873) },
+                    { 2, true, "Beverage", new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5882) },
+                    { 3, true, "Sauce", new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5883) }
                 });
 
             migrationBuilder.InsertData(
@@ -363,10 +370,10 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "BeverageCount", "CreationDate", "FoodCount", "MenuIsActive", "MenuName", "MenuPrice", "SauceCount" },
                 values: new object[,]
                 {
-                    { 1, 0, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3101), 0, true, "Whopper", 180m, 0 },
-                    { 2, 0, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3104), 0, true, "Big King", 170m, 0 },
-                    { 3, 0, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3105), 0, true, "King Chicken", 160m, 0 },
-                    { 4, 0, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3106), 0, true, "Kids Menu", 140m, 0 }
+                    { 1, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6014), 0, true, "Whopper", 180m, 0 },
+                    { 2, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6017), 0, true, "Big King", 170m, 0 },
+                    { 3, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6018), 0, true, "King Chicken", 160m, 0 },
+                    { 4, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6020), 0, true, "Kids Menu", 140m, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -374,12 +381,12 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryID", "CreationDate", "ProductIsActive", "ProductName", "ProductPrice" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3186), true, "Kola", 30m },
-                    { 2, 2, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3189), true, "Fanta", 30m },
-                    { 3, 2, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3190), true, "Ayran", 20m },
-                    { 4, 1, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3191), true, "Köfte Burger", 20m },
-                    { 5, 1, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3192), true, "Tavuk Burger", 20m },
-                    { 6, 3, new DateTime(2023, 7, 16, 0, 29, 43, 809, DateTimeKind.Local).AddTicks(3193), true, "Mayonez", 20m }
+                    { 1, 2, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6107), true, "Kola", 30m },
+                    { 2, 2, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6110), true, "Fanta", 30m },
+                    { 3, 2, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6112), true, "Ayran", 20m },
+                    { 4, 1, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6113), true, "Köfte Burger", 20m },
+                    { 5, 1, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6114), true, "Tavuk Burger", 20m },
+                    { 6, 3, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6115), true, "Mayonez", 20m }
                 });
 
             migrationBuilder.CreateIndex(
@@ -430,6 +437,11 @@ namespace MVCFoodShop.Migrations
                 name: "IX_MenuCartElements_ProductID",
                 table: "MenuCartElements",
                 column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuCarts_MenuID",
+                table: "MenuCarts",
+                column: "MenuID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MenuProduct_ProductsID",
@@ -494,9 +506,6 @@ namespace MVCFoodShop.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Menus");
-
-            migrationBuilder.DropTable(
                 name: "MenuCarts");
 
             migrationBuilder.DropTable(
@@ -504,6 +513,9 @@ namespace MVCFoodShop.Migrations
 
             migrationBuilder.DropTable(
                 name: "ShoppingCarts");
+
+            migrationBuilder.DropTable(
+                name: "Menus");
 
             migrationBuilder.DropTable(
                 name: "Categories");
