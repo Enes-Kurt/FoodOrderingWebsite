@@ -4,6 +4,7 @@ namespace MVCFoodShop.Repositories.Abstract
 {
     public interface IProductRepository:IRepository<Product>
     {
-        public IEnumerable<Product> GetProductsSelectedCategory(Category category);
+        public IEnumerable<Product> GetProductsSelectedActiveCategory(Category category);
+        public IEnumerable<Product> GetAllActiveProducts();
     }
 }
