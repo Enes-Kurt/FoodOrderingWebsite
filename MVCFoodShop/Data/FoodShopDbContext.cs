@@ -30,7 +30,8 @@ namespace MVCFoodShop.Data
 
             builder.Entity<AppRole>().HasData(
                 new AppRole { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
-                new AppRole { Id = 2, Name = "User", NormalizedName = "USER" }
+                new AppRole { Id = 2, Name = "User", NormalizedName = "USER" },
+                new AppRole { Id = 2, Name = "RegisteredUser", NormalizedName = "REGİSTEREDUSER" }
             );
 
             builder.ApplyConfigurationsFromAssembly(typeof(FoodShopDbContext).Assembly);
