@@ -72,21 +72,6 @@ namespace MVCFoodShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuCarts",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MenuCartAmount = table.Column<int>(type: "int", nullable: false),
-                    MenuType = table.Column<int>(type: "int", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MenuCarts", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Menus",
                 columns: table => new
                 {
@@ -220,6 +205,7 @@ namespace MVCFoodShop.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShoppingCartPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ShoppingCartIsActive = table.Column<bool>(type: "bit", nullable: false),
                     AppUserID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -260,28 +246,23 @@ namespace MVCFoodShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuCartElements",
+                name: "MenuCarts",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductID = table.Column<int>(type: "int", nullable: false),
-                    MenuCartID = table.Column<int>(type: "int", nullable: false),
+                    MenuCartAmount = table.Column<int>(type: "int", nullable: false),
+                    MenuType = table.Column<int>(type: "int", nullable: false),
+                    MenuID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuCartElements", x => x.ID);
+                    table.PrimaryKey("PK_MenuCarts", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_MenuCartElements_MenuCarts_MenuCartID",
-                        column: x => x.MenuCartID,
-                        principalTable: "MenuCarts",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MenuCartElements_Products_ProductID",
-                        column: x => x.ProductID,
-                        principalTable: "Products",
+                        name: "FK_MenuCarts_Menus_MenuID",
+                        column: x => x.MenuID,
+                        principalTable: "Menus",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -305,6 +286,33 @@ namespace MVCFoodShop.Migrations
                     table.ForeignKey(
                         name: "FK_MenuProduct_Products_ProductsID",
                         column: x => x.ProductsID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MenuCartElements",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    MenuCartID = table.Column<int>(type: "int", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenuCartElements", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_MenuCartElements_MenuCarts_MenuCartID",
+                        column: x => x.MenuCartID,
+                        principalTable: "MenuCarts",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MenuCartElements_Products_ProductID",
+                        column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -349,9 +357,9 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "ccca77ff-d704-485a-a56c-f8f9fbfa870b", "Admin", "ADMIN" },
-                    { 2, "71016508-e741-4cf0-ba36-6c58a61e57b0", "User", "USER" },
-                    { 3, "78e4eeb8-5653-4b1b-88e3-ae96c018d337", "RegisteredUser", "REGİSTEREDUSER" }
+                    { 1, "4b2d0424-cd2c-4f93-83e4-3b9e32b0bddd", "Admin", "ADMIN" },
+                    { 2, "ad5976d9-b1b3-48ee-8c6d-79a2cfc6b290", "User", "USER" },
+                    { 3, "c720e648-e965-4069-bb12-6f6bc2c48073", "RegisteredUser", "REGİSTEREDUSER" }
                 });
 
             migrationBuilder.InsertData(
@@ -359,9 +367,9 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryIsActive", "CategoryName", "CreationDate" },
                 values: new object[,]
                 {
-                    { 1, true, "Food", new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(5984) },
-                    { 2, true, "Beverage", new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(5996) },
-                    { 3, true, "Sauce", new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(5998) }
+                    { 1, true, "Food", new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6331) },
+                    { 2, true, "Beverage", new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6346) },
+                    { 3, true, "Sauce", new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6347) }
                 });
 
             migrationBuilder.InsertData(
@@ -369,10 +377,10 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "BeverageCount", "CreationDate", "FoodCount", "MenuCoverImage", "MenuDeclaration", "MenuIsActive", "MenuName", "MenuPrice", "SauceCount" },
                 values: new object[,]
                 {
-                    { 1, 0, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6084), 0, null, null, true, "Whopper", 180m, 0 },
-                    { 2, 0, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6087), 0, null, null, true, "Big King", 170m, 0 },
-                    { 3, 0, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6118), 0, null, null, true, "King Chicken", 160m, 0 },
-                    { 4, 0, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6119), 0, null, null, true, "Kids Menu", 140m, 0 }
+                    { 1, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6443), 0, "double-whopper-menu.png", "Wooper Menu offers the king of flavors! A juicy and delicious beef patty, fresh vegetables, and mouthwatering sauces combined in one burger experience.", true, "Whopper", 180m, 0 },
+                    { 2, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6446), 0, "big-king-menu.png", "Big Kink, a burger that's larger than life! Juicy beef patty, melted cheese, crispy bacon, and tangy special sauce come together in this epic burger indulgence.", true, "Big King", 170m, 0 },
+                    { 3, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6447), 0, "bk-crispy-chicken-menu.png", "King Chicken, a royal treat for chicken lovers! Crispy, golden-brown chicken patty, fresh lettuce, and creamy mayo unite in a sandwich fit for a king.", true, "King Chicken", 160m, 0 },
+                    { 4, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6448), 0, "kids-hamburger (1).png", "Kids Menu, a delightful feast for our little foodies! Mini burger, crispy fries, and a refreshing drink, specially crafted to satisfy their appetites and bring smiles to their faces.", true, "Kids Menu", 140m, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -380,15 +388,15 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryID", "CreationDate", "ProductCoverImage", "ProductDeclaration", "ProductIsActive", "ProductName", "ProductPrice" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6195), "coca-cola-g023109b49_1920.jpg", "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.", true, "Cola", 30m },
-                    { 2, 2, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6199), "fanta.jpg", "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.", true, "Fanta", 30m },
-                    { 3, 2, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6201), "ayran.jpg", "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.", true, "Ayran", 20m },
-                    { 4, 1, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6202), "köfte burger.png", "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!", true, "Köfte Burger", 80m },
-                    { 5, 1, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6203), "tavukburger.png", "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!", true, "Chicken Burger", 70m },
-                    { 6, 3, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6205), "mayonez.jpeg", "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.", true, "Mayonnaise", 8m },
-                    { 7, 3, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6206), "ketcap.jpg", "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.", true, "Ketchup", 8m },
-                    { 8, 3, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6207), "ranch-sos.jpg", "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.", true, "Ranch Sauce", 10m },
-                    { 9, 3, new DateTime(2023, 7, 16, 15, 53, 35, 702, DateTimeKind.Local).AddTicks(6208), "buffalosos1.jpeg", "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.", true, "Bufala Sauce", 10m }
+                    { 1, 2, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6540), "coca-cola.png", "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.", true, "Cola", 30m },
+                    { 2, 2, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6543), "fdb65e80-0777-443f-ad15-6045ef4f1a0c-fanta.png", "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.", true, "Fanta", 30m },
+                    { 3, 2, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6544), "ayran-195-ml.png", "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.", true, "Ayran", 20m },
+                    { 4, 1, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6545), "double-kofteburger-1.png", "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!", true, "Köfte Burger", 80m },
+                    { 5, 1, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6546), "tavukburger.png", "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!", true, "Chicken Burger", 70m },
+                    { 6, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6547), "mini-mayonez.png", "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.", true, "Mayonnaise", 8m },
+                    { 7, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6549), "mini-ketcap.png", "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.", true, "Ketchup", 8m },
+                    { 8, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6550), "mini-ranch.png", "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.", true, "Ranch Sauce", 10m },
+                    { 9, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6551), "mini-buffalo-1.png", "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.", true, "Bufala Sauce", 10m }
                 });
 
             migrationBuilder.CreateIndex(
@@ -439,6 +447,11 @@ namespace MVCFoodShop.Migrations
                 name: "IX_MenuCartElements_ProductID",
                 table: "MenuCartElements",
                 column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuCarts_MenuID",
+                table: "MenuCarts",
+                column: "MenuID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MenuProduct_ProductsID",
@@ -503,9 +516,6 @@ namespace MVCFoodShop.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Menus");
-
-            migrationBuilder.DropTable(
                 name: "MenuCarts");
 
             migrationBuilder.DropTable(
@@ -513,6 +523,9 @@ namespace MVCFoodShop.Migrations
 
             migrationBuilder.DropTable(
                 name: "ShoppingCarts");
+
+            migrationBuilder.DropTable(
+                name: "Menus");
 
             migrationBuilder.DropTable(
                 name: "Categories");
