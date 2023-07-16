@@ -5,7 +5,7 @@ using MVCFoodShop.Repositories.Abstract;
 
 namespace MVCFoodShop.Repositories.Concrete
 {
-    public class MenuRepository : GenericRepository<Menu>,IMenuRepository
+    public class MenuRepository : GenericRepository<Menu>, IMenuRepository
     {
         private readonly FoodShopDbContext dbContext;
 
@@ -17,6 +17,17 @@ namespace MVCFoodShop.Repositories.Concrete
         public IEnumerable<Menu> GetAllWithProducts()
         {
             return dbContext.Menus.Include(m => m.Products);
+        }
+
+        public List<Menu> GetByMenusNames(params string[] menuNames)
+        {
+            List<Menu> menuList = new List<Menu>();   
+            foreach (var menuName in menuNames)
+            {
+                Menu menu = dbContext.Menus.Where(x => x.MenuName == menuName).FirstOrDefault();
+                menuList.Add(menu);
+            }
+           return menuList;
         }
     }
 }

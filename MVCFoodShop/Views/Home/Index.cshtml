@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Menu>
 
 <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 <link href="img/favicon.ico" rel="icon">
@@ -12,7 +10,7 @@
         <!-- Slide 1 -->
         <div class="carousel-item">
             <div class="carousel-container ">
-                <img src="https://i.hizliresim.com/m20yfy8.png" />
+                <img src="https://i.hizliresim.com/6untw7p.jpg" />
                 <div>
                     <h2 class="animate__animated animate__fadeInDown"><span>%25 Discount</span></h2>
                     <p class="animate__animated animate__fadeInUp mb-0">Whopper Menu</p>
@@ -46,12 +44,12 @@
             </div>
         </div>
 
-        <a class="carousel-control-prev btn btn-light bg-" href="#heroCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bx bx-chevron-left " aria-hidden="true"></span>
+        <a class="carousel-control-prev " href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span aria-hidden="true"><i class="fa-solid fa-chevron-left" style="font-size:24px"></i></span>
         </a>
 
         <a class="carousel-control-next " href="#heroCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bx bx-chevron-right bg-white" aria-hidden="true"></span>
+            <span aria-hidden="true"><i class="fa-solid fa-chevron-right" style="font-size:24px"></i></span>
         </a>
 
     </div>
@@ -80,51 +78,26 @@
 
 <div class="container-fluid bg-light my-6 py-6 pt-0">
     <div class="row g-4">
-        <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.1s">
-            <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                <div class="text-center p-4">
-                    <div class="d-inline-block border border-warning rounded-pill px-3 mb-3">$11 - $99</div>
-                    <h3 class="mb-3">Big King</h3>
-                    <span>Chef's recommendation</span>
-                </div>
-                <div class="position-relative mt-auto">
-                    <img class="img-fluid" src="https://i.hizliresim.com/m20yfy8.png" alt="">
-                    <div class="product-overlay">
-                        <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
+
+        @foreach(Menu menu in Model)
+        {
+            <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.1s">
+                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                    <div class="text-center p-4">
+                        <div class="d-inline-block border border-warning rounded-pill px-3 mb-3">@menu.MenuPrice</div>
+                        <h3 class="mb-3">@menu.MenuName</h3>
+                        <span>@menu.MenuDeclaration</span>
+                    </div>
+                    <div class="position-relative mt-auto">
+                        <img class="img-fluid" src="MenuImages/@menu.MenuCoverImage" alt="@menu.MenuName">
+                        <div class="product-overlay">
+                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                <div class="text-center p-4">
-                    <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
-                    <h3 class="mb-3">Whopper</h3>
-                    <span>Favorite Menu</span>
-                </div>
-                <div class="position-relative mt-auto">
-                    <img class="img-fluid" src="https://i.hizliresim.com/m20yfy8.png" alt="">
-                    <div class="product-overlay">
-                        <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-            <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                <div class="text-center p-4">
-                    <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
-                    <h4 class="mb-3">King Chicken</h4>
-                    <span>The tastiest version of chicken</span>
-                </div>
-                <div class="position-relative mt-auto">
-                    <img class="img-fluid" src="https://i.hizliresim.com/m20yfy8.png" alt="">
-                    <div class="product-overlay">
-                        <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
+      
     </div>
 </div>
 

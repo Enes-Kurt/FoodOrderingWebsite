@@ -21,7 +21,6 @@
         public ICollection<ShoppingCartElement> ShoppingCartElements { get; set;}
 
         public ICollection<MenuCartElement> MenuCartElements { get; set; }
-
-       
+      
     }
 }
