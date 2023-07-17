@@ -1,0 +1,37 @@
+﻿@model List<ShoppingCartElement>
+
+@foreach (ShoppingCartElement shoppingCartElement in Model)
+{
+    if (shoppingCartElement.Product != null)
+    {
+        <!-- Item-->
+        <div class="cart-item d-md-flex justify-content-between">
+            <span class="remove-item"><i class="fa fa-times"></i></span>
+            <div class="px-3 my-3">
+                <a class="cart-item-product" href="#">
+                    <div class="cart-item-product-thumb"><img src="~/ProductImages/@shoppingCartElement.Product.ProductCoverImage" alt="@shoppingCartElement.Product.ProductName"></div>
+                    <div class="cart-item-product-info">
+                        <h4 class="cart-item-product-title">@shoppingCartElement.Product.ProductName</h4>
+                        <div class="text-lg text-body font-weight-medium pb-1">$@shoppingCartElement.Product.ProductPrice</div><span>Order Date: <span class="text-success font-weight-medium">@shoppingCartElement.Product.CreationDate.ToShortDateString()</span></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="cart-item d-md-flex justify-content-between">
+            <span class="remove-item"><i class="fa fa-times"></i></span>
+            <div class="px-3 my-3">
+                <a class="cart-item-product" href="#">
+                    <div class="cart-item-product-thumb"><img src="~/MenuImages/@shoppingCartElement.MenuCart.Menu.MenuCoverImage" alt="@shoppingCartElement.MenuCart.Menu.MenuName"></div>
+                    <div class="cart-item-product-info">
+                        <h4 class="cart-item-product-title">@shoppingCartElement.MenuCart.Menu.MenuName</h4>
+                        <div class="text-lg text-body font-weight-medium pb-1">$@shoppingCartElement.MenuCart.Menu.MenuPrice</div><span>Order Date: <span class="text-success font-weight-medium">@shoppingCartElement.MenuCart.Menu.CreationDate.ToShortDateString()</span></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+}

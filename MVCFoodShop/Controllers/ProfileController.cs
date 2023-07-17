@@ -26,15 +26,23 @@ namespace MVCFoodShop.Controllers
             this.passwordHasher = passwordHasher;
             this.signInManager = signInManager;
             this.shoppingCartRepository = shoppingCartRepository;
+
         }
 
         public IActionResult MyProfile()
         {
-
             int userId = int.Parse(userManager.GetUserId(User));
             AppUser user = appUserRepository.GetById(userId);
-            bool control=User.IsInRole("User");
-            return View(user);
+            List<ShoppingCart> shoppingCarts= shoppingCartRepository.GetAllIncludeAllDataById(userId);
+            Profile_VM profile = new Profile_VM()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                CreationDate = user.CreationDate,
+                ShoppingCarts= shoppingCarts,
+            };
+
+            return View(profile);
         }
 
         public IActionResult ProfileSettings()
@@ -90,6 +98,11 @@ namespace MVCFoodShop.Controllers
             return PartialView("_Addresses", user);
         }
 
-
+        public IActionResult PastOrderListElements()
+        {
+            int userId = int.Parse(userManager.GetUserId(User));
+            ShoppingCart shoppingCart= shoppingCartRepository.GetShoppingCartIncludeAllData(userId);
+            return PartialView("_PastOrderElementListPartial", shoppingCart.ShoppingCartElements.ToList());
+        }
     }
 }

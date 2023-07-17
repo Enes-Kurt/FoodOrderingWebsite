@@ -8,6 +8,7 @@ namespace MVCFoodShop.Repositories.Abstract
         public ShoppingCart GetShoppingCartIncludeElementsWithProducts(int id);
         public ShoppingCart GetShoppingCartIncludeElementsWithAllData(int id);
         public ShoppingCart GetShoppingCartIncludeAllData(int id);
+        public List<ShoppingCart> GetAllIncludeAllDataById(int id);
         public ShoppingCart GetShoppingCartIncludeElements(int id);
     }
 }
