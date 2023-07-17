@@ -357,9 +357,9 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "efe33a1e-d0a5-417f-b7da-19ba7bc136ef", "Admin", "ADMIN" },
-                    { 2, "20a13839-9214-405e-a18f-67b807c8be93", "User", "USER" },
-                    { 3, "150bd2ed-a5ed-48dc-b4e8-98f30dcb2ae5", "RegisteredUser", "REGİSTEREDUSER" }
+                    { 1, "d2ba2ac6-ebba-48a0-9635-6eb61e65fcbe", "Admin", "ADMIN" },
+                    { 2, "d014d1e8-e432-4d53-8e07-38b38ec92ce3", "User", "USER" },
+                    { 3, "98b53e8a-5b63-407b-9f55-0aa6e24def2f", "RegisteredUser", "REGİSTEREDUSER" }
                 });
 
             migrationBuilder.InsertData(
@@ -367,9 +367,9 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryIsActive", "CategoryName", "CreationDate" },
                 values: new object[,]
                 {
-                    { 1, true, "Food", new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(193) },
-                    { 2, true, "Beverage", new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(210) },
-                    { 3, true, "Sauce", new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(211) }
+                    { 1, true, "Food", new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6780) },
+                    { 2, true, "Beverage", new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6794) },
+                    { 3, true, "Sauce", new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6795) }
                 });
 
             migrationBuilder.InsertData(
@@ -377,15 +377,15 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryID", "CreationDate", "ProductCoverImage", "ProductDeclaration", "ProductIsActive", "ProductName", "ProductPrice" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(496), "coca-cola.png", "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.", true, "Cola", 30m },
-                    { 2, 2, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(503), "fdb65e80-0777-443f-ad15-6045ef4f1a0c-fanta.png", "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.", true, "Fanta", 30m },
-                    { 3, 2, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(505), "ayran-195-ml.png", "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.", true, "Ayran", 20m },
-                    { 4, 1, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(507), "double-kofteburger-1.png", "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!", true, "Köfte Burger", 80m },
-                    { 5, 1, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(508), "tavukburger.png", "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!", true, "Chicken Burger", 70m },
-                    { 6, 3, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(510), "mini-mayonez.png", "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.", true, "Mayonnaise", 8m },
-                    { 7, 3, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(514), "mini-ketcap.png", "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.", true, "Ketchup", 8m },
-                    { 8, 3, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(516), "mini-ranch.png", "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.", true, "Ranch Sauce", 10m },
-                    { 9, 3, new DateTime(2023, 7, 17, 20, 21, 13, 393, DateTimeKind.Local).AddTicks(517), "mini-buffalo-1.png", "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.", true, "Bufala Sauce", 10m }
+                    { 1, 2, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6999), "coca-cola.png", "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.", true, "Cola", 30m },
+                    { 2, 2, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7003), "fdb65e80-0777-443f-ad15-6045ef4f1a0c-fanta.png", "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.", true, "Fanta", 30m },
+                    { 3, 2, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7005), "ayran-195-ml.png", "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.", true, "Ayran", 20m },
+                    { 4, 1, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7006), "double-kofteburger-1.png", "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!", true, "Köfte Burger", 80m },
+                    { 5, 1, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7009), "tavukburger.png", "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!", true, "Chicken Burger", 70m },
+                    { 6, 3, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7010), "mini-mayonez.png", "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.", true, "Mayonnaise", 8m },
+                    { 7, 3, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7011), "mini-ketcap.png", "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.", true, "Ketchup", 8m },
+                    { 8, 3, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7012), "mini-ranch.png", "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.", true, "Ranch Sauce", 10m },
+                    { 9, 3, new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7013), "mini-buffalo-1.png", "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.", true, "Bufala Sauce", 10m }
                 });
 
             migrationBuilder.CreateIndex(
