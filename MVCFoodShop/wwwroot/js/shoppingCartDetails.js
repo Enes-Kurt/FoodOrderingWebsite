@@ -156,3 +156,18 @@ $(function () {
         $(".date_value").css("color", "white");
     });
 });
+
+function ConfirmOrder{
+
+    if (confirm("Emin misiniz?")) {
+        // Onaylandığında yapılacak işlemler
+        $.ajax({
+            url: "/ShoppingCart/ConfirmOrder",
+            type: "post",
+           
+        });
+    } else {
+        // Onaylanmadığında yapılacak işlemler
+    }
+
+}

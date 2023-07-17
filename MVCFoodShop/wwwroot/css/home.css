@@ -18,11 +18,12 @@
 
 #body-fluid {
     container-fluid;
+
 }
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
-.back-to-top {
+    .back-to-top {
     position: fixed;
     visibility: hidden;
     opacity: 0;
@@ -69,8 +70,9 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(0deg, rgb(201 49 49) 0%, rgb(51, 54, 74) 100%);
+    background: linear-gradient(0deg, rgb(201 49 49) 0%, rgb(34, 40, 49) 100%);
     padding: 0;
+
 }
 
     #hero .carousel-container {
@@ -82,6 +84,8 @@
         position: relative;
         height: 70vh;
         padding-top: 60px;
+        padding-left:0rem;
+        padding-right:0rem;
     }
 
     #hero h2 {

@@ -6,7 +6,9 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
-
+#layoutBackGround {
+    background: rgb(34, 40, 49);
+}
 a {
   color: #0077cc;
 }

@@ -55,5 +55,7 @@ namespace MVCFoodShop.Repositories.Concrete
         {
             return dbContext.ShoppingCarts.Include(s => s.ShoppingCartElements).ThenInclude(p => p.Product).FirstOrDefault(s => s.ID == id);
         }
+
+ 
     }
 }

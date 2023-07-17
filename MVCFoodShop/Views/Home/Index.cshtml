@@ -4,8 +4,8 @@
 <link href="img/favicon.ico" rel="icon">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
-    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+<section id="hero" class="container-fluid d-flex flex-column justify-content-end align-items-center ">
+    <div id="heroCarousel" data-bs-interval="5000" class="container-fluid  carousel carousel-fade" data-bs-ride="carousel">
 
         <!-- Slide 1 -->
         <div class="carousel-item">
@@ -75,31 +75,32 @@
 
 </section>
 
-
-@*<div class="container-fluid bg-light my-6 py-6 pt-0">
-    <div class="row g-4">
-
-        @foreach(Menu menu in Model)
-        {
-            <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.1s">
-                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                    <div class="text-center p-4">
-                        <div class="d-inline-block border border-warning rounded-pill px-3 mb-3">@menu.MenuPrice</div>
-                        <h3 class="mb-3">@menu.MenuName</h3>
-                        <span>@menu.MenuDeclaration</span>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="MenuImages/@menu.MenuCoverImage" alt="@menu.MenuName">
-                        <div class="product-overlay">
-                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
+<br />
+<br />
+<div class="container-fluid bg-light my-6 py-6 pt-0 ">
+    <div class="row g-4 ">
+       
+            @foreach (Menu menu in Model)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp text-center " data-wow-delay="0.1s">
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100 ">
+                        <div class="text-center p-4">
+                            <div class="d-inline-block border border-warning rounded-pill px-3 mb-3">@menu.MenuPrice</div>
+                            <h3 class="mb-3">@menu.MenuName</h3>
+                            <span>@menu.MenuDeclaration</span>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="MenuImages/@menu.MenuCoverImage" alt="@menu.MenuName">
+                            <div class="product-overlay">
+                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-warning"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
-      
+            }
+
     </div>
-</div>*@
+</div>
 
 
 

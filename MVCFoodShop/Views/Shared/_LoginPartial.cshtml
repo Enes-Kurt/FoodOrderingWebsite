@@ -11,9 +11,9 @@
         <li class="nav-item">
             <div class="container">
                 <div class="inner-header">
-                    <ul class="nav-right" >
-                        <li class="cart-icon" >
-                            <a class="nav-link text-dark" asp-controller="ShoppingCart" asp-action="ShoppingCartDetails">
+                    <ul class="nav-right">
+                        <li class="cart-icon ">
+                            <a class="nav-link text-light pt-3 " asp-controller="ShoppingCart" asp-action="ShoppingCartDetails">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 @*<span id="shopppingCartProductCount">0</span>*@
                                 <span id="shopppingCartProductCount">@ViewBag.ProductCount</span>
@@ -28,41 +28,38 @@
             <nav class="navbar navbar-expand bg-transparent sticky-top px-4 py-0">
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="https://i.hizliresim.com/m20yfy8.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex text-dark">@User.Identity.Name</span>
+                            <span class="d-none d-lg-inline-flex text-light">@User.Identity.Name</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a class="dropdown-item text-dark" asp-action="MyProfile" asp-controller="Profile">My Profile</a>
-                            <a class="dropdown-item text-dark " onclick="ProfileSettings()">Settings</a>
-                            @*<a class="dropdown-item text-dark" asp-action="Index" asp-controller="Profile">Log Out</a>*@
-                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                            </form>
+                        <div class="dropdown-menu dropdown-menu-end border-1 rounded-0 rounded-bottom m-0" style="background-color:rgb(34, 40, 49)">
+                            <a class="dropdown-item text-light" asp-action="MyProfile" asp-controller="Profile">My Profile</a>
+                            <a class="dropdown-item text-light " onclick="ProfileSettingsFunc()">Settings</a>
+                            <a class="dropdown-item text-light" asp-action="Index" asp-controller="Profile">Log Out</a>
                         </div>
                     </div>
                     @*<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Profile</a>*@
                 </div>
             </nav>
         </li>
-        @*        <li class="nav-item">
-    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
-    </li>*@@*
-    <li class="nav-item">
-    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-    </form>
-    </li>*@
+@*      <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+        </li>*@@*
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+            </form>
+        </li>*@
     }
 
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
             @*<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>*@
-            <a class="btn btn-warning " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Login</a>
+            <a class="btn btn-warning text-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="font-size:16px"><b>Login</b></a>
         </li>
 
 
