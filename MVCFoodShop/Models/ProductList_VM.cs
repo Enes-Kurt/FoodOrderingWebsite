@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using MVCFoodShop.Entities;
+using MVCFoodShop.Repositories.Abstract;
 
 namespace MVCFoodShop.Models
 {
     public class ProductList_VM
     {
+        
+
         public ProductList_VM()
         {
             MenuProducts = new List<Product>();
@@ -27,6 +30,9 @@ namespace MVCFoodShop.Models
         public int BeverageCount { get; set; }
         public int SauceCount { get; set; }
         public int ProductID { get; set; }
+        public List<Product> FoodList { get; set; }
+        public List<Product> BeverageList { get; set; }
+        public List<Product> SauceList { get; set; }
 
     }
 }

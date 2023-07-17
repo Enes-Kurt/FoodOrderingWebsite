@@ -248,7 +248,7 @@ option {
     }
 
 .btn-group {
-    max-height: 110px; /* İstediğiniz maksimum yükseklik */
+    max-height: 150px; /* İstediğiniz maksimum yükseklik */
     overflow-y: auto; /* Yatay scrollbar'ı görüntüler */
 }
 

@@ -56,6 +56,9 @@ namespace MVCFoodShop.Controllers
             }
             ProductList_VM productList_VM = new ProductList_VM()
             {
+                FoodList = productRepository.GetSelectedProtuctsByCategory("Food").ToList(),
+                BeverageList = productRepository.GetSelectedProtuctsByCategory("Beverage").ToList(),
+                SauceList = productRepository.GetSelectedProtuctsByCategory("Sauce").ToList(),
                 Products = productRepository.GetAllActiveProducts().ToList(),
                 Categories = categoryRepository.GetAllActiveCategories().ToList(),
                 CategoriesComboBox = new SelectList(categoryRepository.GetAllActiveCategories().ToList(), "ID", "CategoryName")

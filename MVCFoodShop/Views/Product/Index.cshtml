@@ -81,6 +81,7 @@
                                         <label for="MenuPrice">Menu Price</label>
                                         <input type="number" asp-for="MenuPrice" />
                                         <h1>Menu Products</h1>
+                                        <hr>
 
                                         @*                                    <select multiple name="menuProductList">
 
@@ -89,18 +90,63 @@
                                     <option value="@product.ID" >@product.ProductName</option>
                                     }
                                     </select>*@
-                                        <div class="btn-group w-100 h-25 bg-black flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
-                                            @{
-                                                int count = 0;
-                                            }
-                                            @foreach (var product in Model.Products)
+
+                                        @*<div class="btn-group w-100 h-50 bg-white flex-wrap border d-flex align-items-center justify-content-center" style="height: 100px;" role="group" aria-label="Basic checkbox toggle button group">
+                                    @{
+                                    int count = 0;
+                                    }
+                                    @foreach (var product in Model.Products)
+                                    {
+                                    count++;
+                                    string btnid = "btncheck" + count;
+                                    <input type="checkbox" class="btn-check h-50" id="@btnid" name="selectedProducts" value="@product.ID" autocomplete="off">
+                                    <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid" style="width: 100%;">@product.ProductName</label>
+                                    }
+                                    </div>*@
+
+                                        @{
+                                            int count = 0;
+                                        }
+                                        <h4>Foods</h4>
+                                        <div class="btn-group w-100 h-50 bg-white flex-wrap border d-flex align-items-center justify-content-center" style="height: 100px;" role="group" aria-label="Basic checkbox toggle button group">
+                                            @foreach (var food in Model.FoodList)
                                             {
                                                 count++;
                                                 string btnid = "btncheck" + count;
-                                                <input type="checkbox" class="btn-check" id="@btnid" name="selectedProducts" value="@product.ID" autocomplete="off">
-                                                <label class="btn btn-outline-warning m-2" for="@btnid">@product.ProductName</label>
+                                                <input type="checkbox" class="btn-check h-50" id="@btnid" name="selectedProducts" value="@food.ID" autocomplete="off">
+                                                <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid" style="width: 100%;">@food.ProductName</label>
                                             }
                                         </div>
+
+                                        <h4>Beverages</h4>
+                                        <div class="btn-group w-100 h-50 bg-white flex-wrap border d-flex align-items-center justify-content-center" style="height: 100px;" role="group" aria-label="Basic checkbox toggle button group">
+                                            @foreach (var beverage in Model.BeverageList)
+                                            {
+                                                count++;
+                                                string btnid = "btncheck" + count;
+
+                                                <input type="checkbox" class="btn-check h-50" id="@btnid" name="selectedProducts" value="@beverage.ID" autocomplete="off">
+                                                <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid" style="width: 100%;">@beverage.ProductName</label>
+                                            }
+                                        </div>
+
+                                        <h4>Sauces</h4>
+                                        <div class="btn-group w-100 h-50 bg-white flex-wrap border d-flex align-items-center justify-content-center" style="height: 100px;" role="group" aria-label="Basic checkbox toggle button group">
+                                            @foreach (var sauce in Model.SauceList)
+                                            {
+                                                count++;
+                                                string btnid = "btncheck" + count;
+
+                                                <input type="checkbox" class="btn-check h-50" id="@btnid" name="selectedProducts" value="@sauce.ID" autocomplete="off">
+                                                <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid" style="width: 100%;">@sauce.ProductName</label>
+                                            }
+                                        </div>
+
+
+
+
+
+
                                     </div>
 
                                     <label for="FoodCount">Food Count</label>
@@ -114,7 +160,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                   @* <button class=" border-0 bg-white">*@
+                                    @* <button class=" border-0 bg-white">*@
                                     <input type="submit" class="btn btn-success text-white w-25" value="Confirm" />
                                     @*</button>*@
                                 </div>
@@ -136,11 +182,11 @@
         @*Product List*@
         <div id="productList"></div>
 
-        @*        
+        @*
         <div class="btn-box">
-            <a href="">
-                View More
-            </a>
+        <a href="">
+        View More
+        </a>
         </div>
         *@
     </div>
@@ -180,7 +226,7 @@
             reader.readAsDataURL(fileInput.files[0]);
         }
     });
-    
+
 
 
 </script>
