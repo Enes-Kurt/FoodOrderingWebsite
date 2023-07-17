@@ -9,20 +9,11 @@ namespace MVCFoodShop.Controllers
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartRepository shoppingCartRepository;
-
-        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
-        {
-            this.shoppingCartRepository = shoppingCartRepository;
-        }
-
-    public class ShoppingCartController : Controller
-    {
-        private readonly IShoppingCartRepository shoppingCartRepository;
         private readonly IShoppingCartElementRepository shoppingCartElementRepository;
         private readonly UserManager<AppUser> userManager;
         private readonly IAppUserRepository appUserRepository;
 
-        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager, IAppUserRepository appUserRepository)
+        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager, IAppUserRepository appUserRepository) : base(shoppingCartRepository)
         {
             this.shoppingCartRepository = shoppingCartRepository;
             this.shoppingCartElementRepository = shoppingCartElementRepository;
@@ -41,7 +32,7 @@ namespace MVCFoodShop.Controllers
             ShoppingCart shoppingCart = shoppingCartRepository.GetShoppingCartIncludeAllData(shoppingCartID);
             return View(shoppingCart);
         }
-
+        
         public IActionResult ConfirmOrder()
         {
             int userId = int.Parse(userManager.GetUserId(User));
@@ -60,7 +51,7 @@ namespace MVCFoodShop.Controllers
 
             HttpContext.Session.SetString("ShoppingCartID", newShoppingCart.ID.ToString());
 
-            return RedirectToAction("Index","Home");
+            return Ok();
         }
 
         public IActionResult ShoppingCartElementRemove(int id)
@@ -86,6 +77,7 @@ namespace MVCFoodShop.Controllers
 
             return RedirectToAction("ShoppingCartDetails");
         }
+
 
 
     }
