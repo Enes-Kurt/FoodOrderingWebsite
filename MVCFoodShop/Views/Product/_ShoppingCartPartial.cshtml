@@ -9,10 +9,10 @@
                         @if (shoppingCartElement.Product != null)
                         {
                             <tr>
-                                <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
+                            <td class="si-pic d-flex justify-content-center"><img width="80" src="ProductImages/@shoppingCartElement.Product.ProductCoverImage" alt="@shoppingCartElement.Product.ProductName"></td>
                                 <td class="si-text">
                                     <div class="product-selected">
-                                        <p>@shoppingCartElement.Product.ProductName</p>
+                                        <p style="font-size:x-large">@shoppingCartElement.Product.ProductName</p>
                                         <p>$@shoppingCartElement.Product.ProductPrice x @shoppingCartElement.ShoppingCartElementAmount = $@shoppingCartElement.ShoppingCartElementPrice</p>
                                         <h6></h6>
                                     </div>
@@ -25,14 +25,14 @@
                         else if (shoppingCartElement.MenuCart != null)
                         {
                             <tr>
-                                <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
+                            <td class="si-pic d-flex justify-content-center"><img width="80" src="MenuImages/@shoppingCartElement.MenuCart.Menu.MenuCoverImage" alt="@shoppingCartElement.MenuCart.Menu.MenuName"></td>
                                 <td class="si-text">
                                     <div class="product-selected">
                                         <p>@shoppingCartElement.MenuCart.Menu.MenuName</p>
                                         <div class="bg-secondary">
                                             @foreach (var menuCartElement in shoppingCartElement.MenuCart.MenuCartElements)
                                             {
-                                                <p>@menuCartElement.Product.ProductName @menuCartElement.Product.ProductPrice</p>
+                                                <p>@menuCartElement.Product.ProductName x 1</p>
                                             }
                                         </div>
                                         <p>$@shoppingCartElement.MenuCart.Menu.MenuPrice x @shoppingCartElement.ShoppingCartElementAmount = $@shoppingCartElement.ShoppingCartElementPrice</p>
@@ -54,6 +54,5 @@
     </div>
     <div class="select-button">
         <a asp-controller="ShoppingCart" asp-action="ShoppingCartDetails" class="primary-btn view-card">VIEW CARD</a>
-        <a href="#" class="primary-btn view-card">CHECK OUT</a>
     </div>
 </div>
