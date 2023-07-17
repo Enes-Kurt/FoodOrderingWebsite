@@ -137,7 +137,7 @@ namespace MVCFoodShop.Areas.Identity.Pages.Account
                                     ShoppingCartPrice = 0,
                                 };
                                 shoppingCartRepository.Add(shoppingCart);
-
+                                  
                                 HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
                                 HttpContext.Session.SetString("ShoppingCartProductCount", "0");
                             }

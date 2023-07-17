@@ -1,4 +1,7 @@
-﻿.inner-header .nav-right li.cart-icon {
+﻿ul ul {
+    list-style-type: none;
+}
+.inner-header .nav-right li.cart-icon {
     position: relative;
 }
 
