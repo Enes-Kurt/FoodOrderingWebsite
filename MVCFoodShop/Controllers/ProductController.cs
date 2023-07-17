@@ -194,15 +194,9 @@ namespace MVCFoodShop.Controllers
             shoppingCart.ShoppingCartElements.Add(shoppingCartElement);
             shoppingCart.ShoppingCartPrice += shoppingCartElement.ShoppingCartElementPrice;
             shoppingCartRepository.Update(shoppingCart);
-            ShoppingCart updatedShoppingCart = new ShoppingCart();
-            if (scVM.TypeName == "Menu")
-            {
-                updatedShoppingCart = shoppingCartRepository.GetShoppingCartIncludeElementsWithAllData(shoppingCart.ID);
-            }
-            else
-            {
-                updatedShoppingCart = shoppingCartRepository.GetShoppingCartIncludeElementsWithProducts(shoppingCart.ID);
-            }
+            ShoppingCart updatedShoppingCart = shoppingCartRepository.GetShoppingCartIncludeAllData(shoppingCart.ID);
+           
+            
             //updatedShoppingCart.ShoppingCartPrice = Convert.ToDecimal(0.0);
             //foreach (var scElement in updatedShoppingCart.ShoppingCartElements)
             //{
