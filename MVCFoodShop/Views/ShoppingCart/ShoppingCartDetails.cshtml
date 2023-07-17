@@ -1,4 +1,4 @@
-﻿
+﻿@model ShoppingCart
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="~/css/ShoppingCartDetails.css" asp-append-version="true" />
 <div class="container padding-bottom-3x mb-1">
@@ -7,6 +7,7 @@
     <!-- Shopping Cart-->
     <div class="table-responsive shopping-cart">
         <table class="table">
+
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -17,78 +18,121 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <div class="product-item">
-                            <a class="product-thumb" href="#"><img src="https://i.hizliresim.com/m20yfy8.png" alt="Product"></a>
-                            <div class="product-info">
-                                <h4 class="product-title"><a href="#">Unionbay Park</a></h4><span><em>Size:</em> 10.5</span><span><em>Color:</em> Dark Blue</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="count-input">
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
+                @foreach (ShoppingCartElement shoppingCartElement in Model.ShoppingCartElements)
+                {
+                    if (shoppingCartElement.Product != null)
+                    {
+
+                        <tr>
+                            <td>
+                                <div class="product-item">
+                                    <a class="product-thumb" href="#"><img src="MenuImages/@shoppingCartElement.Product.ProductCoverImage" alt="@shoppingCartElement.Product.ProductName"></a>
+                                    <div class="product-info">
+                                        <h4 class="product-title"><a href="#">@shoppingCartElement.Product.ProductName</a></h4>@*<span><em>Size:</em> 10.5</span><span><em>Color:</em> Dark Blue</span>*@
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="count-input">
+                                    <select class="form-control">
+                                        <option>@shoppingCartElement.ShoppingCartElementAmount</option>
+                                        @*                                <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td class="text-center text-lg text-medium">$43.90</td>
-                    <td class="text-center text-lg text-medium">$18.00</td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product-item">
-                            <a class="product-thumb" href="#"><img src="https://i.hizliresim.com/m20yfy8.png" alt="Product"></a>
-                            <div class="product-info">
-                                <h4 class="product-title"><a href="#">Daily Fabric Cap</a></h4><span><em>Size:</em> XL</span><span><em>Color:</em> Black</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="count-input">
-                            <select class="form-control">
-                                <option>1</option>
-                                <option selected="">2</option>
+                                <option>5</option>*@
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text-center text-lg text-medium">@shoppingCartElement.Product.ProductPrice</td>
+                            <td class="text-center text-lg text-medium">-</td>
+                            <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        
+                        <tr>
+                            <td>
+                                <div class="product-item">
+                                    <a class="product-thumb" href="#"><img src="MenuImages/@shoppingCartElement.MenuCart.Menu.MenuCoverImage" alt="@shoppingCartElement.MenuCart.Menu.MenuName"></a>
+                                    <div class="product-info">
+                                        <h4 class="product-title"><a href="#">@shoppingCartElement.MenuCart.Menu.MenuName</a></h4>@*<span><em>Size:</em> 10.5</span><span><em>Color:</em> Dark Blue</span>*@
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="count-input">
+                                    <select class="form-control">
+                                        <option>@shoppingCartElement.MenuCart.MenuCartAmount</option>
+                                        @*                                <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td class="text-center text-lg text-medium">$24.89</td>
-                    <td class="text-center">—</td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
+                                <option>5</option>*@
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="text-center text-lg text-medium">@shoppingCartElement.MenuCart.Menu.MenuPrice</td>
+                            <td class="text-center text-lg text-medium">-</td>
+                            <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
+                        </tr>
+                        <tr class="bg-danger" >
+                            @foreach (MenuCartElement menuCartElement in shoppingCartElement.MenuCart.MenuCartElements)
+                            {
+                                <p>@menuCartElement.Product.ProductName @menuCartElement.Product.ProductPrice</p>
+                            }
+                        </tr>
+                    }
+                }
+
+
+                @* <tr>
+                <td>
+                <div class="product-item">
+                <a class="product-thumb" href="#"><img src="https://i.hizliresim.com/m20yfy8.png" alt="Product"></a>
+                <div class="product-info">
+                <h4 class="product-title"><a href="#">Daily Fabric Cap</a></h4><span><em>Size:</em> XL</span><span><em>Color:</em> Black</span>
+                </div>
+                </div>
+                </td>
+                <td class="text-center">
+                <div class="count-input">
+                <select class="form-control">
+                <option>1</option>
+                <option selected="">2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                </select>
+                </div>
+                </td>
+                <td class="text-center text-lg text-medium">$24.89</td>
+                <td class="text-center">—</td>
+                <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="product-item">
-                            <a class="product-thumb" href="#"><img src="https://i.hizliresim.com/m20yfy8.png" alt="Product"></a>
-                            <div class="product-info">
-                                <h4 class="product-title"><a href="#">Cole Haan Crossbody</a></h4><span><em>Size:</em> -</span><span><em>Color:</em> Turquoise</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="count-input">
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td class="text-center text-lg text-medium">$200.00</td>
-                    <td class="text-center">—</td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
-                </tr>
+                <td>
+                <div class="product-item">
+                <a class="product-thumb" href="#"><img src="https://i.hizliresim.com/m20yfy8.png" alt="Product"></a>
+                <div class="product-info">
+                <h4 class="product-title"><a href="#">Cole Haan Crossbody</a></h4><span><em>Size:</em> -</span><span><em>Color:</em> Turquoise</span>
+                </div>
+                </div>
+                </td>
+                <td class="text-center">
+                <div class="count-input">
+                <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                </select>
+                </div>
+                </td>
+                <td class="text-center text-lg text-medium">$200.00</td>
+                <td class="text-center">—</td>
+                <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
+                </tr>*@
             </tbody>
         </table>
     </div>
@@ -99,23 +143,23 @@
                 <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
             </form>
         </div>
-        <div class="column text-lg">Subtotal: <span class="text-medium">$289.68</span></div>
+        <div class="column text-lg">Subtotal: <span class="text-medium">@Model.ShoppingCartPrice </span></div>
     </div>
 
-  
+
 </div>
 
 
 
 
 
-<script src="~/js/shoppingCartDetails.js" asp-append-version="true"></script>
+<script src="~/js/shoppingCartElementDetails.js" asp-append-version="true"></script>
 
 
 
 
 <div class="container px-4 py-5 mx-auto">
-   
+
 
     <div class="row justify-content-center">
         <div class="col-lg-12">
@@ -160,7 +204,7 @@
                     <div class="col-lg-4 mt-2">
                         <div class="row d-flex justify-content-between px-4">
                             <p class="mb-1 text-left">Subtotal</p>
-                            <h6 class="mb-1 text-right">$23.49</h6>
+                            <h6 class="mb-1 text-right">$@Model.ShoppingCartPrice</h6>
                         </div>
                         <div class="row d-flex justify-content-between px-4">
                             <p class="mb-1 text-left">Shipping</p>
@@ -168,12 +212,19 @@
                         </div>
                         <div class="row d-flex justify-content-between px-4" id="tax">
                             <p class="mb-1 text-left">Total (tax included)</p>
-                            <h6 class="mb-1 text-right">$26.48</h6>
+                            @{
+
+                                decimal total = Model.ShoppingCartPrice + Convert.ToDecimal(2.99);
+                            }
+
+                            <h6 class="mb-1 text-right">
+                                $@total
+                            </h6>
                         </div>
                         <button class="btn-block btn-blue">
                             <span>
                                 <span id="checkout">Checkout</span>
-                                <span id="check-amt">$26.48</span>
+                                <span id="check-amt">$@total</span>
                             </span>
                         </button>
                     </div>
