@@ -142,7 +142,7 @@ namespace MVCFoodShop.Controllers
         [HttpPost]
         public IActionResult FillShoppingCart(ShoppingCart_VM scVM)
         {
-            if (User.IsInRole("Admin") || User.IsInRole("User"))
+            if ( User.IsInRole("User"))
             {
 
 
