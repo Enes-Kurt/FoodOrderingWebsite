@@ -18,7 +18,7 @@ namespace MVCFoodShop.Configuration
             //        FoodCount = 1,
             //        BeverageCount = 1,
             //        SauceCount = 2,
-            //        MenuDeclaration = "Wooper Menu offers the king of flavors! A juicy and delicious beef patty, fresh vegetables, and mouthwatering sauces combined in one burger experience.",
+            //        MenuDeclaration = "Whopper Menu offers the king of flavors! A juicy and delicious beef patty, fresh vegetables, and mouthwatering sauces combined in one burger experience.",
             //        MenuCoverImage = "double-whopper-menu.png"
             //    },
             //    new Menu

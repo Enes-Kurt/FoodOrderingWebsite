@@ -29,12 +29,12 @@
                                 <td class="si-text">
                                     <div class="product-selected">
                                     <p style="font-size:x-large; color:#222831">@shoppingCartElement.MenuCart.Menu.MenuName</p>
-                                        <div class="bg-secondary">
-                                            @foreach (var menuCartElement in shoppingCartElement.MenuCart.MenuCartElements)
-                                            {
-                                            <p>@menuCartElement.Product.ProductName <a style="color:#222831"> x 1 </a></p>
-                                            }
-                                        </div>
+                                    <div class="p-3" style="background-color: #f7f7e4;">
+                                        @foreach (var menuCartElement in shoppingCartElement.MenuCart.MenuCartElements)
+                                        {
+                                            <p class="pl-2"> @menuCartElement.Product.ProductName <a style="color:#222831"> x 1 </a></p>
+                                        }
+                                    </div>
                                     <p>$@shoppingCartElement.MenuCart.Menu.MenuPrice <a style="color:#222831"> x @shoppingCartElement.ShoppingCartElementAmount = </a>$@shoppingCartElement.ShoppingCartElementPrice</p>
                                         <h6></h6>
                                     </div>
