@@ -25,12 +25,14 @@ namespace MVCFoodShop.Areas.Identity.Pages.Account
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly IShoppingCartRepository shoppingCartRepository;
+        private readonly IAppUserRepository appUserRepository;
 
-        public LoginModel(SignInManager<AppUser> signInManager, ILogger<LoginModel> logger,IShoppingCartRepository shoppingCartRepository)
+        public LoginModel(SignInManager<AppUser> signInManager, ILogger<LoginModel> logger, IShoppingCartRepository shoppingCartRepository, IAppUserRepository appUserRepository)
         {
             _signInManager = signInManager;
             _logger = logger;
             this.shoppingCartRepository = shoppingCartRepository;
+            this.appUserRepository = appUserRepository;
         }
 
         /// <summary>
@@ -119,22 +121,47 @@ namespace MVCFoodShop.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    
+
                     if (Input.Email != "superUser@deneme.com")
                     {
-                        ShoppingCart shoppingCart = new ShoppingCart()
+                        AppUser appUser = appUserRepository.GetUserByMail(Input.Email);
+                        if (appUser.ShoppingCarts.Count != 0)
                         {
-                            AppUserID = 1,
-                            ShoppingCartIsActive = false,
-                            ShoppingCartPrice = 0,
-                        };
-                        shoppingCartRepository.Add(shoppingCart);
+                            ShoppingCart lasShoppingCart = appUser.ShoppingCarts.Last();
+                            if (!lasShoppingCart.ShoppingCartIsActive)
+                            {
+                                ShoppingCart shoppingCart = new ShoppingCart()
+                                {
+                                    AppUserID = 1,
+                                    ShoppingCartIsActive = true,
+                                    ShoppingCartPrice = 0,
+                                };
+                                shoppingCartRepository.Add(shoppingCart);
 
-                        HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
-                        //return RedirectToAction("Index", "Home", new { shopCartId = shoppingCart.ID });
+                                HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
+                                HttpContext.Session.SetString("ShoppingCartProductCount", "0");
+                            }
+                            else
+                            {
+                                HttpContext.Session.SetString("ShoppingCartID", lasShoppingCart.ID.ToString());
+                            }
+                        }
+                        else
+                        {
+                            ShoppingCart shoppingCart = new ShoppingCart()
+                            {
+                                AppUserID = 1,
+                                ShoppingCartIsActive = true,
+                                ShoppingCartPrice = 0,
+                            };
+                            shoppingCartRepository.Add(shoppingCart);
+
+                            HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
+                            HttpContext.Session.SetString("ShoppingCartProductCount", "0");
+                        }
                     }
-                    
-                    _logger.LogInformation("User logged in.");                  
+
+                    _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
 
                 }

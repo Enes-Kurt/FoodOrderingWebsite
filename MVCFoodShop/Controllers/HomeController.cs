@@ -6,14 +6,17 @@ using System.Diagnostics;
 
 namespace MVCFoodShop.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IMenuRepository menuRepository;
+        private readonly IShoppingCartRepository shoppingCartRepository;
 
-        public HomeController(IMenuRepository menuRepository)
+        public HomeController(IMenuRepository menuRepository, IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
         {
             this.menuRepository = menuRepository;
+            this.shoppingCartRepository = shoppingCartRepository;
         }
+
         public IActionResult Index()
         {
             return View(menuRepository.GetByMenusNames("Big King", "Whopper", "King Chicken"));

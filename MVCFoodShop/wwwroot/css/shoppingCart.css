@@ -1,8 +1,4 @@
-﻿ul ul {
-    list-style-type: none;
-}
-
-.inner-header .nav-right li.cart-icon {
+﻿.inner-header .nav-right li.cart-icon {
     position: relative;
 }
 
@@ -123,8 +119,8 @@
             padding: 15px 30px 12px;
         }
 
-.inner-header .nav-right li.cart-price {
-    font-size: 18px;
-    font-weight: 700;
-    color: #252525;
-}
+    .inner-header .nav-right li.cart-icon .cart-price {
+        font-size: 18px;
+        font-weight: 700;
+        color: #252525;
+    }

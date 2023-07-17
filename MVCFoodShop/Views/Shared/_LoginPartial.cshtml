@@ -11,11 +11,12 @@
         <li class="nav-item">
             <div class="container">
                 <div class="inner-header">
-                    <ul class="nav-right">
-                        <li class="cart-icon">
+                    <ul class="nav-right" >
+                        <li class="cart-icon" >
                             <a class="nav-link text-dark" asp-controller="ShoppingCart" asp-action="ShoppingCartDetails">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span>3</span>
+                                @*<span id="shopppingCartProductCount">0</span>*@
+                                <span id="shopppingCartProductCount">@ViewBag.ProductCount</span>
                             </a>
                             <div id="shoppingcart"></div>
                         </li>
@@ -44,14 +45,14 @@
                 </div>
             </nav>
         </li>
-@*        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
-        </li>*@@*
-        <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-            </form>
-        </li>*@
+        @*        <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+    </li>*@@*
+    <li class="nav-item">
+    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+    </form>
+    </li>*@
     }
 
     else
@@ -64,6 +65,6 @@
             <a class="btn btn-warning " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Login</a>
         </li>
 
-        
+
     }
 </ul>

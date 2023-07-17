@@ -31,6 +31,11 @@ namespace MVCFoodShop.Repositories.Concrete
                         .FirstOrDefault(s => s.ID == id);
         }
 
+        public ShoppingCart GetShoppingCartIncludeElements(int id)
+        {
+            return dbContext.ShoppingCarts.Include(s => s.ShoppingCartElements).FirstOrDefault(s => s.ID == id);
+        }
+
         public ShoppingCart? GetShoppingCartIncludeElementsWithAllData(int id)
         {
             return dbContext.ShoppingCarts.Include(s => s.ShoppingCartElements)

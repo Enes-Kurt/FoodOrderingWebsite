@@ -17,5 +17,6 @@ namespace MVCFoodShop.Models
         //public int[] MenusIDs { get; set; }
         public int MenuID { get; set; }
         public MenuType MenuType { get; set; }
+        public string ShowShoppingChart { get; set; }
     }
 }

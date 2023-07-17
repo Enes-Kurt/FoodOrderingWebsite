@@ -4,25 +4,28 @@ using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Models;
 using MVCFoodShop.Repositories.Abstract;
+using MVCFoodShop.Repositories.Concrete;
 using NuGet.Protocol;
 
 namespace MVCFoodShop.Controllers
 {
-    public class ProfileController : Controller
+    public class ProfileController : BaseController
     {
 
         private readonly UserManager<AppUser> userManager;
         private readonly IAppUserRepository appUserRepository;
         private readonly IPasswordHasher<AppUser> passwordHasher;
         private readonly SignInManager<AppUser> signInManager;
+        private readonly IShoppingCartRepository shoppingCartRepository;
 
-        public ProfileController(UserManager<AppUser> userManager, IAppUserRepository appUserRepository, IPasswordHasher<AppUser> passwordHasher, SignInManager<AppUser> signInManager)
+        public ProfileController(UserManager<AppUser> userManager, IAppUserRepository appUserRepository, IPasswordHasher<AppUser> passwordHasher, SignInManager<AppUser> signInManager,IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
         {
 
             this.userManager = userManager;
             this.appUserRepository = appUserRepository;
             this.passwordHasher = passwordHasher;
             this.signInManager = signInManager;
+            this.shoppingCartRepository = shoppingCartRepository;
         }
 
         public IActionResult MyProfile()

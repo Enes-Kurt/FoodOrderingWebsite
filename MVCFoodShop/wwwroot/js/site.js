@@ -20,3 +20,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+window.onload = function () {
+    GetProductList('');
+    $("#all").addClass('active');
+    ShowShoppingCart('Show');
+};
+
+
+function GetProductList(element, category) {
+    $('.filters_menu li').removeClass('active');
+    $(element).addClass('active');
+    $.ajax({
+        url: "/Product/List/",
+        type: "get",
+        data: { categoryName: category },
+        success: function (response) {
+            $("#productList").html(response);
+        }
+           
+
+    });
+}
+
+function ShowShoppingCart(action) {
+
+    $.ajax({
+        url: "/Product/FillShoppingCart/",
+        type: "post",
+        data: { ShowShoppingChart: action },
+        success: function (response) {
+            $("#shoppingcart").html(response);
+        }
+
+    });
+}
