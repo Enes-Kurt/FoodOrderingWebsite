@@ -172,12 +172,24 @@
                                 $@total
                             </h6>
                         </div>
-                        <button class="btn btn-primary" onclick="ConfirmOrder()">
+                        @if (Model.ShoppingCartElements.Count == 0)
+                        {
+                        <button class="btn btn-primary" disabled onclick="ConfirmOrder()">
                             <span>
                                 <span id="checkout">Checkout </span>
                                 <span id="check-amt">$@total</span>
                             </span>
-                        </button>
+                        </button>                         
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" onclick="ConfirmOrder()">
+                                <span>
+                                    <span id="checkout">Checkout </span>
+                                    <span id="check-amt">$@total</span>
+                                </span>
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

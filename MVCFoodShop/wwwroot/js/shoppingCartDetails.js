@@ -166,6 +166,7 @@ function ConfirmOrder(){
             type: "post",
             success: function (response) {
                 window.location.href = "/Home/Index";
+
             }
 
         });

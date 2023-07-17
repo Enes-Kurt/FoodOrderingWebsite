@@ -8,6 +8,8 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+        if (User.IsInRole("User"))
+        {              
         <li class="nav-item">
             <div class="container">
                 <div class="inner-header">
@@ -24,6 +26,7 @@
                 </div>
             </div>
         </li>
+        
         <li class="nav-item">
             <nav class="navbar navbar-expand bg-transparent sticky-top px-4 py-0">
                 <div class="navbar-nav align-items-center ms-auto">
@@ -43,8 +46,16 @@
                     @*<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Profile</a>*@
                 </div>
             </nav>
-        </li>
-@*      <li class="nav-item">
+            </li>
+        }
+        else
+        {
+            <form class="form-inline btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+            </form>
+
+        }
+        @*      <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
         </li>*@@*
         <li class="nav-item">

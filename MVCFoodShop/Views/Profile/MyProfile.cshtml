@@ -68,11 +68,12 @@
                 @foreach (ShoppingCart shoppingCart in Model.ShoppingCarts)
                 {
                     count++;
+@*                    decimal netPrice = shoppingCart.ShoppingCartPrice + Convert.ToDecimal(2.99);*@
                     string orderElementList = "orderElementList" + count;
                     <a class="btn btn-success" onclick="GetPastOrderElements(@shoppingCart.ID,@count)">
                         <h3>@shoppingCart.CreationDate.ToShortDateString() Tarihli Siparişiniz</h3>
                         <h2>Detayları Görmek İçin Tıklayın!!</h2>
-                        <h2>$@shoppingCart.ShoppingCartPrice</h2>
+                        <h2>$@shoppingCart.ShoppingCartPrice + $2.99 Shipping Price</h2>
                     </a>
                     <div id="@orderElementList"></div>
                 }

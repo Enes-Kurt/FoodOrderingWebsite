@@ -35,9 +35,10 @@ namespace MVCFoodShop.Controllers
         [HttpPost]
         public IActionResult ConfirmOrder()
         {
+            
             int userId = int.Parse(userManager.GetUserId(User));
             int scID = Convert.ToInt32(HttpContext.Session.GetString("ShoppingCartID"));
-            ShoppingCart shoppingCart = shoppingCartRepository.GetById(scID);
+            ShoppingCart shoppingCart = shoppingCartRepository.GetShoppingCartIncludeElements(scID);   
             shoppingCart.ShoppingCartIsActive = false;
             shoppingCartRepository.Update(shoppingCart);
 
@@ -52,6 +53,7 @@ namespace MVCFoodShop.Controllers
             HttpContext.Session.SetString("ShoppingCartID", newShoppingCart.ID.ToString());
 
             return Ok();
+
         }
 
         public IActionResult ShoppingCartElementRemove(int id)
