@@ -122,16 +122,21 @@ function AddressesFunc() {
     });//ajax kullan
 }
 
-function GetPastOrderElements(count)
-{
-    var orderList = "#orderElementList" + count
-    $.ajax({
-        url: "/Profile/PastOrderListElements/",
-        type: "get",
-        success: function (response) {
-            $(orderList).html(response); 
+function GetPastOrderElements(id, count) {
+    var orderList = "#orderElementList" + count;
 
-        }, //sonuc başarılı ise bunu dön
-
-    });//ajax kullan
+        $.ajax({
+            url: "/Profile/PastOrderListElements/" + id,
+            type: "get",
+            success: function (response) {
+                if ($(orderList).hasClass("orderListActive")) {
+                    $(orderList).removeClass("orderListActive");
+                    $(orderList).html("");
+                }
+                else {
+                    $(orderList).addClass("orderListActive");
+                    $(orderList).html(response);
+                }
+            },
+        });
 }

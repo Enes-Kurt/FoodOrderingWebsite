@@ -71,7 +71,7 @@ namespace MVCFoodShop.Controllers
         {
             int scID = Convert.ToInt32(HttpContext.Session.GetString("ShoppingCartID"));
             ShoppingCart shoppingCart = shoppingCartRepository.GetShoppingCartIncludeAllData(scID);
-
+            shoppingCart.ShoppingCartPrice = Convert.ToDecimal(0.0);
             shoppingCart.ShoppingCartElements.Clear();
 
             shoppingCartRepository.Update(shoppingCart);

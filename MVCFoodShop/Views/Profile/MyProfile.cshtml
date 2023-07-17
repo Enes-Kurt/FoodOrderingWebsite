@@ -69,7 +69,7 @@
                 {
                     count++;
                     string orderElementList = "orderElementList" + count;
-                    <a class="btn btn-success" onclick="GetPastOrderElements(@count)">
+                    <a class="btn btn-success" onclick="GetPastOrderElements(@shoppingCart.ID,@count)">
                         <h3>@shoppingCart.CreationDate.ToShortDateString() Tarihli Siparişiniz</h3>
                         <h2>Detayları Görmek İçin Tıklayın!!</h2>
                         <h2>$@shoppingCart.ShoppingCartPrice</h2>

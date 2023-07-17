@@ -98,10 +98,10 @@ namespace MVCFoodShop.Controllers
             return PartialView("_Addresses", user);
         }
 
-        public IActionResult PastOrderListElements()
+        public IActionResult PastOrderListElements(int id)
         {
             int userId = int.Parse(userManager.GetUserId(User));
-            ShoppingCart shoppingCart= shoppingCartRepository.GetShoppingCartIncludeAllData(userId);
+            ShoppingCart shoppingCart= shoppingCartRepository.GetShoppingCartIncludeAllData(id);
             return PartialView("_PastOrderElementListPartial", shoppingCart.ShoppingCartElements.ToList());
         }
     }
