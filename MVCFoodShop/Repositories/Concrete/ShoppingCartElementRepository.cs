@@ -13,5 +13,7 @@ namespace MVCFoodShop.Repositories.Concrete
         {
             this.dbContext = dbContext;
         }
+
+        
     }
 }

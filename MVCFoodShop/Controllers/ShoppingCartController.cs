@@ -32,7 +32,7 @@ namespace MVCFoodShop.Controllers
             ShoppingCart shoppingCart = shoppingCartRepository.GetShoppingCartIncludeAllData(shoppingCartID);
             return View(shoppingCart);
         }
-
+        [HttpPost]
         public IActionResult ConfirmOrder()
         {
             int userId = int.Parse(userManager.GetUserId(User));
@@ -61,8 +61,9 @@ namespace MVCFoodShop.Controllers
             ShoppingCartElement shoppingCartElement = shoppingCartElementRepository.GetById(id);
 
             shoppingCart.ShoppingCartElements.Remove(shoppingCartElement);
+            shoppingCart.ShoppingCartPrice = shoppingCart.ShoppingCartPrice - shoppingCartElement.ShoppingCartElementPrice;
             shoppingCartRepository.Update(shoppingCart);
-            shoppingCartElementRepository.Update(shoppingCartElement);
+
             return RedirectToAction("ShoppingCartDetails");
         }
 

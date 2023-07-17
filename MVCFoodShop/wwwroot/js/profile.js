@@ -121,3 +121,17 @@ function AddressesFunc() {
         }
     });//ajax kullan
 }
+
+function GetPastOrderElements(count)
+{
+    var orderList = "#orderElementList" + count
+    $.ajax({
+        url: "/Profile/PastOrderListElements/",
+        type: "get",
+        success: function (response) {
+            $(orderList).html(response); 
+
+        }, //sonuc başarılı ise bunu dön
+
+    });//ajax kullan
+}

@@ -157,17 +157,18 @@ $(function () {
     });
 });
 
-function ConfirmOrder{
+function ConfirmOrder(){
 
-    if (confirm("Emin misiniz?")) {
+    if (confirm("Siparişinizi onaylamak istiyor musunuz?")) {
         // Onaylandığında yapılacak işlemler
         $.ajax({
             url: "/ShoppingCart/ConfirmOrder",
             type: "post",
-           
+            success: function (response) {
+                window.location.href = "/Home/Index";
+            }
+
         });
-    } else {
-        // Onaylanmadığında yapılacak işlemler
-    }
+    } 
 
 }
