@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVCFoodShop.AutoMappers;
@@ -20,6 +21,9 @@ namespace MVCFoodShop
             var connectionString = builder.Configuration.GetConnectionString("ConStr") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<FoodShopDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+                //        builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //.AddEntityFrameworkStores<FoodShopDbContext>();
 
             //            builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<FoodShopDbContext>();
@@ -77,9 +81,11 @@ namespace MVCFoodShop
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
+
             //var scope = app.Services.CreateScope();
             //var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
             //ForLogin.AddSuperUserAsync(userManager);
+
             app.Run();
         }
     }

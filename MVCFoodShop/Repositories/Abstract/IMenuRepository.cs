@@ -6,6 +6,6 @@ namespace MVCFoodShop.Repositories.Abstract
     {
         public IEnumerable<Menu> GetAllWithProducts();
 
-
+        public List<Menu> GetByMenusNames(params string[] menuNames);
     }
 }

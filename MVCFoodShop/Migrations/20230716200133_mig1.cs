@@ -33,6 +33,8 @@ namespace MVCFoodShop.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NewPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CoverImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -81,6 +83,8 @@ namespace MVCFoodShop.Migrations
                     SauceCount = table.Column<int>(type: "int", nullable: false),
                     MenuPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MenuIsActive = table.Column<bool>(type: "bit", nullable: false),
+                    MenuCoverImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MenuDeclaration = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -225,6 +229,8 @@ namespace MVCFoodShop.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductIsActive = table.Column<bool>(type: "bit", nullable: false),
+                    ProductCoverImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductDeclaration = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -351,8 +357,9 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "d09b8a37-ef19-4366-8696-2f84473b885d", "Admin", "ADMIN" },
-                    { 2, "086877a5-613b-48c1-bf59-9f7fbaf2e039", "User", "USER" }
+                    { 1, "4b2d0424-cd2c-4f93-83e4-3b9e32b0bddd", "Admin", "ADMIN" },
+                    { 2, "ad5976d9-b1b3-48ee-8c6d-79a2cfc6b290", "User", "USER" },
+                    { 3, "c720e648-e965-4069-bb12-6f6bc2c48073", "RegisteredUser", "REGİSTEREDUSER" }
                 });
 
             migrationBuilder.InsertData(
@@ -360,33 +367,36 @@ namespace MVCFoodShop.Migrations
                 columns: new[] { "ID", "CategoryIsActive", "CategoryName", "CreationDate" },
                 values: new object[,]
                 {
-                    { 1, true, "Food", new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5873) },
-                    { 2, true, "Beverage", new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5882) },
-                    { 3, true, "Sauce", new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(5883) }
+                    { 1, true, "Food", new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6331) },
+                    { 2, true, "Beverage", new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6346) },
+                    { 3, true, "Sauce", new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6347) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Menus",
-                columns: new[] { "ID", "BeverageCount", "CreationDate", "FoodCount", "MenuIsActive", "MenuName", "MenuPrice", "SauceCount" },
+                columns: new[] { "ID", "BeverageCount", "CreationDate", "FoodCount", "MenuCoverImage", "MenuDeclaration", "MenuIsActive", "MenuName", "MenuPrice", "SauceCount" },
                 values: new object[,]
                 {
-                    { 1, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6014), 0, true, "Whopper", 180m, 0 },
-                    { 2, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6017), 0, true, "Big King", 170m, 0 },
-                    { 3, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6018), 0, true, "King Chicken", 160m, 0 },
-                    { 4, 0, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6020), 0, true, "Kids Menu", 140m, 0 }
+                    { 1, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6443), 0, "double-whopper-menu.png", "Wooper Menu offers the king of flavors! A juicy and delicious beef patty, fresh vegetables, and mouthwatering sauces combined in one burger experience.", true, "Whopper", 180m, 0 },
+                    { 2, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6446), 0, "big-king-menu.png", "Big Kink, a burger that's larger than life! Juicy beef patty, melted cheese, crispy bacon, and tangy special sauce come together in this epic burger indulgence.", true, "Big King", 170m, 0 },
+                    { 3, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6447), 0, "bk-crispy-chicken-menu.png", "King Chicken, a royal treat for chicken lovers! Crispy, golden-brown chicken patty, fresh lettuce, and creamy mayo unite in a sandwich fit for a king.", true, "King Chicken", 160m, 0 },
+                    { 4, 0, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6448), 0, "kids-hamburger (1).png", "Kids Menu, a delightful feast for our little foodies! Mini burger, crispy fries, and a refreshing drink, specially crafted to satisfy their appetites and bring smiles to their faces.", true, "Kids Menu", 140m, 0 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ID", "CategoryID", "CreationDate", "ProductIsActive", "ProductName", "ProductPrice" },
+                columns: new[] { "ID", "CategoryID", "CreationDate", "ProductCoverImage", "ProductDeclaration", "ProductIsActive", "ProductName", "ProductPrice" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6107), true, "Kola", 30m },
-                    { 2, 2, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6110), true, "Fanta", 30m },
-                    { 3, 2, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6112), true, "Ayran", 20m },
-                    { 4, 1, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6113), true, "Köfte Burger", 20m },
-                    { 5, 1, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6114), true, "Tavuk Burger", 20m },
-                    { 6, 3, new DateTime(2023, 7, 16, 21, 2, 17, 785, DateTimeKind.Local).AddTicks(6115), true, "Mayonez", 20m }
+                    { 1, 2, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6540), "coca-cola.png", "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.", true, "Cola", 30m },
+                    { 2, 2, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6543), "fdb65e80-0777-443f-ad15-6045ef4f1a0c-fanta.png", "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.", true, "Fanta", 30m },
+                    { 3, 2, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6544), "ayran-195-ml.png", "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.", true, "Ayran", 20m },
+                    { 4, 1, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6545), "double-kofteburger-1.png", "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!", true, "Köfte Burger", 80m },
+                    { 5, 1, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6546), "tavukburger.png", "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!", true, "Chicken Burger", 70m },
+                    { 6, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6547), "mini-mayonez.png", "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.", true, "Mayonnaise", 8m },
+                    { 7, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6549), "mini-ketcap.png", "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.", true, "Ketchup", 8m },
+                    { 8, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6550), "mini-ranch.png", "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.", true, "Ranch Sauce", 10m },
+                    { 9, 3, new DateTime(2023, 7, 16, 23, 1, 32, 868, DateTimeKind.Local).AddTicks(6551), "mini-buffalo-1.png", "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.", true, "Bufala Sauce", 10m }
                 });
 
             migrationBuilder.CreateIndex(
