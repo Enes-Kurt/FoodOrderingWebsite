@@ -20,7 +20,7 @@ namespace MVCFoodShop.Controllers
             base.OnActionExecuting(context);
 
             var session = context.HttpContext.Session;
-
+     
 
             int scID = Convert.ToInt32(session.GetString("ShoppingCartID"));
             if (scID != 0)

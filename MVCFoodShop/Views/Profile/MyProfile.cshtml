@@ -10,7 +10,7 @@
             <div class="author-card pb-3">
                 <div class="author-card-cover" style="background-image: url(https://i.hizliresim.com/j7rda16.jpg);">
 
-                    <a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a>
+                    <a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="bi bi-star-fill"></i></a>
                 </div>
                 <div class="author-card-profile">
                     <div class="author-card-avatar">
@@ -31,7 +31,7 @@
                             </div><span class="badge badge-secondary">3</span>
                         </div>
                     </a>
-                    <a class="list-group-item btn btn-light" onclick="ProfileSettingsFunc()">
+                    <a class="list-group-item btn btn-light" id="profileSettingId" onclick="ProfileSettingsFunc()">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
@@ -60,21 +60,28 @@
             </div>
         </div>
         <!-- Wishlist-->
-        <div class="col-lg-8 pb-5">
-            <div><h4 class="text-center">My Past Orders</h4></div>
+        <div class="col-lg-8 pb-5 ">
+            <div><h4 class="text-center">My Past Order</h4></div>
             @if (Model.ShoppingCarts.Count != 0)
             {
                 int count = 0;
                 @foreach (ShoppingCart shoppingCart in Model.ShoppingCarts)
                 {
                     count++;
-@*                    decimal netPrice = shoppingCart.ShoppingCartPrice + Convert.ToDecimal(2.99);*@
+                    @*                    decimal netPrice = shoppingCart.ShoppingCartPrice + Convert.ToDecimal(2.99);*@
                     string orderElementList = "orderElementList" + count;
-                    <a class="btn btn-success" onclick="GetPastOrderElements(@shoppingCart.ID,@count)">
-                        <h3>@shoppingCart.CreationDate.ToShortDateString() Tarihli Siparişiniz</h3>
-                        <h2>Detayları Görmek İçin Tıklayın!!</h2>
-                        <h2>$@shoppingCart.ShoppingCartPrice + $2.99 Shipping Price</h2>
-                    </a>
+
+
+                    <div class="card text-light bg-secondary mb-3" style="max-width: 60rem;">
+                        <div class="card-header">Your Order Dated > @shoppingCart.CreationDate </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Was delivered<i class="bi bi-check-lg" style="color:darkblue"></i></h5>
+                            <p class="card-text">Total Price: $@shoppingCart.ShoppingCartPrice + $2.99</p>
+                            <div class="d-flex justify-content-end">
+                                <a onclick="GetPastOrderElements(@shoppingCart.ID,@count)" class="btn btn-warning"><i class="bi bi-eye" ></i></a>
+                            </div>
+                        </div>
+                    </div>
                     <div id="@orderElementList"></div>
                 }
             }
@@ -84,3 +91,4 @@
 <div id="profileSettings"></div>
 <div id="changePassword"></div>
 <div id="addresses"></div>
+
