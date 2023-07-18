@@ -167,7 +167,7 @@ namespace MVCFoodShop.Controllers
             return Json("Ok");
         }
         [HttpPost]
-        public IActionResult UpdateMenu(UpdateMenu_VM updateMenuVM, IFormFile ImageName)
+        public IActionResult UpdateMenu(UpdateMenu_VM updateMenuVM)
         {
             Menu menu = menuRepository.GetByMenuIncludeProductsById(updateMenuVM.ID);
             menu.MenuName = updateMenuVM.MenuName;
@@ -175,7 +175,7 @@ namespace MVCFoodShop.Controllers
             menu.BeverageCount = updateMenuVM.BeverageCount;
             menu.SauceCount = updateMenuVM.SauceCount;
             menu.MenuPrice = Convert.ToDecimal(updateMenuVM.UpdatedMenuPrice);
-            menu.MenuCoverImage = updateMenuVM.MenuCoverImage;
+            //menu.MenuCoverImage = updateMenuVM.MenuCoverImage;
             menu.MenuDeclaration = updateMenuVM.MenuDeclaration;
             menu.MenuIsActive = true;
             menu.Products.Clear();
@@ -193,7 +193,7 @@ namespace MVCFoodShop.Controllers
             Product product = productRepository.GetById(updateProductVM.ProductID);
             product.ProductName = updateProductVM.ProductName;
             product.ProductPrice = Convert.ToDecimal(updateProductVM.ProductPrice);
-            product.ProductCoverImage = updateProductVM.ProductCoverImage;
+            //product.ProductCoverImage = updateProductVM.ProductCoverImage;
             product.ProductDeclaration = updateProductVM.ProductDeclaration;
             product.CategoryID = updateProductVM.CategoryID;
             Category category = categoryRepository.GetById(updateProductVM.CategoryID);

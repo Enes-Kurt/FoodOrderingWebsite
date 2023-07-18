@@ -45,6 +45,15 @@ function GetProductList(element, category) {
             data: { categoryName: category },
             success: function (response) {
                 $("#productList").html(response);
+
+                var numberInputs = document.querySelectorAll('input[type="number"]');
+                numberInputs.forEach(function (input) {
+                    input.addEventListener('change', function () {
+                        if (input.value < 1) {
+                            input.value = 1;
+                        }
+                    });
+                });
             }
         });
 }
