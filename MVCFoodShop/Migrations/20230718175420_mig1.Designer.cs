@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCFoodShop.Migrations
 {
     [DbContext(typeof(FoodShopDbContext))]
-    [Migration("20230717203148_mig1")]
+    [Migration("20230718175420_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,21 +175,21 @@ namespace MVCFoodShop.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "d2ba2ac6-ebba-48a0-9635-6eb61e65fcbe",
+                            ConcurrencyStamp = "56701141-23ab-4119-8c72-ddf8c16e6ae3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "d014d1e8-e432-4d53-8e07-38b38ec92ce3",
+                            ConcurrencyStamp = "88c56a72-d043-47d0-87af-b3e26dcdf4c7",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "98b53e8a-5b63-407b-9f55-0aa6e24def2f",
+                            ConcurrencyStamp = "aa28a3a0-ff1d-4879-859d-32e51bf9cc2c",
                             Name = "RegisteredUser",
                             NormalizedName = "REGİSTEREDUSER"
                         });
@@ -312,21 +312,21 @@ namespace MVCFoodShop.Migrations
                             ID = 1,
                             CategoryIsActive = true,
                             CategoryName = "Food",
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6780)
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7547)
                         },
                         new
                         {
                             ID = 2,
                             CategoryIsActive = true,
                             CategoryName = "Beverage",
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6794)
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7563)
                         },
                         new
                         {
                             ID = 3,
                             CategoryIsActive = true,
                             CategoryName = "Sauce",
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6795)
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7564)
                         });
                 });
 
@@ -465,7 +465,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 1,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(6999),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7725),
                             ProductCoverImage = "coca-cola.png",
                             ProductDeclaration = "A delightful flavor that dances with ice particles: Cola, the perfect choice for a refreshing break.",
                             ProductIsActive = true,
@@ -476,7 +476,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 2,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7003),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7732),
                             ProductCoverImage = "fdb65e80-0777-443f-ad15-6045ef4f1a0c-fanta.png",
                             ProductDeclaration = "Fanta, with its sweet and fruity flavor, delights your taste buds and provides a refreshing beverage experience with every sip.",
                             ProductIsActive = true,
@@ -487,7 +487,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 3,
                             CategoryID = 2,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7005),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7734),
                             ProductCoverImage = "ayran-195-ml.png",
                             ProductDeclaration = "Ayran, the traditional Turkish delicacy, instantly refreshes and relaxes you with its cooling and invigorating taste.",
                             ProductIsActive = true,
@@ -498,7 +498,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 4,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7006),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7736),
                             ProductCoverImage = "double-kofteburger-1.png",
                             ProductDeclaration = "A burger that combines delicious meatballs with fresh vegetables, cooked to perfection. With every bite, it delights the palate with rich meat flavors and exquisite spices. The perfect choice for an exceptional meatball burger experience!",
                             ProductIsActive = true,
@@ -509,7 +509,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 5,
                             CategoryID = 1,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7009),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7737),
                             ProductCoverImage = "tavukburger.png",
                             ProductDeclaration = "Moist and tender chicken meat, combined with crispy breading, creates the unique taste of a chicken burger. It is a light and healthy choice that offers both delicious flavor and nutritional value. A favorite among chicken lovers!",
                             ProductIsActive = true,
@@ -520,7 +520,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 6,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7010),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7738),
                             ProductCoverImage = "mini-mayonez.png",
                             ProductDeclaration = "Mayonnaise, with its creamy texture and slightly tangy taste, adds a distinct flavor to every bite. It is a must-have condiment for burgers.",
                             ProductIsActive = true,
@@ -531,7 +531,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 7,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7011),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7739),
                             ProductCoverImage = "mini-ketcap.png",
                             ProductDeclaration = "Ketchup, a sweet, tangy, and slightly spicy flavor bomb, is one of the essential sauces for burgers.",
                             ProductIsActive = true,
@@ -542,7 +542,7 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 8,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7012),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7740),
                             ProductCoverImage = "mini-ranch.png",
                             ProductDeclaration = "Ranch sauce, with its creamy consistency and refreshing flavor, adds a wonderful touch to burgers.",
                             ProductIsActive = true,
@@ -553,12 +553,23 @@ namespace MVCFoodShop.Migrations
                         {
                             ID = 9,
                             CategoryID = 3,
-                            CreationDate = new DateTime(2023, 7, 17, 23, 31, 48, 593, DateTimeKind.Local).AddTicks(7013),
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7741),
                             ProductCoverImage = "mini-buffalo-1.png",
                             ProductDeclaration = "Bufala sauce, a rich and spicy condiment, adds a mildly spicy and sweet flavor to burgers.",
                             ProductIsActive = true,
                             ProductName = "Bufala Sauce",
                             ProductPrice = 10m
+                        },
+                        new
+                        {
+                            ID = 10,
+                            CategoryID = 1,
+                            CreationDate = new DateTime(2023, 7, 18, 20, 54, 20, 530, DateTimeKind.Local).AddTicks(7742),
+                            ProductCoverImage = "potato.png",
+                            ProductDeclaration = "Crispy and delicious, golden fries offer a satisfying snack option. These thinly sliced and carefully fried potatoes provide a perfect taste experience when served as a side dish or enjoyed on their own. A favorite choice for potato lovers!",
+                            ProductIsActive = true,
+                            ProductName = "potatoes",
+                            ProductPrice = 50m
                         });
                 });
 

@@ -25,7 +25,7 @@ namespace MVCFoodShop.Repositories.Concrete
 
         public IEnumerable<Product> GetSelectedProtuctsByCategory(string category)
         {
-            return dbContext.Products.Where(p => p.Category.CategoryName == category);
+            return dbContext.Products.Where(p => p.Category.CategoryName == category && p.ProductIsActive == true);
         }
 
         public IEnumerable<Product> GetSelectedProtuctsByCategoryAndMenuID(Menu menu, string category)

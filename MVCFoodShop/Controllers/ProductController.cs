@@ -167,7 +167,7 @@ namespace MVCFoodShop.Controllers
             return Json("Ok");
         }
         [HttpPost]
-        public IActionResult UpdateMenu(UpdateMenu_VM updateMenuVM)
+        public IActionResult UpdateMenu(UpdateMenu_VM updateMenuVM, IFormFile ImageName)
         {
             Menu menu = menuRepository.GetByMenuIncludeProductsById(updateMenuVM.ID);
             menu.MenuName = updateMenuVM.MenuName;

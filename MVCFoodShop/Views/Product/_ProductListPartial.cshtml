@@ -126,8 +126,9 @@
                                 <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="px-5">
-
+                                
                                 <div class="modal-body">
+                                    <form enctype="multipart/form-data">
                                     <div>
                                         <label for="MenuCoverImage">Menu Image</label>
                                         <div id="@updateSelectedMenuImageContainer"></div>
@@ -181,7 +182,7 @@
                                         <label for="MenuDeclaration">Menu Declaration</label>
                                         <input id="@updateMenuDeclaration" type="text" placeholder="Menu Declaration" value="@menu.MenuDeclaration" required />
                                     </div>
-
+                                    </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                         @* <button class=" border-0 bg-white">*@
@@ -361,7 +362,7 @@
                                 else if (ViewBag.Role == "User")
                                 {
                                     <div class="d-flex justify-content-end">
-                                        <input id="@elementAmount" class="bg-white w-25 mx-2" type="number" value="1" min="1" />
+                                        <input id="@elementAmount" class="bg-white w-25 mx-2 rounded" type="number" value="1" min="1" />
 
                                         <a class="mx-2 btn" onclick=" intensify($(this)); AddToShoppingCart(@product.ID,'Product',@count) ">
 
@@ -467,3 +468,5 @@
 
 
 </script>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
