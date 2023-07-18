@@ -2,8 +2,8 @@
 {
     public enum MenuType
     {
-        Small=1,
-        Medium,
-        Large,
+        Small=10,
+        Medium=15,
+        Large=20,
     }
 }

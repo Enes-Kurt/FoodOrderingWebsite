@@ -34,8 +34,13 @@
                                             {
                                             <p class="pl-2"> @menuCartElement.Product.ProductName <a style="color:#222831"> x 1 </a></p>
                                             }
+                                        <p class ="bg-dark pl-2">Menu Size = @shoppingCartElement.MenuCart.MenuType.ToString()</p>
                                         </div>
-                                    <p>$@shoppingCartElement.MenuCart.Menu.MenuPrice <a style="color:#222831"> x @shoppingCartElement.ShoppingCartElementAmount = </a>$@shoppingCartElement.ShoppingCartElementPrice</p>
+                                    @{
+                                        decimal menuSizePrice = (decimal)shoppingCartElement.MenuCart.MenuType;
+                                        decimal netPrice = shoppingCartElement.MenuCart.Menu.MenuPrice + menuSizePrice;                
+                                    }
+                                    <p>$@netPrice <a style="color:#222831"> x @shoppingCartElement.ShoppingCartElementAmount = </a>  $@shoppingCartElement.ShoppingCartElementPrice</p>
                                         <h6></h6>
                                     </div>
                                 </td>

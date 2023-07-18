@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.CodeAnalysis.Rename;
 using MVCFoodShop.Entities;
+using MVCFoodShop.Enums;
 using MVCFoodShop.Models;
 using MVCFoodShop.Repositories.Abstract;
 using MVCFoodShop.Repositories.Concrete;
@@ -68,6 +70,12 @@ namespace MVCFoodShop.Controllers
 
         public IActionResult List(string categoryName)
         {
+            Category category = categoryRepository.GetFirstOrDefault(c => c.CategoryName == categoryName);
+            ProductCards_VM pcVM = new ProductCards_VM(productRepository)
+            {
+                Categories = categoryRepository.GetAllActiveCategories().ToList(),
+                
+        };
             if (User.IsInRole("Admin"))
             {
                 ViewBag.Role = "Admin";
@@ -75,13 +83,18 @@ namespace MVCFoodShop.Controllers
             else if (User.IsInRole("User"))
             {
                 ViewBag.Role = "User";
+                var enumValues = Enum.GetValues(typeof(MenuType)).Cast<MenuType>().Select(e => new SelectListItem
+                {
+                    Value = e.ToString(),
+                    Text = e.ToString()
+                }).ToList();
+                pcVM.MenuTypes = new SelectList(enumValues, "Value", "Text");
             }
             else
             {
                 ViewBag.Role = "";
             }
-            Category category = categoryRepository.GetFirstOrDefault(c => c.CategoryName == categoryName);
-            ProductCards_VM pcVM = new ProductCards_VM(productRepository);
+
             List<Product> products = new List<Product>();
             if (categoryName == "Menu")
             {
@@ -137,7 +150,59 @@ namespace MVCFoodShop.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult RemoveProduct(RemoveProduct_VM removeVM)
+        {
+            if (removeVM.Type == "Product") 
+            {
+               Product product = productRepository.GetById(removeVM.Id);
+                product.ProductIsActive =false;
+                productRepository.Update(product);
+            }
+            else
+            {
+                Menu menu = menuRepository.GetById(removeVM.Id);
+                menu.MenuIsActive=false;
+                menuRepository.Update(menu);
+            }
+            return Json("Ok");
+        }
+        [HttpPost]
+        public IActionResult UpdateMenu(UpdateMenu_VM updateMenuVM)
+        {
+            Menu menu = menuRepository.GetByMenuIncludeProductsById(updateMenuVM.ID);
+            menu.MenuName = updateMenuVM.MenuName;
+            menu.FoodCount = updateMenuVM.FoodCount;
+            menu.BeverageCount = updateMenuVM.BeverageCount;
+            menu.SauceCount = updateMenuVM.SauceCount;
+            menu.MenuPrice = Convert.ToDecimal(updateMenuVM.UpdatedMenuPrice);
+            menu.MenuCoverImage = updateMenuVM.MenuCoverImage;
+            menu.MenuDeclaration = updateMenuVM.MenuDeclaration;
+            menu.MenuIsActive = true;
+            menu.Products.Clear();
+            foreach (int productId in updateMenuVM.SelectedProducts)
+            {
+                Product product= productRepository.GetById(productId);
+                menu.Products.Add(product);
+            }
+            menuRepository.Update(menu);
+            return Json("Ok");
+        }
+        [HttpPost]
+        public IActionResult UpdateProduct(UpdateProduct_VM updateProductVM)
+        {
+            Product product = productRepository.GetById(updateProductVM.ProductID);
+            product.ProductName = updateProductVM.ProductName;
+            product.ProductPrice = Convert.ToDecimal(updateProductVM.ProductPrice);
+            product.ProductCoverImage = updateProductVM.ProductCoverImage;
+            product.ProductDeclaration = updateProductVM.ProductDeclaration;
+            product.CategoryID = updateProductVM.CategoryID;
+            Category category = categoryRepository.GetById(updateProductVM.CategoryID);
+            product.Category = category;
+            product.ProductIsActive = true;
 
+            productRepository.Update(product);
+            return Json("Ok");
+        }
 
         [HttpPost]
         public IActionResult FillShoppingCart(ShoppingCart_VM scVM)
@@ -184,7 +249,7 @@ namespace MVCFoodShop.Controllers
                         MenuCart updatedMenuCart = menuCartRepository.GetById(menuCart.ID);
 
                         //shoppingCartElement.menu
-                        shoppingCartElement.ShoppingCartElementPrice = menu.MenuPrice * scVM.ElementAmount;
+                        shoppingCartElement.ShoppingCartElementPrice = (menu.MenuPrice + (decimal)scVM.MenuType) * scVM.ElementAmount ;
                         shoppingCartElement.MenuCartID = updatedMenuCart.ID;
                         shoppingCartElement.MenuCart = updatedMenuCart;
                     }
@@ -222,6 +287,5 @@ namespace MVCFoodShop.Controllers
             }
 
         }
-
     }
 }

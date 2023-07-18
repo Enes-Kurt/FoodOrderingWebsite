@@ -29,5 +29,9 @@ namespace MVCFoodShop.Repositories.Concrete
             }
            return menuList;
         }
+        public Menu GetByMenuIncludeProductsById(int menuId)
+        {
+            return dbContext.Menus.Include(m => m.Products).FirstOrDefault(m=>m.ID  == menuId);
+        }
     }
 }

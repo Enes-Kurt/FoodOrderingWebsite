@@ -11,6 +11,7 @@ namespace MVCFoodShop.AutoMappers
         {
             CreateMap<ProductList_VM, Product>();
             CreateMap<ProductList_VM, Menu>();
+            CreateMap<UpdateMenu_VM, Menu>();
         }
     }
 }

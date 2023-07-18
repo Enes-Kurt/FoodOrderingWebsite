@@ -17,9 +17,15 @@ namespace MVCFoodShop.Models
         }
         public List<Product> Products { get; set; }
         public List<Menu> Menus { get; set; }
+        public List<Category> Categories { get; set; }
+        public SelectList MenuTypes { get; set; }
         public List<Product> FindMenuListByCategory(Menu menu ,string category)
         {
             return productRepository.GetSelectedProtuctsByCategoryAndMenuID(menu, category).ToList();
+        }
+        public List<Product> GetProductsByCategory(string categoryName)
+        {
+            return productRepository.GetSelectedProtuctsByCategory(categoryName).ToList();
         }
 
       

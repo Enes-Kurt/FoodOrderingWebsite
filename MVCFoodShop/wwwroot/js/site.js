@@ -24,22 +24,29 @@ window.onload = function () {
     GetProductList('');
     $("#all").addClass('active');
     ShowShoppingCart('Show');
+
+    var numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(function (input) {
+        input.addEventListener('change', function () {
+            if (input.value < 1) {
+                input.value = 1;
+            }
+        });
+    });
 };
 
 
 function GetProductList(element, category) {
-    $('.filters_menu li').removeClass('active');
-    $(element).addClass('active');
-    $.ajax({
-        url: "/Product/List/",
-        type: "get",
-        data: { categoryName: category },
-        success: function (response) {
-            $("#productList").html(response);
-        }
-           
-
-    });
+        $('.filters_menu li').removeClass('active');
+        $(element).addClass('active');
+        $.ajax({
+            url: "/Product/List/",
+            type: "get",
+            data: { categoryName: category },
+            success: function (response) {
+                $("#productList").html(response);
+            }
+        });
 }
 
 function ShowShoppingCart(action) {
