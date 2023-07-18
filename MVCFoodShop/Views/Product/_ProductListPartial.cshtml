@@ -1,5 +1,5 @@
 ﻿@model ProductCards_VM
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <div class="filters-content">
     <div class="row grid">
         @{
@@ -363,7 +363,7 @@
                                     <div class="d-flex justify-content-end">
                                         <input id="@elementAmount" class="bg-white w-25 mx-2" type="number" value="1" min="1" />
 
-                                        <a class="mx-2 btn" onclick="AddToShoppingCart(@product.ID,'Product',@count)">
+                                        <a class="mx-2 btn" onclick=" intensify($(this)); AddToShoppingCart(@product.ID,'Product',@count) ">
 
                                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
 
@@ -406,6 +406,27 @@
         }
     </div>
 </div>
+
+<script>
+    function intensify(intense) {
+        intense.addClass('animate__animated animate__headShake').one('animationend', function () {
+            $(this).removeClass('animate__animated animate__headShake');
+        });
+    }
+
+    function clicked() {
+        $('button').addClass('clicked').delay(200).queue(function () {
+            $('button').removeClass('clicked').dequeue();
+        });
+    }
+
+    var submit = document.getElementById('submit');
+    submit.addEventListener('click', function (event) {
+        event.preventDefault();
+        clicked();
+    });
+
+</script>
 
 
 <script>

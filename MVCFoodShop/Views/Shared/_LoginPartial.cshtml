@@ -9,70 +9,64 @@
     @if (SignInManager.IsSignedIn(User))
     {
         if (User.IsInRole("User"))
-        {              
-        <li class="nav-item">
-            <div class="container">
-                <div class="inner-header">
-                    <ul class="nav-right">
-                        <li class="cart-icon ">
-                            <a class="nav-link text-light pt-3 " asp-controller="ShoppingCart" asp-action="ShoppingCartDetails">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                @*<span id="shopppingCartProductCount">0</span>*@
-                                <span id="shopppingCartProductCount">@ViewBag.ProductCount</span>
-                            </a>
-                            <div id="shoppingcart"></div>
-                        </li>
-                    </ul>
+        {
+            <li class="nav-item">
+                <div class="container">
+                    <div class="inner-header">
+                        <ul class="nav-right">
+                            <li class="cart-icon ">
+                                <a class="nav-link text-light pt-3 " asp-controller="ShoppingCart" asp-action="ShoppingCartDetails">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span id="shopppingCartProductCount">@ViewBag.ProductCount</span>
+                                </a>
+                                <div id="shoppingcart"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </li>
-        
-        <li class="nav-item">
-            <nav class="navbar navbar-expand bg-transparent sticky-top px-4 py-0">
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="https://i.hizliresim.com/m20yfy8.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex text-light">@User.Identity.Name</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end border-1 rounded-0 rounded-bottom m-0" style="background-color:rgb(34, 40, 49)">
-                            <a class="dropdown-item text-light" asp-action="MyProfile" asp-controller="Profile">My Profile</a>
-                            <a class="dropdown-item text-light " onclick="ProfileSettingsFunc()">Settings</a>
-                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
-                            </form>
+            </li>
+
+            <li class="nav-item">
+                <nav class="navbar navbar-expand bg-transparent sticky-top px-4 py-0">
+                    <div class="navbar-nav align-items-center ms-auto">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">
+                                <img class="rounded-circle me-lg-2" src="https://i.hizliresim.com/m20yfy8.png" alt="" style="width: 40px; height: 40px;">
+                                <span class="d-none d-lg-inline-flex text-light">@User.Identity.Name</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end border-1 rounded-0 rounded-bottom m-0" style="background-color:rgb(34, 40, 49)">
+                                <a class="dropdown-item text-light" asp-action="MyProfile" asp-controller="Profile">My Profile</a>
+                                <a class="dropdown-item text-light " onclick="ProfileSettingsFunc()">Settings</a>
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    @*<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Profile</a>*@
-                </div>
-            </nav>
+                </nav>
             </li>
         }
         else
         {
-            <form class="form-inline btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
-            </form>
-
+            <nav class="navbar navbar-expand bg-transparent sticky-top px-4 py-0">
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" class="btn btn-danger text-light">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
         }
-        @*      <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
-        </li>*@@*
-        <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
-            </form>
-        </li>*@
     }
-
     else
     {
+
         <li class="nav-item">
             <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
-            @*<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>*@
-            <a class="btn btn-warning text-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="font-size:16px"><b>Login</b></a>
+            <a class="btn btn-danger text-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="font-size:16px"><b>Login</b></a>
         </li>
 
 
