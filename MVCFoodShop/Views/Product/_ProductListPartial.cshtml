@@ -128,6 +128,7 @@
                             <div class="px-5">
                                 
                                 <div class="modal-body">
+                                    <div class="ProductUpdateForm">
                                   @*  <form enctype="multipart/form-data">*@
                                     <div>
 @*                                        <label for="MenuCoverImage">Menu Image</label>
@@ -186,9 +187,10 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                         @* <button class=" border-0 bg-white">*@
-                                        <a onclick="UpdateMenu(@menu.ID,@count2)" class="btn btn-success text-white w-25" value="Confirm"></a>
+                                            <a onclick="UpdateMenu(@menu.ID,@count2)" class="btn btn-success text-white w-25" >Confirm</a>
                                         @*</button>*@
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -301,8 +303,9 @@
                             </div>
 
                             <div class="px-5">
-
+                                
                                 <div class="modal-body">
+                                    <div class="ProductUpdateForm">
                                    @* <label for="ProductCoverImage">Product Image</label>
                                     <div id="@updateSelectedProductImageContainer"></div>
                                     <input type="file" id="@updateProductCoverImage" name="ImageName" pattern="" accept=".jpg, .jpeg, .png" required />*@
@@ -348,6 +351,7 @@
                                     </script>
                                     <label for="ProductDeclaration">Product Declaration</label>
                                     <input type="text" placeholder="Product Declaration" id="@updateProductDeclaration" value="@product.ProductDeclaration" required />
+                                </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

@@ -47,7 +47,7 @@ function RemoveProduct(id,type) {
 
 
 function UpdateProduct(productID ,count) {
-    var updateProductCoverImage = document.getElementById('updateProductCoverImage' + count).value;
+    /*var updateProductCoverImage = document.getElementById('updateProductCoverImage' + count).value;*/
     var updateProductName = document.getElementById('updateProductName' + count).value;
     var updateProductPrice = document.getElementById('updateProductPrice' + count).value;
     var updateCategoryID = document.getElementById('updateCategoryID' + count).value;
@@ -59,7 +59,7 @@ function UpdateProduct(productID ,count) {
         ProductID: productID,
         ProductName: updateProductName,
         ProductPrice: updateProductPrice,
-        ProductCoverImage: updateProductCoverImage,
+       /* ProductCoverImage: updateProductCoverImage,*/
         CategoryID: updateCategoryID,
         ProductDeclaration: updateProductDeclaration,
 
@@ -89,7 +89,7 @@ function UpdateProduct(productID ,count) {
 
 
 function UpdateMenu(menuID, count) {
-    var updateMenuCoverImage = document.getElementById('updateMenuCoverImage'+count).value;
+   /* var updateMenuCoverImage = document.getElementById('updateMenuCoverImage'+count).value;*/
     var updateMenuName = document.getElementById('updateMenuName'+count).value;
     var updateMenuPrice = document.getElementById('updateMenuPrice'+count).value;
     var updateMenuFoodCount = document.getElementById('updateMenuFoodCount'+count).value;
@@ -103,7 +103,7 @@ function UpdateMenu(menuID, count) {
 
     let updateMenuVM = {
         ID : menuID,
-        MenuCoverImage: updateMenuCoverImage,
+       /* MenuCoverImage: updateMenuCoverImage,*/
         MenuName: updateMenuName,
         UpdatedMenuPrice: updateMenuPrice,
         FoodCount: updateMenuFoodCount,
