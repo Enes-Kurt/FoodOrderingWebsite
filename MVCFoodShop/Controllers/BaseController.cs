@@ -23,11 +23,17 @@ namespace MVCFoodShop.Controllers
             base.OnActionExecuting(context);
 
             var session = context.HttpContext.Session;
+            if(User.IsInRole("Admin"))
+            {
+                ViewBag.UserName = "Admin";
 
+            }
             if (User.IsInRole("User"))
             {
+
                 int userId = int.Parse(userManager.GetUserId(User));
                 AppUser appUser = shoppingCartRepository.GetUserIncludeShoppingCartById(userId);
+                ViewBag.UserName = appUser.FirstName+ " " + appUser.LastName;
                 if (appUser.ShoppingCarts.Count != 0)
                 {
                     ShoppingCart lasShoppingCart = appUser.ShoppingCarts.Last();
