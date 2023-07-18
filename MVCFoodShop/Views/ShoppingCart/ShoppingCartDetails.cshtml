@@ -10,7 +10,6 @@
         &nbsp;&nbsp;One last step left to reach <strong>Super Delicious Burger!</strong>
     </div>
 
-
     <!-- Shopping Cart-->
     <div class="table-responsive shopping-cart">
         <form>
@@ -101,12 +100,7 @@
 </div>
 
 
-
-
-
 <script src="~/js/shoppingCartElementDetails.js" asp-append-version="true"></script>
-
-
 
 
 <div class="container px-4 py-5 mx-auto" >
@@ -117,18 +111,20 @@
             <div class="card" >
                 <div class="row">
                     <div class="col-lg-3 radio-group">
+                        <a asp-action="ShoppingCartDetails" asp-controller="ShoppingCart" class="text-decoration-none">
                         <div class="row d-flex px-3 radio">
                             <img class="pay" src="https://i.imgur.com/WIAP9Ku.jpg">
-                            <p class="my-auto">Credit Card</p>
+                            <p class="my-auto" style="color:black">Credit Card</p>
                         </div>
-                        <div class="row d-flex px-3 radio gray">
+                        <div class="row d-flex px-3 radio" >
                             <img class="pay" src="https://i.imgur.com/OdxcctP.jpg">
-                            <p class="my-auto">Debit Card</p>
+                                <p class="my-auto" style="color:black">Debit Card</p>
                         </div>
-                        <div class="row d-flex px-3 radio gray mb-3">
+                        <div class="row d-flex px-3 radio mb-3 me-2">
                             <img class="pay" src="https://i.imgur.com/cMk1MtK.jpg">
-                            <p class="my-auto">PayPal</p>
+                                <p class="my-auto" style=" color:black">PayPal</p>
                         </div>
+                        </a>
                     </div>
                     <div class="col-lg-5">
                         <div class="row px-2">

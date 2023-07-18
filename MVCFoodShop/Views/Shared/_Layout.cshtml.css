@@ -1,6 +1,20 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+body {
+    /*display: flex;*/
+    
+   /* flex-direction: column;*/
+/*    margin: 0;
+    padding: 0;*/
+/*margin-bottom:0px;*/
+}
+main {
 
+    flex: 1;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -41,10 +55,135 @@ button.accept-policy {
   line-height: inherit;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+
+
+/*.footer {
+  position: fixed;
+    
+}*/
+
+/*footer * {
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}*/
+
+/* Footer */
+footer .row {
+    padding: 1em 1em;
+    justify-items: end;
+    align-items: center;
+}
+
+    footer .row.primary {
+        display: grid;
+        grid-template-columns: 3fr 4fr 2fr;
+        align-items: center;
+    }
+
+footer .column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2em;
+   /* min-height: 15em;*/
+}
+
+footer h3 {
+    width: 100%;
+    text-align: left;
+    color: white;
+    font-size: 1.4em;
+    white-space: nowrap;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+footer li:not(:first-child) {
+    margin-top: 0.8em;
+}
+
+footer ul li a {
+    color: #a7a7a7;
+    text-decoration: none;
+}
+
+    footer ul li a:hover {
+        color: #c7940a;
+    }
+
+footer .about p {
+    text-align: justify;
+    line-height: 2;
+    margin: 0;
+}
+
+footer input,
+footer button {
+    font-size: 1em;
+    padding: 1em;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+footer button {
+    background-color: #c7940a;
+    color: #ffffff;
+}
+
+footer .social {
+    display: flex;
+    justify-content:flex-end;
+    font-size: 1.5em;
+    flex-direction: row;
+    margin-top: 0.5em;
+
+
+}
+
+    footer .social i {
+        color: #bac6d9;
+        margin:0.5em;
+    }
+.copyright {
+    padding: 0.3em 1em;
+    background-color: #25262e;
+}
+
+.footer-menu {
+    float: left;
+    margin-top: 10px;
+}
+
+    .footer-menu a {
+        color: #cfd2d6;
+        padding: 6px;
+        text-decoration: none;
+    }
+
+        .footer-menu a:hover, .social i:hover {
+            color: #c7940a;
+        }
+
+.copyright p {
+    font-size: 0.9em;
+    text-align: right;
+}
+
+@media screen and (max-width: 850px) {
+    .row.primary {
+        grid-template-columns: 1fr;
+    }
+}
+
+#end{
+    justify-items:end;
+    align-items:center;
 }

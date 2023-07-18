@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVCFoodShop.Data;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Models;
@@ -33,13 +34,13 @@ namespace MVCFoodShop.Controllers
         {
             int userId = int.Parse(userManager.GetUserId(User));
             AppUser user = appUserRepository.GetById(userId);
-            List<ShoppingCart> shoppingCarts= shoppingCartRepository.GetAllIncludeAllDataById(userId);
+            List<ShoppingCart> shoppingCarts = shoppingCartRepository.GetAllIncludeAllDataById(userId);
             Profile_VM profile = new Profile_VM()
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 CreationDate = user.CreationDate,
-                ShoppingCarts= shoppingCarts,
+                ShoppingCarts = shoppingCarts,
             };
 
             return View(profile);
@@ -74,19 +75,42 @@ namespace MVCFoodShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangePassword(string newPassword)
+        public async Task<IActionResult> ChangePassword(string password, string updateNewPassword)
         {
+
             int userId = int.Parse(userManager.GetUserId(User));
             AppUser user = appUserRepository.GetById(userId);
-            ChangePassword_VM changePassword_VM = new ChangePassword_VM()
+
+            bool isPasswordCorrect = await userManager.CheckPasswordAsync(user, password);
+            if (isPasswordCorrect)
             {
-                Password = user.PasswordHash
-            };
-            
-            user.PasswordHash = passwordHasher.HashPassword(user, newPassword);
-            appUserRepository.Update(user);
-            return PartialView("_ChangePassword", user);
+                user.PasswordHash = userManager.PasswordHasher.HashPassword(user, updateNewPassword);
+                await userManager.UpdateAsync(user);
+                return PartialView("_ChangePassword");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Mevcut şifre yanlış!";
+                return View("_ChangePassword");
+            }
+
         }
+
+        //[HttpPost]
+        //public IActionResult ChangePassword(string newPassword)
+        //{
+        //    int userId = int.Parse(userManager.GetUserId(User));
+        //    AppUser user = appUserRepository.GetById(userId);
+
+        //    ChangePassword_VM changePassword_VM = new ChangePassword_VM()
+        //    {
+        //        Password = user.PasswordHash
+        //    };
+
+        //    user.PasswordHash = passwordHasher.HashPassword(user, newPassword);
+        //    appUserRepository.Update(user);
+        //    return PartialView("_ChangePassword", user);
+        //}
 
 
 
@@ -98,10 +122,22 @@ namespace MVCFoodShop.Controllers
             return PartialView("_Addresses", user);
         }
 
+        [HttpPost]
+        public IActionResult Addresses(AppUser appUser)
+        {
+
+            int userId = int.Parse(userManager.GetUserId(User));
+            AppUser user = appUserRepository.GetById(userId);
+            user.Address = appUser.Address;
+            appUserRepository.Update(user);
+            return PartialView("_Addresses", user);
+
+
+        }
         public IActionResult PastOrderListElements(int id)
         {
             int userId = int.Parse(userManager.GetUserId(User));
-            ShoppingCart shoppingCart= shoppingCartRepository.GetShoppingCartIncludeAllData(id);
+            ShoppingCart shoppingCart = shoppingCartRepository.GetShoppingCartIncludeAllData(id);
             return PartialView("_PastOrderElementListPartial", shoppingCart.ShoppingCartElements.ToList());
         }
     }

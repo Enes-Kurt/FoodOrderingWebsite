@@ -159,7 +159,7 @@ $(function () {
 
 function ConfirmOrder(){
 
-    if (confirm("Siparişinizi onaylamak istiyor musunuz?")) {
+    if (confirm("Do you want to confirm your order?")) {
         // Onaylandığında yapılacak işlemler
         $.ajax({
             url: "/ShoppingCart/ConfirmOrder",

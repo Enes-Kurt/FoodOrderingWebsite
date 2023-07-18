@@ -16,9 +16,21 @@
     --dark: #1E1916;
 }
 
-#body-fluid {
-    container-fluid;
+/*#body-fluid {
+    container:FL
 
+}*/
+
+#robotoFamily {
+    font-family: 'Amatic SC', cursive;
+}
+
+#permanentFamily {
+    font-family: 'Lato', sans-serif;
+}
+
+#stylesFamily {
+    font-family: 'Shrikhand', cursive;
 }
 /*--------------------------------------------------------------
 # Back to top button
@@ -81,7 +93,7 @@
         align-items: center;
    /*     flex-direction: column;*/
         text-align: center;
-        position: relative;
+        position: static;
         height: 70vh;
         padding-top: 60px;
         padding-left:0rem;
@@ -870,7 +882,7 @@ a.list-group-item, .list-group-item-action {
 
     .cart-item .cart-item-product {
         display: table;
-        width: 420px;
+        /*width: 420px;*/
         text-decoration: none;
     }
 

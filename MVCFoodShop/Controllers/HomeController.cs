@@ -20,7 +20,7 @@ namespace MVCFoodShop.Controllers
 
         public IActionResult Index()
         {
-            return View(menuRepository.GetByMenusNames("Big King", "Whopper", "King Chicken"));
+            return View(menuRepository.GetByMenusNames("CampFire", "Smokey Deluxe", "Cheesy BBQ"));
         }
 
     }

@@ -3,8 +3,8 @@
         url: "/Profile/ProfileSettings/",
         type: "get",//method: "get"//type ve method aynı işi yapar
         success: function (response) {
-            $("#myProfile").html(""); //ajax la id si list olanı bul ve html ini boşalt
-            $("#profileSettings").html(response); //ajax la id si list olanı bul ve html ini boşalt
+            $("#myProfile").html(response); //ajax la id si list olanı bul ve html ini boşalt
+            $("#profileSettings").html(""); //ajax la id si list olanı bul ve html ini boşalt
             $("#changePassword").html(""); //ajax la id si list olanı bul ve html ini boşalt
             $("#addresses").html(""); //ajax la id si list olanı bul ve html ini boşalt
 
@@ -19,15 +19,13 @@
 
 function ProfileSettingsFunc() {
     $.ajax({
-        url: "/Profile/ProfileSettings/",
-        type: "get",//method: "get"//type ve method aynı işi yapar
+        url:"/Profile/ProfileSettings/",
+        type:"get",//method: "get"//type ve method aynı işi yapar
         success: function (response) {
             $("#myProfile").html(""); //ajax la id si list olanı bul ve html ini boşalt
             $("#profileSettings").html(response); //ajax la id si list olanı bul ve html ini boşalt
             $("#changePassword").html(""); //ajax la id si list olanı bul ve html ini boşalt
             $("#addresses").html(""); //ajax la id si list olanı bul ve html ini boşalt
-
-
         }, //sonuc başarılı ise bunu dön
 
         error: function () {
@@ -36,6 +34,10 @@ function ProfileSettingsFunc() {
     });//ajax kullan
 }
 
+function NavProfileSettingsFunc() {
+    window.location.href = "/Profile/MyProfile/";
+
+}
 
 function UpdateProfileSettings(userID) {
     let person = {
@@ -84,12 +86,15 @@ function ChangePasswordFunc() {
 }
 
 function UpdateChangePassword() {
-    var newPassword = $("#updateNewPassword").val();
+    var newPassword = {
+        updateNewPassword: $("#updateNewPassword").val(),
+        password:$("#password").val()
+    }
 
     $.ajax({
         url: "/Profile/ChangePassword/",
         type: "post",
-        data: { "newPassword": newPassword },
+        data: newPassword,
         success: function (response) {
             $("#myProfile").html("");
             $("#profileSettings").html("");
@@ -139,4 +144,29 @@ function GetPastOrderElements(id, count) {
                 }
             },
         });
+}
+
+function AddressEditUpdate(id) {
+    let adreesses = {
+        id: id,
+        address: $("#address").val(),
+    }
+
+    $.ajax({
+        url: "/Profile/Addresses/",
+        type: "post",
+        data: adreesses,
+        success: function (response) {
+            $("#myProfile").html(""); //ajax la id si list olanı bul ve html ini boşalt
+            $("#profileSettings").html(""); //ajax la id si list olanı bul ve html ini boşalt
+            $("#changePassword").html(""); //ajax la id si list olanı bul ve html ini boşalt
+            $("#addresses").html(""); //ajax la id si list olanı bul ve html ini boşalt
+            MyProfileFunc();
+
+        }, //sonuc başarılı ise bunu dön
+
+        error: function () {
+            $("error").html("<h3>Error fetching profile settings information </h3>");
+        }
+    });
 }

@@ -4,39 +4,35 @@
 {
     if (shoppingCartElement.Product != null)
     {
-        <!-- Item-->
-        <div class="cart-item d-md-flex justify-content-between">
-            <span class="remove-item"><i class="fa fa-times"></i></span>
-            <div class="px-3 my-3">
-                <a class="cart-item-product" href="#">
-                    <div class="cart-item-product-thumb"><img src="~/ProductImages/@shoppingCartElement.Product.ProductCoverImage" alt="@shoppingCartElement.Product.ProductName"></div>
-                    <div class="cart-item-product-info">
-                        <h4 class="cart-item-product-title">@shoppingCartElement.Product.ProductName x @shoppingCartElement.ShoppingCartElementAmount</h4>
-                        @{
-                            decimal netProductPrice = shoppingCartElement.Product.ProductPrice * shoppingCartElement.ShoppingCartElementAmount;
-                        }
-                        <div class="text-lg text-body font-weight-medium pb-1">$@netProductPrice</div><span>Order Date: <span class="text-success font-weight-medium">@shoppingCartElement.Product.CreationDate.ToShortDateString()</span></span>
+        <div class="card mb-3 border-dark bg-light" style="max-width: 900px; max-height:100px;overflow:auto">
+            <div class="row g-0">
+                <div class="col-md-2" style="width:90px">
+                    <img src="~/ProductImages/@shoppingCartElement.Product.ProductCoverImage" class="img-fluid rounded-start" alt="@shoppingCartElement.Product.ProductName">
+                </div>
+                <div class="col-md-4 mt-0" >
+                    <div class="card-body" style="padding:0rem 0rem">
+                        <h6 class="card-title">@shoppingCartElement.Product.ProductName</h6>
+                        <p class="card-text">$@shoppingCartElement.Product.ProductPrice</p>
+                        <p class="card-text"><small class="text-muted">Order Date: @shoppingCartElement.Product.CreationDate.ToShortDateString()</small></p>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
-
     }
     else
     {
-        <div class="cart-item d-md-flex justify-content-between">
-            <span class="remove-item"><i class="fa fa-times"></i></span>
-            <div class="px-3 my-3">
-                <a class="cart-item-product" href="#">
-                    <div class="cart-item-product-thumb"><img src="~/MenuImages/@shoppingCartElement.MenuCart.Menu.MenuCoverImage" alt="@shoppingCartElement.MenuCart.Menu.MenuName"></div>
-                    <div class="cart-item-product-info">
-                        <h4 class="cart-item-product-title">@shoppingCartElement.MenuCart.Menu.MenuName (@shoppingCartElement.MenuCart.MenuType.ToString()) x @shoppingCartElement.ShoppingCartElementAmount</h4>
-                        @{
-                            decimal netMenuPrice = (shoppingCartElement.MenuCart.Menu.MenuPrice + (decimal)shoppingCartElement.MenuCart.MenuType) * shoppingCartElement.ShoppingCartElementAmount;
-                        }
-                        <div class="text-lg text-body font-weight-medium pb-1">$@netMenuPrice</div><span>Order Date: <span class="text-success font-weight-medium">@shoppingCartElement.MenuCart.Menu.CreationDate.ToShortDateString()</span></span>
+        <div class="card mb-3 border-dark bg-light" style="max-width: 900px; max-height:100px;overflow:auto">
+            <div class="row g-0">
+                <div class="col-md-2" style="width:90px">
+                    <img src="~/MenuImages/@shoppingCartElement.MenuCart.Menu.MenuCoverImage" class="img-fluid rounded-start" alt="@shoppingCartElement.MenuCart.Menu.MenuName">
+                </div>
+                <div class="col-md-4 mt-0 ps-2">
+                    <div class="card-body" style="padding:0rem 0rem">
+                        <h6 class="card-title">@shoppingCartElement.MenuCart.Menu.MenuName</h6>
+                        <p class="card-text">$@shoppingCartElement.MenuCart.Menu.MenuPrice</p>
+                        <p class="card-text"><small class="text-muted">Order Date: @shoppingCartElement.MenuCart.Menu.CreationDate.ToShortDateString()</small></p>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     }

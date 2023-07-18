@@ -30,7 +30,7 @@ namespace MVCFoodShop.Configuration
             //        FoodCount = 1,
             //        BeverageCount = 1,
             //        SauceCount = 2,
-            //        MenuDeclaration = "Big Kink, a burger that's larger than life! Juicy beef patty, melted cheese, crispy bacon, and tangy special sauce come together in this epic burger indulgence.",
+            //        MenuDeclaration = "Big King, a burger that's larger than life! Juicy beef patty, melted cheese, crispy bacon, and tangy special sauce come together in this epic burger indulgence.",
             //        MenuCoverImage = "big-king-menu.png"
             //    },
             //    new Menu
