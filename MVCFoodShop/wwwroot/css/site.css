@@ -20,12 +20,12 @@ body {
 .open {
     background-color: #FFC107; /* Arka plan rengini burada belirleyin */
     color: #FFFFFF; /* Yazý rengini burada belirleyin */
-    border-radius: 5px;
+    border-radius: 20px;
     font-weight: bold
 }
 
 .navbar-nav .nav-link:hover:not(.open) {
     background-color: #fad669; /* Ýçinde bulunmadýðýnýz sayfalarýn arka plan rengi */
     color: #FFFFFF; /* Ýçinde bulunmadýðýnýz sayfalarýn yazý rengi */
-    border-radius: 5px;
+    border-radius: 20px;
 }

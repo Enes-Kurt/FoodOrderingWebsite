@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/MVCFoodShop.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header  >
+    @* <header  >
     <nav id="layoutBackGround" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
     <div class="container-fluid">
     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" ><img style="width:150px ;height:70px" src="~/ProductImages/logo.png" alt="Burger'ım Sende"/> </a>
@@ -43,9 +43,9 @@
 
     </div>
     </nav>
-    </header>
+    </header>*@
 
-    @*<header>
+    <header>
         <nav id="layoutBackGround" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img style="width:150px ;height:70px" src="~/ProductImages/logo.png" alt="Burger'ım Sende" /> </a>
@@ -55,7 +55,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (Context.Request != null && Context.Request.RouteValues != null)
+                        @if (Context.Request.Path.Value != "/Identity/Account/Register")
                         {
                             <li class="nav-item @(Context.Request.RouteValues["action"].ToString() == "Index" && Context.Request.RouteValues["controller"].ToString() == "Home" ? "open" : "")">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -70,6 +70,22 @@
                                 <a class="nav-link text-light" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                             </li>
                         }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="About" asp-action="Index">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                            </li>
+
+                        }
                     </ul>
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         <partial name="_LoginPartial" />
@@ -78,7 +94,7 @@
 
             </div>
         </nav>
-    </header>*@
+    </header>
 
     <div id="body-fluid" class="container ps-0 pe-0 ">
         <main role="main" class="pb-3">
