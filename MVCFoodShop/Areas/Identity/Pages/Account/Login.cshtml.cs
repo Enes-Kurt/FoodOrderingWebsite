@@ -122,44 +122,44 @@ namespace MVCFoodShop.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
 
-                    if (Input.Email != "superUser@deneme.com")
-                    {
-                        AppUser appUser = appUserRepository.GetUserByMail(Input.Email);
-                        if (appUser.ShoppingCarts.Count != 0)
-                        {
-                            ShoppingCart lasShoppingCart = appUser.ShoppingCarts.Last();
-                            if (!lasShoppingCart.ShoppingCartIsActive)
-                            {
-                                ShoppingCart shoppingCart = new ShoppingCart()
-                                {
-                                    AppUserID = 1,
-                                    ShoppingCartIsActive = true,
-                                    ShoppingCartPrice = 0,
-                                };
-                                shoppingCartRepository.Add(shoppingCart);
+                    //if (Input.Email != "superUser@deneme.com")
+                    //{
+                    //    AppUser appUser = appUserRepository.GetUserByMail(Input.Email);
+                    //    if (appUser.ShoppingCarts.Count != 0)
+                    //    {
+                    //        ShoppingCart lasShoppingCart = appUser.ShoppingCarts.Last();
+                    //        if (!lasShoppingCart.ShoppingCartIsActive)
+                    //        {
+                    //            ShoppingCart shoppingCart = new ShoppingCart()
+                    //            {
+                    //                AppUserID = 1,
+                    //                ShoppingCartIsActive = true,
+                    //                ShoppingCartPrice = 0,
+                    //            };
+                    //            shoppingCartRepository.Add(shoppingCart);
                                   
-                                HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
-                                HttpContext.Session.SetString("ShoppingCartProductCount", "0");
-                            }
-                            else
-                            {
-                                HttpContext.Session.SetString("ShoppingCartID", lasShoppingCart.ID.ToString());
-                            }
-                        }
-                        else
-                        {
-                            ShoppingCart shoppingCart = new ShoppingCart()
-                            {
-                                AppUserID = 1,
-                                ShoppingCartIsActive = true,
-                                ShoppingCartPrice = 0,
-                            };
-                            shoppingCartRepository.Add(shoppingCart);
+                    //            HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
+                    //            HttpContext.Session.SetString("ShoppingCartProductCount", "0");
+                    //        }
+                    //        else
+                    //        {
+                    //            HttpContext.Session.SetString("ShoppingCartID", lasShoppingCart.ID.ToString());
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        ShoppingCart shoppingCart = new ShoppingCart()
+                    //        {
+                    //            AppUserID = 1,
+                    //            ShoppingCartIsActive = true,
+                    //            ShoppingCartPrice = 0,
+                    //        };
+                    //        shoppingCartRepository.Add(shoppingCart);
 
-                            HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
-                            HttpContext.Session.SetString("ShoppingCartProductCount", "0");
-                        }
-                    }
+                    //        HttpContext.Session.SetString("ShoppingCartID", shoppingCart.ID.ToString());
+                    //        HttpContext.Session.SetString("ShoppingCartProductCount", "0");
+                    //    }
+                    //}
 
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);

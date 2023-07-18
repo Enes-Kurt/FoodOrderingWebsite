@@ -13,7 +13,7 @@ namespace MVCFoodShop.Controllers
         private readonly UserManager<AppUser> userManager;
         private readonly IAppUserRepository appUserRepository;
 
-        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager, IAppUserRepository appUserRepository) : base(shoppingCartRepository)
+        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager, IAppUserRepository appUserRepository) : base(shoppingCartRepository, userManager)
         {
             this.shoppingCartRepository = shoppingCartRepository;
             this.shoppingCartElementRepository = shoppingCartElementRepository;

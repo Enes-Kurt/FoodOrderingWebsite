@@ -26,7 +26,7 @@ namespace MVCFoodShop.Controllers
         private readonly IMenuCartRepository menuCartRepository;
         private readonly IMenuCartElementRepository menuCartElementRepository;
 
-        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper, IMenuRepository menuRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager, IAppUserRepository appUserRepository, IMenuCartRepository menuCartRepository, IMenuCartElementRepository menuCartElementRepository, IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper, IMenuRepository menuRepository, IShoppingCartElementRepository shoppingCartElementRepository, UserManager<AppUser> userManager, IAppUserRepository appUserRepository, IMenuCartRepository menuCartRepository, IMenuCartElementRepository menuCartElementRepository, IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository, userManager)
         {
             this.productRepository = productRepository;
             this.categoryRepository = categoryRepository;

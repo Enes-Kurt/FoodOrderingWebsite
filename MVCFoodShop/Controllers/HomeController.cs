@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using MVCFoodShop.Entities;
 using MVCFoodShop.Models;
 using MVCFoodShop.Repositories.Abstract;
@@ -11,7 +12,7 @@ namespace MVCFoodShop.Controllers
         private readonly IMenuRepository menuRepository;
         private readonly IShoppingCartRepository shoppingCartRepository;
 
-        public HomeController(IMenuRepository menuRepository, IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
+        public HomeController(IMenuRepository menuRepository, IShoppingCartRepository shoppingCartRepository, UserManager<AppUser> userManager) : base(shoppingCartRepository, userManager)
         {
             this.menuRepository = menuRepository;
             this.shoppingCartRepository = shoppingCartRepository;

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
 
 namespace MVCFoodShop.Controllers
@@ -7,7 +9,7 @@ namespace MVCFoodShop.Controllers
     {
         private readonly IShoppingCartRepository shoppingCartRepository;
 
-        public ContactController(IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
+        public ContactController(IShoppingCartRepository shoppingCartRepository, UserManager<AppUser> userManager) : base(shoppingCartRepository, userManager)
         {
             this.shoppingCartRepository = shoppingCartRepository;
         }

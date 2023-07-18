@@ -18,7 +18,7 @@ namespace MVCFoodShop.Controllers
         private readonly SignInManager<AppUser> signInManager;
         private readonly IShoppingCartRepository shoppingCartRepository;
 
-        public ProfileController(UserManager<AppUser> userManager, IAppUserRepository appUserRepository, IPasswordHasher<AppUser> passwordHasher, SignInManager<AppUser> signInManager,IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
+        public ProfileController(UserManager<AppUser> userManager, IAppUserRepository appUserRepository, IPasswordHasher<AppUser> passwordHasher, SignInManager<AppUser> signInManager,IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository, userManager)
         {
 
             this.userManager = userManager;

@@ -73,5 +73,10 @@ namespace MVCFoodShop.Repositories.Concrete
                         .Where(s => s.ShoppingCartIsActive==false && s.AppUserID==id).ToList();
         }
 
+        public AppUser GetUserIncludeShoppingCartById(int id)
+        {
+            return dbContext.AppUsers.Include(a => a.ShoppingCarts).FirstOrDefault(u => u.Id == id);
+        }
+
     }
 }

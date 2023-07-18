@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MVCFoodShop.Entities;
 using MVCFoodShop.Repositories.Abstract;
 
 namespace MVCFoodShop.Controllers
@@ -10,7 +11,7 @@ namespace MVCFoodShop.Controllers
     {
         private readonly RoleManager<IdentityRole> roleManager;
 
-        public RoleController(RoleManager<IdentityRole> roleManager, IShoppingCartRepository shoppingCartRepository) : base(shoppingCartRepository)
+        public RoleController(RoleManager<IdentityRole> roleManager, IShoppingCartRepository shoppingCartRepository, UserManager<AppUser> userManager) : base(shoppingCartRepository, userManager)
         {
             this.roleManager = roleManager;
         }
