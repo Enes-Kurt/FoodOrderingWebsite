@@ -150,7 +150,7 @@ namespace MVCFoodShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult RemoveProduct(RemoveProduct_VM removeVM)
+        public IActionResult RemoveProduct(RemoveProductVM removeVM)
         {
             if (removeVM.Type == "Product") 
             {

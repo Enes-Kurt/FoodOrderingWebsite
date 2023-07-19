@@ -42,7 +42,7 @@
                                        @* <option value="0">Select Category...</option>*@
                                     </select>
                                     <label for="ProductDeclaration">Product Declaration</label>
-                                    <input type="text" placeholder="Product Declaration" asp-for="ProductDeclaration" required />
+                                    <input type="text" placeholder="Product Declaration" asp-for="ProductDeclaration" maxlength="220" required />
 
                                 </div>
                                 <div class="modal-footer">
@@ -156,7 +156,7 @@
                                     <label for="SauceCount">Sauce Count</label>
                                     <input type="number" asp-for="SauceCount" value="1" min="1" />
                                     <label for="MenuDeclaration">Menu Declaration</label>
-                                    <input type="text" placeholder="Menu Declaration" asp-for="MenuDeclaration" required />
+                                    <input type="text" placeholder="Menu Declaration" asp-for="MenuDeclaration" maxlength="220" required />
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

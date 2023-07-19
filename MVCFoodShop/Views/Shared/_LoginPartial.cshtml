@@ -36,7 +36,6 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end border-1 rounded-0 rounded-bottom m-0" style="background-color:rgb(34, 40, 49)">
                                 <a class="dropdown-item text-light" asp-action="MyProfile" asp-controller="Profile">My Profile</a>
-                                <a class="dropdown-item text-light " onclick="ProfileSettingsFunc()">Settings</a>
                                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                                     <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
                                 </form>

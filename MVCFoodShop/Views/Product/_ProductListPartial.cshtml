@@ -182,7 +182,7 @@
                                             <label for="SauceCount">Sauce Count</label>
                                             <input id="@updateMenuSauceCount" type="number" value="@menu.SauceCount" min="1" />
                                             <label for="MenuDeclaration">Menu Declaration</label>
-                                            <input id="@updateMenuDeclaration" type="text" placeholder="Menu Declaration" value="@menu.MenuDeclaration" required />
+                                            <input id="@updateMenuDeclaration" type="text" placeholder="Menu Declaration" value="@menu.MenuDeclaration" maxlength="220" required />
                                         </div>
                                         @* </form>*@
                                         <div class="modal-footer">
@@ -352,7 +352,7 @@
                                             selectElement.value = "@product.Category.ID";
                                         </script>
                                         <label for="ProductDeclaration">Product Declaration</label>
-                                        <input type="text" placeholder="Product Declaration" id="@updateProductDeclaration" value="@product.ProductDeclaration" required />
+                                        <input type="text" placeholder="Product Declaration" id="@updateProductDeclaration" value="@product.ProductDeclaration" maxlength="220" required />
                                     </div>
                                 </div>
                                 <div class="modal-footer">

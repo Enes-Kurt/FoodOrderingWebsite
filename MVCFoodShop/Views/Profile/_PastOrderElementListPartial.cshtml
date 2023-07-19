@@ -4,15 +4,18 @@
 {
     if (shoppingCartElement.Product != null)
     {
-        <div class="card mb-3 border-dark bg-light" style="max-width: 900px; max-height:100px;overflow:auto">
+        <div class="card mb-3 border-dark bg-light p-2" style="max-width: 900px; max-height:150px;overflow:auto">
             <div class="row g-0">
                 <div class="col-md-2" style="width:90px">
                     <img src="~/ProductImages/@shoppingCartElement.Product.ProductCoverImage" class="img-fluid rounded-start" alt="@shoppingCartElement.Product.ProductName">
                 </div>
                 <div class="col-md-4 mt-0" >
                     <div class="card-body" style="padding:0rem 0rem">
-                        <h6 class="card-title">@shoppingCartElement.Product.ProductName</h6>
-                        <p class="card-text">$@shoppingCartElement.Product.ProductPrice</p>
+                        <h6 class="card-title">@shoppingCartElement.Product.ProductName x @shoppingCartElement.ShoppingCartElementAmount</h6>
+                        @{
+                            decimal netProductPrice = shoppingCartElement.Product.ProductPrice * shoppingCartElement.ShoppingCartElementAmount;
+                        }
+                        <p class="card-text">$@netProductPrice</p>
                         <p class="card-text"><small class="text-muted">Order Date: @shoppingCartElement.Product.CreationDate.ToShortDateString()</small></p>
                     </div>
                 </div>
@@ -21,15 +24,18 @@
     }
     else
     {
-        <div class="card mb-3 border-dark bg-light" style="max-width: 900px; max-height:100px;overflow:auto">
+        <div class="card mb-3 border-dark bg-light p-2" style="max-width: 900px; max-height:150px;overflow:auto">
             <div class="row g-0">
                 <div class="col-md-2" style="width:90px">
                     <img src="~/MenuImages/@shoppingCartElement.MenuCart.Menu.MenuCoverImage" class="img-fluid rounded-start" alt="@shoppingCartElement.MenuCart.Menu.MenuName">
                 </div>
                 <div class="col-md-4 mt-0 ps-2">
                     <div class="card-body" style="padding:0rem 0rem">
-                        <h6 class="card-title">@shoppingCartElement.MenuCart.Menu.MenuName</h6>
-                        <p class="card-text">$@shoppingCartElement.MenuCart.Menu.MenuPrice</p>
+                        <h6 class="card-title">@shoppingCartElement.MenuCart.Menu.MenuName (@shoppingCartElement.MenuCart.MenuType.ToString()) x @shoppingCartElement.ShoppingCartElementAmount</h6>
+                        @{
+                            decimal netMenuPrice = (shoppingCartElement.MenuCart.Menu.MenuPrice + (decimal)shoppingCartElement.MenuCart.MenuType) * shoppingCartElement.ShoppingCartElementAmount;
+                        }
+                        <p class="card-text">$@netMenuPrice</p>
                         <p class="card-text"><small class="text-muted">Order Date: @shoppingCartElement.MenuCart.Menu.CreationDate.ToShortDateString()</small></p>
                     </div>
                 </div>
@@ -37,3 +43,4 @@
         </div>
     }
 }
+
