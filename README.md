@@ -10,7 +10,7 @@ A food ordering site developed using MVC, Entity Framework, SQL Server, C#, Java
 
 <div align="center">
 <h4>Website working video</h4>
-<a href="https://youtu.be/s6OG5LKKVh0" target="_blank">
+<a href="https://youtu.be/W9w4XYCQokA" target="_blank">
  <img src="Git%20Images/Video.png" alt="Watch the video" width="600" height="350"/>
 </a>
 </div>  
