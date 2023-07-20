@@ -81,7 +81,8 @@
                                     <option value="2">Medium</option>
                                     <option value="3">Large</option>*@
                                         </select>
-                                        <input type="number" id="@menuOrderCount" value="1" min="1" />
+                                        <label class="me-3">Number of Menu : </label>
+                                        <input class="rounded-3 w-25 fs-4" type="number" id="@menuOrderCount" value="1" min="1" />
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -345,7 +346,7 @@
                                 <option value="3">Sauce</option>
                                 </select>
                                 }*@
-                                        <select id="@updateCategoryID" asp-items="@categoriesComboBox" class="my-3">
+                                        <select id="@updateCategoryID" asp-items="@categoriesComboBox" class="text-black my-3">
                                         </select>
                                         <script>
                                             var selectElement = document.getElementById("@updateCategoryID");
