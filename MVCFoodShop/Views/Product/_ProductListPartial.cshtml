@@ -6,6 +6,7 @@
         @{
             int count = 0;
             int count2 = 0;
+            int count3 = 0;
             string menuModal = "";
             string menuModalTitle = "";
             string menuOrderCount = "";
@@ -147,7 +148,7 @@
                                             <hr>
 
                                             @{
-                                                int count3 = 0;
+                                                
                                                 string updateSelectedProducts = "updateSelectedProducts" + count2;
                                             }
                                             @foreach (Category category in Model.Categories)
@@ -157,19 +158,19 @@
                                                 foreach (Product product in products)
                                                 {
                                                     count3++;
-                                                    string btnid = "btncheckk" + count3;
+                                                    string btnid2 = "btncheckk" + count3;
                                                     if (menu.Products.Contains(product))
                                                     {
                                                         <div class="btn-group w-100 h-50 bg-white flex-wrap border d-flex align-items-center justify-content-center" style="height: 100px;" role="group" aria-label="Basic checkbox toggle button group">
-                                                            <input type="checkbox" checked="checked" class="btn-check h-50" id="@btnid" name="@updateSelectedProducts" value="@product.ID" autocomplete="off">
-                                                            <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid" style="width: 100%;">@product.ProductName</label>
+                                                            <input type="checkbox" checked="checked" class="btn-check h-50" id="@btnid2" name="@updateSelectedProducts" value="@product.ID" autocomplete="off">
+                                                            <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid2" style="width: 100%;">@product.ProductName</label>
                                                         </div>
                                                     }
                                                     else
                                                     {
                                                         <div class="btn-group w-100 h-50 bg-white flex-wrap border d-flex align-items-center justify-content-center" style="height: 100px;" role="group" aria-label="Basic checkbox toggle button group">
-                                                            <input type="checkbox" class="btn-check h-50" id="@btnid" name="@updateSelectedProducts" value="@product.ID" autocomplete="off">
-                                                            <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid" style="width: 100%;">@product.ProductName</label>
+                                                            <input type="checkbox" class="btn-check h-50" id="@btnid2" name="@updateSelectedProducts" value="@product.ID" autocomplete="off">
+                                                            <label class="btn btn-outline-warning m-2 text-center w-25" for="@btnid2" style="width: 100%;">@product.ProductName</label>
                                                         </div>
                                                     }
                                                 }
